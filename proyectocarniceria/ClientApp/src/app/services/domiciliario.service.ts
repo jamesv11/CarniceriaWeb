@@ -30,7 +30,6 @@ export class DomiciliarioService {
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Domiciliario>('Registrar Domiciliario',null))
         );
-
     }
 
 }

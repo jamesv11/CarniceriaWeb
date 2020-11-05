@@ -8,40 +8,59 @@
                     </div>
                     <div class="conteinermain">
                         <div>                    
-                            <form class="form-row" [formGroup]="registerDomiciliaryForm">
+                            <form class="form-row" [formGroup]="registerDomiciliaryForm" (ngSubmit)="onSubmit()">
                                 <div class="partesuperior">
-                                    <div class="form-group col-md-6">
+                                    <div class="col-md-6">
                                         <h3>Informacion del domiciliario</h3>
                                     </div>
 
                                     <div class="form-group ">
-                                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" formControlName="inputEmail"
+                                        <input type="email" class="form-control" formControlName="inputEmail" [ngClass]="{ 'is-invalid': submitted && f.inputEmail.errors}" [(ngModel)]="domiciliario.correo"
                                             placeholder="Correo electronico">
+                                            <div *ngIf="submitted && f.inputEmail.errors" class="invalid-feedback">
+                                                <div *ngIf="f.correo?.inputEmail?.required">El correo es requerida</div>
+                                              </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="inputIdentificacion" name="inputIdentificacion" formControlName="inputIdentificacion"
-                                            placeholder="inputIdentificacion">
+                                        <input type="text" class="form-control" id="inputIdentificacion"  formControlName="inputIdentificacion" [ngClass]="{ 'is-invalid': submitted && f.inputIdentificacion.errors }"
+                                        [(ngModel)]="domiciliario.identificacion"
+                                            placeholder="Identificacion">
+                                            <div *ngIf="submitted && f.inputIdentificacion.errors" class="invalid-feedback">
+                                                <div *ngIf="f.inputIdentificacion.errors?.required">La identificacion es requerida</div>
+                                            </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="inputNombre" name="inputNombre" formControlName="inputNombre"
+                                            <input type="text" class="form-control" id="inputNombre"  formControlName="inputNombre" [ngClass]="{ 'is-invalid': submitted && f.inputNombre.errors }"
+                                            [(ngModel)]="domiciliario.nombre"
                                                 placeholder="Nombre">
+                                                <div *ngIf="submitted && f.inputNombre.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.inputNombre.errors?.required">El nombre es requerida</div>
+                                                  </div>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="inputApellido" name="inputApellido" formControlName="inputApellido"
+                                            <input type="text" class="form-control" id="inputApellido" name="inputApellido" formControlName="inputApellido" [ngClass]="{ 'is-invalid': submitted && f.inputApellido.errors }"
+                                            [(ngModel)]="domiciliario.apellido"
                                                 placeholder="Apellido">
+                                                <div *ngIf="submitted && f.inputApellido.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.inputApellido?.errors?.required">El apellido es requerida</div>
+                                                  </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="inputTelefono" name="inputTelefono" formControlName="inputTelefono"
+                                        <input type="text" class="form-control" id="inputTelefono" name="inputTelefono" formControlName="inputTelefono" [ngClass]="{ 'is-invalid': submitted && f.inputTelefono.errors }"
+                                        [(ngModel)]="domiciliario.control"
                                             placeholder="Telefono">
+                                            <div *ngIf="submitted && f.inputTelefono.errors" class="invalid-feedback">
+                                                <div *ngIf="f.inputTelefono.errors?.required">E ltelefono es requerida</div>
+                                              </div>
                                     </div>
 
                                 </div>
                                 <div class="archivos">
-                                    <div class="form-group col-md-6">
+                                    <div class="col-md-6">
                                         <h3>Soporte del vehiculo</h3>
                                     </div>
                                     <!--
@@ -70,7 +89,7 @@
                                 </div>
                                 
                                 <div class="posicionboton">
-                                    <button class="btn btn-outline-secondary" (click)="onSubmit()" [disabled]="registerDomiciliaryForm.invalid">Registrar</button>
+                                    <button class="btn btn-outline-secondary" >Registrar</button>
                                 </div>
                             </form>
                         </div>  

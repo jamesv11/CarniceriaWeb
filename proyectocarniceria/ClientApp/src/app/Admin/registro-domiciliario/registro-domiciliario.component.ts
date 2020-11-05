@@ -1,9 +1,5 @@
 import { Component, OnInit,PipeTransform } from '@angular/core';
-import { DecimalPipe } from '@angular/common';
-import { FormControl } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 import { Domiciliario } from 'src/app/Carniceria/models/domiciliario';
 import { Documento } from 'src/app/Carniceria/models/documento';
 import { DomiciliarioService } from 'src/app/services/domiciliario.service';
@@ -39,18 +35,18 @@ export class RegistroDomiciliarioComponent implements OnInit {
   ngOnInit(): void {
 
     this.domiciliario = new Domiciliario();
+    this.domiciliario.correo = "";
     this.domiciliario.identificacion = "";
     this.domiciliario.nombre = "";
-    this.domiciliario.apellido = "";
-    this.domiciliario.correo = "";
+    this.domiciliario.apellido = ""; 
     this.domiciliario.telefono = "";
     this.registerDomiciliaryForm = this.formBuilder.group(
       {
         inputEmail : [this.domiciliario.correo,Validators.required],
-        inputIdentificacion :  [this.domiciliario.identificacion, [Validators.required, Validators.min(7), Validators.max(10)]],
+        inputIdentificacion : [this.domiciliario.identificacion,Validators.required],
         inputNombre : [this.domiciliario.nombre,Validators.required],
         inputApellido : [this.domiciliario.apellido,Validators.required],
-        inputTelefono : [this.domiciliario.telefono,[Validators.required,Validators.min(10)]]
+        inputTelefono : [this.domiciliario.telefono,Validators.required]
       });
   }
 
