@@ -1,4 +1,11 @@
+import { ImagenProducto } from "./ImagenProducto";
+
 export class Producto {
-    nombreEstado:String;
-    fecha:Date;
+    nombreProducto:string; 
+    imagenProductoID: number;
+    cantidadEnStock:number;
+    valorUnitario:number
+    descripcion: string;
+    categoria: string;
+    tag :string;
 }

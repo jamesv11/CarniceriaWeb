@@ -133,6 +133,21 @@ namespace Datos.Migrations
                     b.ToTable("Facturas");
                 });
 
+            modelBuilder.Entity("Entidad.ImagenProducto", b =>
+                {
+                    b.Property<int>("ImagenProductoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("ImagenProductoID");
+
+                    b.ToTable("ImagenesProductos");
+                });
+
             modelBuilder.Entity("Entidad.Pedido", b =>
                 {
                     b.Property<int>("PedidoID")
@@ -203,13 +218,19 @@ namespace Datos.Migrations
                     b.Property<decimal>("CantidadEnStock")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("Categoria")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("DetalleID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Imagen")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ImagenProductoID")
+                        .HasColumnType("int");
 
                     b.Property<string>("NombreProducto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tag")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ValorUnitario")

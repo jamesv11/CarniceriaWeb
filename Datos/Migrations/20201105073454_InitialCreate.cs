@@ -25,6 +25,19 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ImagenesProductos",
+                columns: table => new
+                {
+                    ImagenProductoID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Imagen = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImagenesProductos", x => x.ImagenProductoID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Personas",
                 columns: table => new
                 {
@@ -49,11 +62,13 @@ namespace Datos.Migrations
                     ProductoID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreProducto = table.Column<string>(nullable: true),
-                    Imagen = table.Column<string>(nullable: true),
                     CantidadEnStock = table.Column<decimal>(nullable: false),
                     ValorUnitario = table.Column<decimal>(nullable: false),
                     descripcion = table.Column<string>(nullable: true),
-                    DetalleID = table.Column<int>(nullable: false)
+                    Categoria = table.Column<string>(nullable: true),
+                    Tag = table.Column<string>(nullable: true),
+                    DetalleID = table.Column<int>(nullable: false),
+                    ImagenProductoID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -211,6 +226,9 @@ namespace Datos.Migrations
 
             migrationBuilder.DropTable(
                 name: "Estados");
+
+            migrationBuilder.DropTable(
+                name: "ImagenesProductos");
 
             migrationBuilder.DropTable(
                 name: "Productos");
