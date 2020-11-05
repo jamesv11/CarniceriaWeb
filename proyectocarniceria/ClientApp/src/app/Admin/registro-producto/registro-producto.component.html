@@ -1,79 +1,99 @@
-
 <div class="Contenedor-form shadow-lg p-3 mb-5 rounded">
-    <div class="div1">
-        <div class="form-group Nombre">
-            <input type="text" class="form-control" id="NombreProducto" placeholder="Nombre del producto">
-        </div>
-        <div class="form-group Precio">
-            <input type="number" class="form-control" id="Precio" placeholder="Precio">
-        </div>
-        <div class="form-group CantidadRegistrar">
-            <input type="number" class="form-control" id="CantidadRegistrar" placeholder="cantidad a registrar">
-        </div>
-        <div ngbDropdown class="d-inline-block">
-            <button class="btn " id="dropdownBasic1" ngbDropdownToggle>Categoria del
-                producto</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Res</button>
-                <button ngbDropdownItem>Cerdo</button>
-                <button ngbDropdownItem>Pollo</button>
+    <form >
+        <div class="div1">
+            <div>
+                <div class="form-group Nombre">
+                    <input type="text" class="form-control" id="inputNombreProducto" name="inputNombreProducto" [(ngModel)]="producto.nombreProducto" placeholder="Nombre del producto">
+                </div>
+                <div class="form-group Precio">
+                    <input type="number" class="form-control" id="inputPrecio" name="inputPrecio" [(ngModel)]="producto.valorUnitario" placeholder="Precio">
+                </div>
             </div>
-            <label>Categoria:</label><label id="Categoria"></label>
         </div>
-    </div>
-
-
-    <div>
-        <div class="div-tag">
-            <div class="div-cat">
-
-
-                <div ngbDropdown class="d-inline-block div-tag-btn">
-                    <button class="btn " id="dropdownBasic1" ngbDropdownToggle>Agregar etiqueta</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button ngbDropdownItem>Action - 1</button>
-                        <button ngbDropdownItem>Another Action</button>
-                        <button ngbDropdownItem>Something else is here</button>
+        <div class="div1">
+            <div>
+                <div class="form-group CantidadRegistrar">
+                    <input type="number" class="form-control" id="inputCantidadRegistrar" name="inputCantidadRegistrar"  [(ngModel)]="producto.cantidadEnStock" placeholder="cantidad a registrar">
+                </div>
+                <div class="form-group d-inline-block">
+                    <select class="form-control selectCategoria" id="selectCategoria" [(ngModel)]="producto.categoria  " name="selectCategoria" >
+                        <option >Categoria producto</option>
+                        <option value="Res">Res</option>
+                        <option value="Pollo">Pollo</option>
+                        <option value="Cerdo">Cerdo</option>
+                    </select>
+                 </div>
+    
+            </div>
+        </div>
+    
+        <hr>
+    
+        <div>
+            <div class="div1">
+                <div class="div-cat">
+                    <div ngbDropdown class="d-inline-block div-tag-btn">
+                        <button class="btn " id="dropdownBasic1" ngbDropdownToggle>Agregar etiqueta</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem>Action - 1</button>
+                            <button ngbDropdownItem>Another Action</button>
+                            <button ngbDropdownItem>Something else is here</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tag</th>
-                        <th scope="col">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let tag of ListaTag; index as i ">
-                        <th class="celdas" scope="row">{{ i + 1 }}</th>
-                        <td class="celdas">{{ tag }} </td>
-                        <td class="celdas"><button class="btn " id="Eliminar">X</button></td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-
-    <div class="div-descripcion">
-        <div class="form-group">
-            <hr>
-            <label for="exampleFormControlTextarea1">Descripcion del producto</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="form-group col-md-6">
-            
-            <label for="inputLicenciaConducir">Foto/Imagen del producto</label>
-            <input type="file" class="form-control " id="UrlImagenProducto">
-
-            <img src="..." class="rounded mx-auto d-block" alt="...">
+            <div class="div1">
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tag</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tag of ListaTag; index as i ">
+                            <th class="celdas" scope="row">{{ i + 1 }}</th>
+                            <td class="celdas">{{ tag }} </td>
+                            <td class="celdas"><button class="btn " id="Eliminar">X</button></td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
         </div>
     
-    </div>
+        <hr>
+        <div >
+    
+            <div class=" div1 ">
+                <div class="form-group div-descripcion">
+                   
+                    <label for="exampleFormControlTextarea1">Descripcion del producto</label>
+                    <textarea class="form-control" id="inputDescripcion" name="inputDescripcion" [(ngModel)]="producto.descripcion" rows="2"></textarea>
+                </div>
+            </div>
+            <div class=" div1 " >
+                <div class="form-group col-md-6 ">
+                    <div class="subirImagen">
+                        <label for="inputLicenciaConducir">Foto/Imagen del producto</label>
+                        <input type="file" class="form-control  d-none " (change)="CargarImagen($event)" #SubirImagen id="inputImagen">
+                        <div class="Contenedor-form shadow-lg p-3 mb-5 rounded div-imagen">
+                            <img [src]=" imagenSelected || 'assets/Imagenes/no-imagen.png'" class=" img-fluid " alt="..." id="No Imagen" (click)="SubirImagen.click()">
+                        </div>            
+                    </div>
+                </div>
+            </div >
+    
+    
+    
+        </div>
+
+        <div class="posicionboton">
+            <button class="btn btn-outline-secondary" (click)="add()" >Registrar</button>
+        </div>
+    </form>
+
 
 </div>
 

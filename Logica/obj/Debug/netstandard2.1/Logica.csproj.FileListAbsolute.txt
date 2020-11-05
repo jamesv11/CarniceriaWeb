@@ -12,3 +12,17 @@ C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Log
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.csproj.CopyComplete
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.dll
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Logica.deps.json
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Logica.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Logica.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Datos.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Entidad.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Datos.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\bin\Debug\netstandard2.1\Entidad.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.csprojAssemblyReference.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.AssemblyInfoInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.AssemblyInfo.cs
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.csproj.CoreCompileInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.csproj.CopyComplete
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Logica\obj\Debug\netstandard2.1\Logica.pdb

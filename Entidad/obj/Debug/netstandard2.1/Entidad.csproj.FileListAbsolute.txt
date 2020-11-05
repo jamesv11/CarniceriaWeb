@@ -7,3 +7,12 @@ C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Ent
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.csproj.CoreCompileInputs.cache
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.dll
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\bin\Debug\netstandard2.1\Entidad.deps.json
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\bin\Debug\netstandard2.1\Entidad.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\bin\Debug\netstandard2.1\Entidad.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.csprojAssemblyReference.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.AssemblyInfoInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.AssemblyInfo.cs
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Entidad\obj\Debug\netstandard2.1\Entidad.pdb

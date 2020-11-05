@@ -110,26 +110,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JamesV\\.nuget\\packages\\": {}
+    "C:\\Users\\Dubsky\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj",
+      "projectUniqueName": "C:\\Users\\Dubsky\\Documents\\proyecto-web\\CarniceriaWeb\\Entidad\\Entidad.csproj",
       "projectName": "Entidad",
-      "projectPath": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj",
-      "packagesPath": "C:\\Users\\JamesV\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\obj\\",
+      "projectPath": "C:\\Users\\Dubsky\\Documents\\proyecto-web\\CarniceriaWeb\\Entidad\\Entidad.csproj",
+      "packagesPath": "C:\\Users\\Dubsky\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dubsky\\Documents\\proyecto-web\\CarniceriaWeb\\Entidad\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JamesV\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Dubsky\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -166,7 +164,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

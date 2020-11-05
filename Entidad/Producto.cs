@@ -7,7 +7,6 @@ namespace Entidad
     {
         public int ProductoID {get; set;}
         public string NombreProducto {get; set;}
-        public ImagenProducto ImagenProducto {get; set;}
         public decimal CantidadEnStock {get; set;}
         public decimal ValorUnitario{get; set;}
         public string descripcion {get;set;}

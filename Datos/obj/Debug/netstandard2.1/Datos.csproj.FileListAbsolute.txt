@@ -10,3 +10,15 @@ C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Dat
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.csproj.CopyComplete
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.dll
 C:\Users\JamesV\OneDrive\Escritorio\5 semestre\ProgramacionWeb\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\bin\Debug\netstandard2.1\Datos.deps.json
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\bin\Debug\netstandard2.1\Datos.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\bin\Debug\netstandard2.1\Datos.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\bin\Debug\netstandard2.1\Entidad.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\bin\Debug\netstandard2.1\Entidad.pdb
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.csprojAssemblyReference.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.AssemblyInfoInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.AssemblyInfo.cs
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.csproj.CopyComplete
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.dll
+C:\Users\Dubsky\Documents\proyecto-web\CarniceriaWeb\Datos\obj\Debug\netstandard2.1\Datos.pdb

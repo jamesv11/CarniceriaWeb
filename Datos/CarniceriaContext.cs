@@ -63,10 +63,6 @@ namespace Datos
                 .WithMany(c => c.Documentos)
                 .HasForeignKey(c => c.DocumentoID);
 
-            modelBuilder.Entity<Producto>()
-                .HasOne(b => b.ImagenProducto)
-                .WithOne(i => i.Producto)
-                .HasForeignKey<Producto>(b => b.ImagenProductoID);
 
         }
 

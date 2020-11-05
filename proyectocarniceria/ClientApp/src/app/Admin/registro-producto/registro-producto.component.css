@@ -1,22 +1,22 @@
 
 .Nombre{
     float: left;
-    width: 100;
+    width: 400px;
     margin-top: 20px;
     margin-left: 20px;
 
 }
 .Precio{
-    float: left;
-    width: 90;
+    float: right;
+    width: 300px;
     margin-top: 20px;
-    margin-left:30px;
+    margin-left:20px;
 }
 .CantidadRegistrar{
     float: left;
-    width: 90;
+    width: 300px;
     margin-top: 20px;
-    margin-left:30px;
+
 }
 .Cat-tag{
     float: left;
@@ -27,13 +27,16 @@
 }
 .d-inline-block{
     float: left;
-    width: 90;
+    width: 100;
     margin-top: 20px;
     margin-left:30px;
+    margin-right: 70px;
 }
 
 .div1{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn{
@@ -41,26 +44,62 @@
     color: white;
 }
 
-.div-tag-btn{
-    width: 50%;
-    float: top;
+.table{
+    width: 735px;
 }
 
-.table{
-    width: 50%;
-    float: bottom;
-}
-.div-tag{
-    margin-top: 50px;
-    margin-bottom:200px;
-    margin-left:30px;
-    width: 100%;
-}
+
 
 .div-descripcion{
-    margin-left:30px;
-    
+    width: 735px;
 }
-.d-inline-block{
-    margin-right: 20px;
+.lb1{
+    margin-left:35px; 
+}
+.div-cat{
+    margin-right: 580px;
+    margin-bottom: 10px;
+} 
+.Imagen{
+    visibility: hidden;
+    right: left;
+    width: 120px;
+    height: 120px;
+}
+
+.subirImagen{
+    margin-left:-110px; 
+}
+.selectCategoria{
+    width: 300px;
+}
+
+
+hr{
+    width: 900px;
+}
+.Active{
+    visibility: visible;
+}
+
+
+.div-imagen{
+    height: 400px;
+    width: 400px;
+    align-content: center;
+    align-items: center;
+    border: 2px;
+    border-radius: 5px;
+}
+
+.img-fluid{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 350px;
+    width: 350px;
+}
+
+.posicionboton{
+    margin-top: 40px;
+    margin-left: 42%;
 }
