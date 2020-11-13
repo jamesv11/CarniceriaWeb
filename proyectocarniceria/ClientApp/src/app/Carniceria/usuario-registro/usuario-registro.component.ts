@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../models/cliente';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class UsuarioRegistroComponent implements OnInit {
   cliente: Cliente;
   submitted = false;
 
-  constructor(private clienteService: ClienteService, private formBuilder: FormBuilder) { }
+  constructor(private clienteService: ClienteService, private formBuilder: FormBuilder,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.formRegistroCliente = this.formBuilder.group({
@@ -43,7 +45,9 @@ export class UsuarioRegistroComponent implements OnInit {
   add() {
     this.clienteService.post(this.cliente).subscribe(c => {
       if (c != null) {
-        alert('Cliente registrado!');
+        const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.message = 'Cliente registrado con exito';
         this.cliente = c;
       }
     });

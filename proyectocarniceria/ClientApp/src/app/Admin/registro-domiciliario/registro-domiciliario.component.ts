@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Domiciliario } from 'src/app/Carniceria/models/domiciliario';
 import { Documento } from 'src/app/Carniceria/models/documento';
 import { DomiciliarioService } from 'src/app/services/domiciliario.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 
 @Component({
@@ -12,14 +14,17 @@ import { DomiciliarioService } from 'src/app/services/domiciliario.service';
 })
 export class RegistroDomiciliarioComponent implements OnInit {
 
+  searchText: string;
   submitted = false
   registerDomiciliaryForm:FormGroup;
   domiciliario:Domiciliario;
   documento:Documento;
+  domiciliarios:Domiciliario[];
 
   constructor(
     private domiciliarioService: DomiciliarioService,
-    private formBuilder : FormBuilder )
+    private formBuilder : FormBuilder,
+    private modalService: NgbModal )
   { 
 
   }
@@ -48,6 +53,9 @@ export class RegistroDomiciliarioComponent implements OnInit {
         inputApellido : [this.domiciliario.apellido,Validators.required],
         inputTelefono : [this.domiciliario.telefono,Validators.required]
       });
+
+
+    this.domiciliarioService.get().subscribe(result =>{this.domiciliarios = result});
   }
 
   get f() { return this.registerDomiciliaryForm.controls; }
@@ -65,10 +73,15 @@ export class RegistroDomiciliarioComponent implements OnInit {
     add(){
       this.domiciliarioService.post(this.domiciliario).subscribe(c => {
         if (c != null) {
-          alert('Cliente registrado!');
+          const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.message = 'Domiciliario registrado con exito';
           this.domiciliario = c;
         }
+        
       });
+
+      this.onReset();
    }
 
    onReset() {

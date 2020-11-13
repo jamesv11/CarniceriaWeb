@@ -1,6 +1,6 @@
 <div>
     <div>
-        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-1">
             <ngb-panel title="Registro domiciliario">
                 <ng-template ngbPanelContent>
                     <div class="center">
@@ -51,7 +51,7 @@
 
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="inputTelefono" name="inputTelefono" formControlName="inputTelefono" [ngClass]="{ 'is-invalid': submitted && f.inputTelefono.errors }"
-                                        [(ngModel)]="domiciliario.control"
+                                        [(ngModel)]="domiciliario.telefono"
                                             placeholder="Telefono">
                                             <div *ngIf="submitted && f.inputTelefono.errors" class="invalid-feedback">
                                                 <div *ngIf="f.inputTelefono.errors?.required">E ltelefono es requerida</div>
@@ -60,10 +60,11 @@
 
                                 </div>
                                 <div class="archivos">
+                                    <!--
                                     <div class="col-md-6">
                                         <h3>Soporte del vehiculo</h3>
                                     </div>
-                                    <!--
+                                    
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputLicenciaConducir">SOAT</label>
@@ -96,22 +97,39 @@
                     </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel title="Registro domiciliario">
+            <ngb-panel title="Consulta domiciliario">
                 <ng-template ngbPanelContent>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf moon officia
-                    aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3
-                    wolf moon tempor,
-                    sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
-                    keffiyeh helvetica,
-                    craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                    lomo. Leggings
-                    occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of
-                    them accusamus
-                    labore sustainable VHS.
+                    <div class="contenedor-main">
+
+                     <input [(ngModel)]="searchText" class="form-control form-control-lg" type="text" placeholder="Busqueda... ">  
+                        
+                        <table class="table" *ngIf='domiciliarios && domiciliarios.length'>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Identificacion</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Telefono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let domiciliario of domiciliarios|filtroPersona:searchText; index as i">
+                                    <th scope="row">{{ i + 1 }}</th>
+                                    <td>{{ domiciliario.correo}} </td>
+                                    <td>{{ domiciliario.identificacion}}</td>
+                                    <td>{{ domiciliario.nombre}}</td>
+                                    <td>{{ domiciliario.apellido}}</td>
+                                    <td>{{ domiciliario.telefono}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </ng-template>
             </ngb-panel>
-            <ngb-panel title="Disabled">
+            
+            <ngb-panel title="Asignar domiciliario">
                 <ng-template ngbPanelContent>
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
                     wolf moon officia

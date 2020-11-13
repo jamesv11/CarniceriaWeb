@@ -34,9 +34,8 @@
 }
 
 .div1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    
+    width: 100%;
 }
 
 .btn{
@@ -48,10 +47,8 @@
     width: 735px;
 }
 
-
-
 .div-descripcion{
-    width: 735px;
+    width: 100%;
 }
 .lb1{
     margin-left:35px; 
@@ -63,17 +60,14 @@
 .Imagen{
     visibility: hidden;
     right: left;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 
 .subirImagen{
-    margin-left:-110px; 
+    margin-left:410px; 
+    height: 400px;
 }
-.selectCategoria{
-    width: 300px;
-}
-
 
 hr{
     width: 900px;
@@ -84,8 +78,8 @@ hr{
 
 
 .div-imagen{
-    height: 400px;
-    width: 400px;
+    height: 50px;
+    width: 150px;
     align-content: center;
     align-items: center;
     border: 2px;
@@ -95,11 +89,16 @@ hr{
 .img-fluid{
     margin-top: 10px;
     margin-left: 10px;
-    height: 350px;
-    width: 350px;
+    height: 150px;
+    width: 150px;
 }
 
 .posicionboton{
-    margin-top: 40px;
+    margin-top: 0px;
     margin-left: 42%;
+}
+h2{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
 }

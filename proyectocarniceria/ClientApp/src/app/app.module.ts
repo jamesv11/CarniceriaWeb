@@ -30,6 +30,8 @@ import { CarouselComponent } from './carousel/carousel.component';
 
 //bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
+import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
 
 
 
@@ -54,6 +56,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductoCarritoComponent,
     EnviosComponent,
     CarouselComponent,
+    AlertModalComponent,
+    FiltroPersonaPipe,
 
 
   ],
@@ -68,6 +72,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule
   ],
+  entryComponents:[AlertModalComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 import { ImagenProducto } from 'src/app/Carniceria/models/ImagenProducto';
 import { Producto } from 'src/app/Carniceria/models/producto';
 import { ImagenProductoService } from 'src/app/services/ImagenProducto.service';
@@ -28,27 +29,26 @@ export class RegistroProductoComponent implements OnInit {
 
   constructor(private formBulder: FormBuilder,
     private productoService:ProductoService,
-    private imagenService:ImagenProductoService) { }
+    private imagenService:ImagenProductoService,
+    private modalService: NgbModal) { }
 
 
   ngOnInit(): void {
-    this.imagenProducto = new ImagenProducto;
+    this.imagenProducto = new ImagenProducto();
     this.producto = new Producto;
-    // this.producto.cantidadEnStock = 0;
-    // this.producto.categoria = "none";
-    // this.producto.imagenProducto = new ImagenProducto;
-    // this.producto.nombreProducto= "";
-    // this.producto.descripcion = "";
-    // this.producto.tag = "none";
-    // this.producto.valorUnitario =0;
-    // this.registroProductoForm = this.formBulder.group(
-    //  {
-    //     inputNombreProducto : [this.producto.nombreProducto,Validators.required],
-    //     //inputPrecio : [this.producto.valorUnitario,[Validators.required,Validators.min(1)]],
-    //     //inputCantidadRegistrar:[this.producto.cantidadEnStock ,[Validators.required,Validators.min(1)]],
-    //     //inputDescripcion: [this.producto.descripcion ,[Validators.required,Validators.min(1), Validators.max(200)]]
-      
-    //  });
+   // this.producto.cantidadEnStock = ;
+    this.producto.categoria = "none";
+    this.producto.nombreProducto= "";
+    this.producto.descripcion = "";
+    //this.producto.valorUnitario = "";
+    this.registroProductoForm = this.formBulder.group(
+     {
+      inputNombreProducto : [this.producto.nombreProducto,Validators.required],
+      inputPrecio : [this.producto.valorUnitario,[Validators.required,Validators.min(1)]],
+      inputCantidadRegistrar:[this.producto.cantidadEnStock ,[Validators.required,Validators.min(1)]],
+      selectCategoria : [this.producto.nombreProducto,Validators.required],
+      inputDescripcion: [this.producto.descripcion ,[Validators.required,Validators.min(1), Validators.max(200)]]
+      });
 
 
   }
@@ -61,7 +61,7 @@ export class RegistroProductoComponent implements OnInit {
     if (this.registroProductoForm.invalid) {
         return;
     }
-
+      this.add();
    }
 
 
@@ -94,7 +94,10 @@ export class RegistroProductoComponent implements OnInit {
     // this.producto.imagenProductoID = this.imagenProducto.imagenProductoID;
      this.productoService.post(this.producto).subscribe(c => {
        if (c != null) {
-         alert('Cliente registrado!');
+        const messageBox = this.modalService.open(AlertModalComponent)
+        messageBox.componentInstance.title = "Resultado Operación";
+        messageBox.componentInstance.message = 'Producto creado con exito';
+
          this.producto = c;
        }
      });
