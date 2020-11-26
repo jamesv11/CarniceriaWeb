@@ -1,24 +1,40 @@
 <div class="Contenedor-form shadow-lg p-3 mb-5 rounded">
-    <h2>Registro</h2>
-    <form  [formGroup]="formRegistroCliente">
-        <div class="form-group "> 
-            <input type="text" class="form-control" name="inputNombre" [(ngModel)]="cliente.nombre" placeholder="Nombre" formControlName="inputNombre">
-        </div>
-        <div class="form-group ">
-            <input type="text" class="form-control" name="inputApellido" [(ngModel)]="cliente.apellido" placeholder="Apellido" formControlName="inputApellido">
-        </div>
-        <div class="form-group ">
-            <input type="email" class="form-control" name="inputEmail" [(ngModel)]="cliente.correo" placeholder="Email" formControlName="inputEmail">
-        </div>
-        <div class=" form-group">
-            <input type="password" class="form-control" name="inputPassword" [(ngModel)]="cliente.password" placeholder="Contraseña" formControlName="inputPassword">
-        </div>
-        <div class="posicionboton">
-            <button class="btn btn-outline-secondary" (click)="onSubmit()" [disabled]="formRegistroCliente.invalid">Registrar</button>
-        </div>
-        <div class="enlace">
-            <a href="#">¿Ya tienes una cuenta?</a>
-        </div>
-        
-    </form>
+    <div class="header">
+        <h2>Registro</h2>
+    </div>
+    <div class="background">
+        <form  [formGroup]="formRegistroCliente" class="p-3">
+            <div class="form-group "> 
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre" formControlName="nombre" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors}" >
+                <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                    <div *ngIf="f.nombre.errors.required">El nombre es requerido</div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <input type="text" class="form-control" name="apellido" placeholder="Apellido" formControlName="apellido" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors}">
+                <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+                    <div *ngIf="f.apellido.errors.required">El nombre es requerido</div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <input type="email" class="form-control" name="correo" placeholder="Email" formControlName="correo" [ngClass]="{ 'is-invalid': submitted && f.correo.errors}">
+                <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+                    <div *ngIf="f.correo.errors.required">El nombre es requerido</div>
+                </div>
+            </div>
+            <div class=" form-group">
+                <input type="password" class="form-control" name="password" placeholder="Contraseña" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors}">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">El nombre es requerido</div>
+                </div>
+            </div>
+            <div class="posicionboton">
+                <button class="btn btn-dark" (click)="onSubmit()" [disabled]="formRegistroCliente.invalid">Registrar</button>
+            </div>
+            <div class="enlace">
+                <a>¿Ya tienes una cuenta?</a>
+            </div>
+            
+        </form>
+    </div>  
 </div>

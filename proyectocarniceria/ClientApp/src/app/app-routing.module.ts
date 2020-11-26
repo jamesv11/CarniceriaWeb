@@ -15,6 +15,8 @@ import { EnviosComponent } from './Carniceria/Compra/envios/envios.component';
 import { ProductoCerdoComponent } from './Carniceria/Producto/producto-cerdo/producto-cerdo.component';
 import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
 import { RegistroProductoComponent } from './Admin/registro-producto/registro-producto.component';
+import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
+
 
 const routes: Routes = [
 
@@ -64,10 +66,10 @@ const routes: Routes = [
     component: FooterComponent
   },
 
-  {
-    path:'',
-    component: HomeComponent
-  },
+    {
+      path:'',
+      component: HomeComponent
+    },
 
   {
     path:'res',
@@ -84,6 +86,16 @@ const routes: Routes = [
   {
     path:'registro-producto',
     component: RegistroProductoComponent
+  }
+  ,
+  {
+    path:'registro-producto',
+    component: RegistroProductoComponent
+  }
+  ,
+  {
+    path:'gestionUsuarios',
+    component: GestionUsuariosComponent
   }
 
 

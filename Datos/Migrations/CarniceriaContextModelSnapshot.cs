@@ -255,9 +255,6 @@ namespace Datos.Migrations
                 {
                     b.HasBaseType("Entidad.Persona");
 
-                    b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasDiscriminator().HasValue("Cliente");
                 });
 

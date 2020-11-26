@@ -15,7 +15,7 @@ import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.compo
 export class RegistroDomiciliarioComponent implements OnInit {
 
   searchText: string;
-  submitted = false
+  submitted = false;
   registerDomiciliaryForm:FormGroup;
   domiciliario:Domiciliario;
   documento:Documento;
@@ -74,11 +74,10 @@ export class RegistroDomiciliarioComponent implements OnInit {
       this.domiciliarioService.post(this.domiciliario).subscribe(c => {
         if (c != null) {
           const messageBox = this.modalService.open(AlertModalComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = 'Domiciliario registrado con exito';
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.message = 'Domiciliario registrado con exito';
           this.domiciliario = c;
-        }
-        
+        }       
       });
 
       this.onReset();

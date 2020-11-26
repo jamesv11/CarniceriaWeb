@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Datos;
 using Entidad;
 
@@ -18,9 +19,14 @@ namespace Logica
         {
             try
             {
-                _context.Personas.Add(cliente);
-                _context.SaveChanges();
-                return new GuardarPersonaResponse(cliente);
+                var verificarCliente = _context.Clientes.Find(cliente.PersonaID);
+                if(verificarCliente != null)
+                {
+                    return new GuardarPersonaResponse("Error el cliente se encuentra registrado ");
+                }
+                    _context.Personas.Add(cliente);
+                    _context.SaveChanges();
+                    return new GuardarPersonaResponse(cliente);
             }
             catch (Exception e)
             {
@@ -28,7 +34,30 @@ namespace Logica
             }
         }
 
+        public ConsultarClientesResponse Consultar(){
+            try
+            {
+                var clientes = _context.Clientes.ToList();
+                return new ConsultarClientesResponse(clientes);
+            }
+            catch (Exception e)
+            {
+                return new ConsultarClientesResponse($"error de aplicacion :  {e.Message}");
+            }
+        }
 
+        public BuscarClienteResponse buscarCliente(int PersonaID){
+            try
+            {
+                var cliente = _context.Clientes.Find(PersonaID);
+                return new BuscarClienteResponse(cliente);
+            }
+            catch (Exception e)
+            {
+                
+                return new BuscarClienteResponse($"Error de aplicacion: {e.Message}");
+            }
+        }
     }
 
     public class GuardarPersonaResponse
@@ -52,7 +81,7 @@ namespace Logica
         public ConsultarClientesResponse(List<Cliente> clientes)
         {
             Error = false;
-            Clientes = Clientes;
+            Clientes = clientes;
         }
         public ConsultarClientesResponse(string mensaje)
         {

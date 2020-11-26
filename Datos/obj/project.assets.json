@@ -6766,33 +6766,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JamesV\\.nuget\\packages\\": {}
+    "C:\\Users\\JamesVanstrahlen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\Datos.csproj",
+      "projectUniqueName": "C:\\Users\\JamesVanstrahlen\\Desktop\\5 semestre\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\Datos.csproj",
       "projectName": "Datos",
-      "projectPath": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\Datos.csproj",
-      "packagesPath": "C:\\Users\\JamesV\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\obj\\",
+      "projectPath": "C:\\Users\\JamesVanstrahlen\\Desktop\\5 semestre\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\Datos.csproj",
+      "packagesPath": "C:\\Users\\JamesVanstrahlen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JamesVanstrahlen\\Desktop\\5 semestre\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Datos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JamesV\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\JamesVanstrahlen\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj": {
-              "projectPath": "C:\\Users\\JamesV\\OneDrive\\Escritorio\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj"
+            "C:\\Users\\JamesVanstrahlen\\Desktop\\5 semestre\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj": {
+              "projectPath": "C:\\Users\\JamesVanstrahlen\\Desktop\\5 semestre\\5 semestre\\ProgramacionWeb\\CarniceriaWeb\\Entidad\\Entidad.csproj"
             }
           }
         }
@@ -6834,7 +6832,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

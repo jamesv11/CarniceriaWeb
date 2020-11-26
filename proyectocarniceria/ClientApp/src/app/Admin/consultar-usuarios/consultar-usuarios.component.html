@@ -1,0 +1,32 @@
+<div>
+    <div>
+        <h2>Gestion de usuarios</h2>
+    </div>
+    <div class="mx-auto p-3 col-lg-6 ">
+         <h3 *ngIf='!clientes'>No hay clientes registrados</h3>
+    </div>
+    <div class="mx-auto shadow-lg p-3 m-6 col-lg-10 " >
+        <input *ngIf='clientes && clientes.length' [(ngModel)]="searchText" class="form-control " type="text" placeholder="Busqueda... ">  
+           
+           <table class="table" *ngIf='clientes && clientes.length'>
+               <thead>
+                   <tr>
+                       <th scope="col">#</th>
+                       <th scope="col">Cliente identificador</th>
+                       <th scope="col">Nombre</th>
+                       <th scope="col">Apellido</th>
+                       <th scope="col">correo</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr *ngFor="let cliente of clientes; index as i" (click)="selectedClient(cliente.personaID)">
+                       <th scope="row">{{ i + 1 }}</th>
+                       <td>{{cliente.personaID}} </td>
+                       <td>{{cliente.nombre}} </td>
+                       <td>{{cliente.apellido }}</td>
+                       <td>{{cliente.correo }}</td>
+                   </tr>
+               </tbody>
+           </table>
+    </div>
+</div>

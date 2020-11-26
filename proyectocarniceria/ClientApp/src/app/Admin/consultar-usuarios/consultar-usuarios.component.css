@@ -1,0 +1,22 @@
+h2{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
+}
+
+h3{
+    text-align: center;
+}
+
+td , th{
+    text-align: center;
+    font-weight: bold   ;
+}
+
+.background{
+    background-image: url("https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80");
+    background-size: cover;
+    background-position: center center;
+    min-height: 20vh;
+    margin: 0;
+}

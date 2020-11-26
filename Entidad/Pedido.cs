@@ -15,6 +15,8 @@ namespace Entidad
 
 
         public int FacturaID {get;set;}
-        public int DomiciliarioID  {get;set;}
+
+        public int DomiciliarioID {get;set;}
+            
     }
 }

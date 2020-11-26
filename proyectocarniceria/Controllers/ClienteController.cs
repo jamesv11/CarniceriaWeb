@@ -23,20 +23,32 @@ namespace WebPulsaciones.Controllers
             _clienteService = new ClienteServicio(_context);
         }
 
-        /*
-        // GET: api/Persona
+        
         [HttpGet]
-        public ActionResult<IEnumerable<PersonaViewModel>> Gets()
+        public ActionResult<IEnumerable<ClienteViewModel>> Gets()
         {
-            var response = _personaService.ConsultarTodos(); 
+            var response = _clienteService.Consultar(); 
             if(response.Error){
            
                 return BadRequest(response.Mensaje);
             }
-            var personas = response.Personas.Select(p => new PersonaViewModel(p));
-            return Ok(personas);
+            var clientes = response.Clientes.Select(p => new ClienteViewModel(p));
+            return Ok(clientes);
         }
-        */
+        
+        // Get:  api/Cliente/personaId
+        [HttpGet("{personaID}")]
+        public ActionResult<IEnumerable<ClienteViewModel>> Gets(int personaID)
+        {
+            var response = _clienteService.buscarCliente(personaID); 
+            if(response.Error){
+           
+                return BadRequest(response.Mensaje);
+            }
+            var cliente = new ClienteViewModel(response.Cliente);
+            return Ok(cliente);
+        }
+
         // Post: api/Cliente
         [HttpPost]
         public ActionResult<ClienteViewModel> Post(ClienteInputModel clienteInput)
@@ -55,8 +67,8 @@ namespace WebPulsaciones.Controllers
             {
                   Nombre = clienteInput.Nombre,
                   Apellido = clienteInput.Apellido,
-                  Correo = clienteInput.Correo,
-                  Password = clienteInput.Password
+                  Correo = clienteInput.Correo
+
             };
             return cliente;
         }

@@ -21,15 +21,11 @@ namespace proyectocarniceria.Models
     public class ClienteViewModel : ClienteInputModel {
 
         public ClienteViewModel (){}
-        public ClienteViewModel(Cliente cliente){
-            
+        public ClienteViewModel(Cliente cliente){     
+            PersonaID = cliente.PersonaID;    
             Nombre =  cliente.Nombre;
             Apellido = cliente.Apellido;
-            Correo = cliente.Correo;
-            Direccion = cliente.Direccion;
-            
+            Correo = cliente.Correo;          
         }
-
-        public string Direccion { get; set; }
     }
 }

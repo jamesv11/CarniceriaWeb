@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../models/cliente';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ClienteService } from 'src/app/services/cliente.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from 'src/app/@base/alert-modal/alert-modal.component';
 
 
@@ -17,17 +17,24 @@ export class UsuarioRegistroComponent implements OnInit {
   cliente: Cliente;
   submitted = false;
 
-  constructor(private clienteService: ClienteService, private formBuilder: FormBuilder,private modalService: NgbModal) { }
+  constructor( private clienteService: ClienteService, private formBuilder: FormBuilder,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
+
+    this.cliente =  new Cliente();
+    this.cliente.nombre = null;
+    this.cliente.apellido = null;
+    this.cliente.correo = null;
+    this.cliente.password = null;
+
     this.formRegistroCliente = this.formBuilder.group({
-      inputNombre: ['', Validators.required],
-      inputApellido: ['', Validators.required],
-      inputEmail: ['', Validators.required],
-      inputPassword: ['', Validators.required],
+      nombre: [this.cliente.nombre, Validators.required],
+      apellido: [this.cliente.apellido, Validators.required],
+      correo: [this.cliente.correo, Validators.required],
+      password: [this.cliente.password, Validators.required]
     });
 
-    this.cliente = new Cliente();
   }
 
   onSubmit() {
@@ -38,19 +45,21 @@ export class UsuarioRegistroComponent implements OnInit {
     this.add();
   }
 
-  get control() {
+  get f() {
     return this.formRegistroCliente.controls;
   }
 
   add() {
+    this.cliente = this.formRegistroCliente.value;
     this.clienteService.post(this.cliente).subscribe(c => {
-      if (c != null) {
+    
         const messageBox = this.modalService.open(AlertModalComponent)
         messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.message = 'Cliente registrado con exito';
+        messageBox.componentInstance.message = 'Domiciliario registrado con exito';
         this.cliente = c;
-      }
+           
     });
+
   }
 
   onReset() {

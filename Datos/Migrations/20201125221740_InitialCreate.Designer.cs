@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(CarniceriaContext))]
-    [Migration("20201105101240_InitialCreate")]
+    [Migration("20201125221740_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,9 +256,6 @@ namespace Datos.Migrations
             modelBuilder.Entity("Entidad.Cliente", b =>
                 {
                     b.HasBaseType("Entidad.Persona");
-
-                    b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Cliente");
                 });

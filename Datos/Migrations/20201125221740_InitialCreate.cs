@@ -47,8 +47,7 @@ namespace Datos.Migrations
                     Apellido = table.Column<string>(nullable: true),
                     Correo = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    Discriminator = table.Column<string>(nullable: false),
-                    Direccion = table.Column<string>(nullable: true)
+                    Discriminator = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

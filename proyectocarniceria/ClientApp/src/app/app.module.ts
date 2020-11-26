@@ -32,6 +32,11 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
+import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
+import { ConsultarUsuariosComponent } from './Admin/consultar-usuarios/consultar-usuarios.component';
+import { VisualizarUsuarioComponent } from './Admin/visualizar-usuario/visualizar-usuario.component';
+import { PedidosUsuarioComponent } from './Admin/pedidos-usuario/pedidos-usuario.component';
+
 
 
 
@@ -58,6 +63,11 @@ import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
     CarouselComponent,
     AlertModalComponent,
     FiltroPersonaPipe,
+    GestionUsuariosComponent,
+    ConsultarUsuariosComponent,
+    VisualizarUsuarioComponent,
+    PedidosUsuarioComponent
+  
 
 
   ],
