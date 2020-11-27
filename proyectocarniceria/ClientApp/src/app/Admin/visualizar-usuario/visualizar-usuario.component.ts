@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataClienteService } from 'src/app/services/data-cliente.service';
 
 @Component({
   selector: 'app-visualizar-usuario',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataCliente: DataClienteService) { }
 
   ngOnInit(): void {
+  }
+
+  idSeleccionado(id:number)
+  {
+    console.log(id);
   }
 
 }

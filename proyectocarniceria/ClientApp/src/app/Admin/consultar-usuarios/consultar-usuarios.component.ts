@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Cliente } from 'src/app/Carniceria/models/cliente';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { DataClienteService } from 'src/app/services/data-cliente.service';
 
 @Component({
   selector: 'app-consultar-usuarios',
@@ -11,7 +12,9 @@ export class ConsultarUsuariosComponent implements OnInit {
 
   searchText: string;
   clientes: Cliente[];
-  constructor(private clienteService :  ClienteService) { }
+ 
+
+  constructor(private clienteService :  ClienteService, private dataCliente: DataClienteService) { }
 
   ngOnInit(): void {
     this.clienteService.get().subscribe(result => 
@@ -20,9 +23,11 @@ export class ConsultarUsuariosComponent implements OnInit {
       });
   }
 
-  selectedClient(id :number)
+  selectedClient(cliente : Cliente)
   {
-    console.log(id);
+    this.dataCliente.cliente =  cliente;
   }
+
+
 
 }

@@ -22,10 +22,10 @@ export class ImagenProductoService {
     }
 
     
-    get(): Observable<Producto[]>{
-      return this.http.get<Producto[]>(this.baseUrl + 'api/Producto')
+    get(IdImagen:string): Observable<ImagenProducto>{
+      return this.http.get<ImagenProducto>(this.baseUrl + 'api/Producto/Imagen/'+IdImagen)
       .pipe(
-        tap(_=> this.handleErrorService.handleError<Producto[]>('Consulta producto',null))  
+        tap(_=> this.handleErrorService.handleError<ImagenProducto>('Consulta imagen producto',null))  
       );
     }
     post(imagenProducto: ImagenProducto): Observable<number>{
@@ -38,5 +38,8 @@ export class ImagenProductoService {
         );
 
     }
+
+
+    
  
 } 

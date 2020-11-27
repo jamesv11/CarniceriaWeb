@@ -73,7 +73,7 @@ export class RegistroDomiciliarioComponent implements OnInit {
     add(){
       this.domiciliarioService.post(this.domiciliario).subscribe(c => {
         if (c != null) {
-          const messageBox = this.modalService.open(AlertModalComponent)
+          const messageBox = this.modalService.open(AlertModalComponent);
           messageBox.componentInstance.title = "Resultado Operación";
           messageBox.componentInstance.message = 'Domiciliario registrado con exito';
           this.domiciliario = c;

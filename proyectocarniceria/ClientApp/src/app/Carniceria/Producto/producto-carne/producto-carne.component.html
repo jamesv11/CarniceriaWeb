@@ -1,44 +1,11 @@
 <div class="Contenedor-form shadow-lg p-3 mb-5 rounded">
     <h2>Carne de res</h2>
+    <form> 
+        <input type="text" name="" id="" [(ngModel)]="buscar">
+        <button (click)="Buscar()">Buscar</button>
+    </form>
 
-    <table class="table " >
-        
-        <figure class="Producto">
-                    
-            <img src="https://image.freepik.com/foto-gratis/carne-fresca_144627-19941.jpg">
-            <hr class="">
-            <div class="info">
-                <label>carne</label>
-                <hr class="lineaInfo">
-                <label>precio</label>
-            </div>
-            <div class="botonesProducto">   
-                <button class="btn" >Ver mas</button>
-                <button class="btn" >Añadir al carrito</button>    
-            </div>
-                     
-        </figure>
+    <img [src]="'productoImagen.Imagen'">
 
-        <tbody>
-            <tr *ngFor="let producto of productos; index as i ">
-                <td>
-                    <figure class="Producto">
-                    
-                        <img src="https://image.freepik.com/foto-gratis/carne-fresca_144627-19941.jpg">
-                        <hr class="">
-                        <div class="info">
-                            <label>carne</label>
-                            <hr class="lineaInfo">
-                            <label>precio</label>
-                        </div>
-                        <div class="botonesProducto">   
-                            <button class="btn" >Ver mas</button>
-                            <button class="btn" >Añadir al carrito</button>    
-                        </div>
-                                 
-                    </figure>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
 </div>

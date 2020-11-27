@@ -12,6 +12,7 @@ namespace Entidad
         public string descripcion {get;set;}
         public string Categoria {get;set;}
         public string Tag {get;set;}
+        
 
 
         public int DetalleID {get; set;}

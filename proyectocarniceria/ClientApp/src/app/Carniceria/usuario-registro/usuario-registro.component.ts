@@ -51,13 +51,16 @@ export class UsuarioRegistroComponent implements OnInit {
 
   add() {
     this.cliente = this.formRegistroCliente.value;
-    this.clienteService.post(this.cliente).subscribe(c => {
-    
-        const messageBox = this.modalService.open(AlertModalComponent)
+    this.clienteService.post(this.cliente).subscribe((c) => {
+      if(c == null)
+      {
+        console.log(c);
+        const messageBox = this.modalService.open(AlertModalComponent);
         messageBox.componentInstance.title = "Resultado Operación";
         messageBox.componentInstance.message = 'Domiciliario registrado con exito';
         this.cliente = c;
-           
+        console.log(c);
+      }        
     });
 
   }

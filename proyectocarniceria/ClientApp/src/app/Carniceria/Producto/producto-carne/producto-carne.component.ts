@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ImagenProductoService } from 'src/app/services/ImagenProducto.service';
+import { ImagenProducto } from '../../models/ImagenProducto';
 
 @Component({
   selector: 'app-producto-carne',
@@ -7,13 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductoCarneComponent implements OnInit {
 
-  productos:[
-    {"NombreProducto":"John", "Imagen":"Doe","Precio":"0000000","descripcion":"0000000"},
-
-];
-  constructor() { }
+  
+  productoImagen:ImagenProducto;
+  buscar:string;
+  constructor(private ImagenService:ImagenProductoService) { }
 
   ngOnInit(): void {
+    this.productoImagen = new ImagenProducto();
+  }
+
+  Buscar(){
+    this.ImagenService.get(this.buscar).subscribe(p => {
+      if (p != null) {
+        alert('Imagen Encontrada');
+        this.productoImagen = p;
+      }
+    })
   }
 
 }

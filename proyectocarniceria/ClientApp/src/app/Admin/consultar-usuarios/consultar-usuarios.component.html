@@ -8,7 +8,7 @@
     <div class="mx-auto shadow-lg p-3 m-6 col-lg-10 " >
         <input *ngIf='clientes && clientes.length' [(ngModel)]="searchText" class="form-control " type="text" placeholder="Busqueda... ">  
            
-           <table class="table" *ngIf='clientes && clientes.length'>
+           <table class="table table-hover" *ngIf='clientes && clientes.length'>
                <thead>
                    <tr>
                        <th scope="col">#</th>
@@ -19,7 +19,7 @@
                    </tr>
                </thead>
                <tbody>
-                   <tr *ngFor="let cliente of clientes; index as i" (click)="selectedClient(cliente.personaID)">
+                   <tr *ngFor="let cliente of clientes; index as i" (click)="selectedClient(cliente)">
                        <th scope="row">{{ i + 1 }}</th>
                        <td>{{cliente.personaID}} </td>
                        <td>{{cliente.nombre}} </td>

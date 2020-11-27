@@ -32,6 +32,18 @@ namespace Logica
             }
         }
 
+        public ConsultarImagenResponse BuscarImagenId(string ImagenProductoID)
+        {
+            try
+            {
+                return new ConsultarImagenResponse(_context.ImagenesProductos.Find(ImagenProductoID));
+            }
+            catch (Exception e)
+            {
+                return new ConsultarImagenResponse($"Error de la Aplicacion: {e.Message}");
+            }
+        }
+
 
         public int ultimoId(){
             var LastRegister = _context.ImagenesProductos
@@ -39,10 +51,7 @@ namespace Logica
                 .First().ImagenProductoID;
             return LastRegister;
         }
-        public ImagenProducto BuscarImagenID(int ID){
-            return _context.ImagenesProductos.Find(ID);
 
-        }
     }
 
     public class GuardarImagenResponse

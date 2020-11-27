@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Drawing;
 using Entidad;
 using Datos;
 using Logica;
@@ -24,20 +25,22 @@ namespace WebPulsaciones.Controllers
             _ImagenProductoServicio = new ImagenProductoServicio(_context);
         }
 
-        /*
-        // GET: api/Persona
-        [HttpGet]
-        public ActionResult<IEnumerable<PersonaViewModel>> Gets()
+        
+        // GET: api/Producto/Imagen
+        [HttpGet("{IdImagen}")]
+        public ActionResult<ImagenProductoViewModel> getById(string IdImagen)
         {
-            var response = _personaService.ConsultarTodos(); 
+            var response = _ImagenProductoServicio.BuscarImagenId(IdImagen); 
             if(response.Error){
            
                 return BadRequest(response.Mensaje);
             }
-            var personas = response.Personas.Select(p => new PersonaViewModel(p));
-            return Ok(personas);
+            var img = ByteArrayToImage(response.ImagenProducto.Imagen); 
+             
+            return Ok( new ImagenProductoViewModel(response.ImagenProducto.ImagenProductoID,img));
         }
-        */
+        
+
         // Post: api/ImagenProducto
         [HttpPost]
         public ActionResult<int> UploadByte()
@@ -73,6 +76,16 @@ namespace WebPulsaciones.Controllers
             }
 
           
+        }
+
+        public Image ByteArrayToImage(byte[] byteArrayIn)
+        {
+            using(var ms = new MemoryStream(byteArrayIn))
+            {
+                var returnImage = Image.FromStream(ms);
+
+                return returnImage;
+            }
         }
 
     }

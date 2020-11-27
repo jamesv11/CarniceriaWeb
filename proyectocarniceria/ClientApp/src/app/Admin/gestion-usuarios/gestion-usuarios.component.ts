@@ -12,4 +12,9 @@ export class GestionUsuariosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  idSeleccionado(id:number)
+  {
+    console.log(id);
+  }
+
 }

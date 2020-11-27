@@ -1,3 +1,5 @@
+using System.IO;
+using System.Drawing;
 using System.Net.Http.Headers;
 using Entidad;
 using System;
@@ -16,13 +18,15 @@ namespace proyectocarniceria.Models
          
     }
 
-    public class ImagenProductoViewModel  : ImagenProductoInputModel {
+    public class ImagenProductoViewModel   {
+        public int ImagenProductoID {get;set;}
+        public Image Imagen {get;set;}
 
         public ImagenProductoViewModel   (){}
-        public ImagenProductoViewModel  (ImagenProducto imagenProducto){
+        public ImagenProductoViewModel  (int imagenProductoID, Image  imagen){
             
-            ImagenProductoID = imagenProducto.ImagenProductoID;
-            Imagen = imagenProducto.Imagen;
+            ImagenProductoID = imagenProductoID;
+            Imagen = imagen;
             
         }
     }
