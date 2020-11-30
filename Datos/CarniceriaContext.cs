@@ -17,20 +17,18 @@ namespace Datos
         public DbSet<DetalleFactura> DetalleFacturas { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<Estado> Estados { get; set; }
         public DbSet<Domiciliario> Domiciliarios { get; set; }
         public DbSet<Documento> Documentos { get; set; }
         public DbSet<ImagenProducto> ImagenesProductos { get; set; }
+        public DbSet<ProductoCarne> ProductoCarnes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            /*
             modelBuilder.Entity<Cliente>()
                 .HasOne(b => b.Carrito)
                 .WithOne(i => i.ClienteFactura)
                 .HasForeignKey<Factura>(b => b.ClienteID);
-
-            modelBuilder.Entity<Factura>()
-            .Property(b => b.Total).HasColumnType("DECIMAL(18,3)");
 
             modelBuilder.Entity<DetalleFactura>()
                 .HasOne<Factura>(c => c.Factura)
@@ -63,10 +61,7 @@ namespace Datos
                 .WithMany(c => c.Documentos)
                 .HasForeignKey(c => c.DocumentoID);
 
-
+            */
         }
-
-
-
     }
 }

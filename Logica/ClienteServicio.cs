@@ -19,12 +19,12 @@ namespace Logica
         {
             try
             {
-                var verificarCliente = _context.Clientes.Find(cliente.PersonaID);
+                var verificarCliente = _context.Clientes.Find(cliente.Persona.PersonaId);
                 if(verificarCliente != null)
                 {
                     return new GuardarPersonaResponse("Error el cliente se encuentra registrado ");
                 }
-                    _context.Personas.Add(cliente);
+                    _context.Clientes.Add(cliente);
                     _context.SaveChanges();
                     return new GuardarPersonaResponse(cliente);
             }

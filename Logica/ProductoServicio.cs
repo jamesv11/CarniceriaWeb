@@ -19,8 +19,8 @@ namespace Logica
         {
             try
             {
-                 if(producto.ImagenProductoID==0){
-                     producto.ImagenProductoID = imagenProductoServicio.ultimoId();
+                 if(producto.ImagenProductoId==0){
+                     producto.ImagenProductoId = imagenProductoServicio.ultimoId();
                  }
 
                 _context.Productos.Add(producto);

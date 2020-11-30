@@ -4,11 +4,7 @@ namespace Entidad
 {
     public class ImagenProducto
     {
-        public int ImagenProductoID {get;set;}
+        public int ImagenProductoId {get;set;}
         public byte[] Imagen {get;set;}
-
-
-        
-
     }
 }

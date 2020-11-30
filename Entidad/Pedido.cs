@@ -5,18 +5,18 @@ namespace Entidad
 {
     public class Pedido
     {
-        public int PedidoID {get;set;}
+        public int PedidoId {get;set;}
         public DateTime Fecha {get;set;}
-        public Factura Factura {get;set;}
         public string Direccion {get;set;}
-        public List<Estado> Estados {get;set;}
+        public Estado Estado {get;set;}
+        public Pedido()
+        { this.Estado = Estado.Pendiente;}
+
+        //Relacion con la clase factura 
+        public Factura Factura {get;set;}
+
+        //Relacion con la clase Domiciliario      
+        public int DomiciliarioId { get; set; }
         public Domiciliario Domiciliario {get;set;}
-
-
-
-        public int FacturaID {get;set;}
-
-        public int DomiciliarioID {get;set;}
-            
     }
 }

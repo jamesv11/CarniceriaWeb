@@ -22,8 +22,8 @@ namespace Logica
                 _context.ImagenesProductos.Add(imagenProducto);
                 _context.SaveChanges();
                 var LastRegister = _context.ImagenesProductos
-                .OrderByDescending(x => x.ImagenProductoID)
-                .First().ImagenProductoID;
+                .OrderByDescending(x => x.ImagenProductoId)
+                .First().ImagenProductoId;
                 return new GuardarImagenResponse(LastRegister);
             }
             catch (Exception e)
@@ -47,8 +47,8 @@ namespace Logica
 
         public int ultimoId(){
             var LastRegister = _context.ImagenesProductos
-                .OrderByDescending(x => x.ImagenProductoID)
-                .First().ImagenProductoID;
+                .OrderByDescending(x => x.ImagenProductoId)
+                .First().ImagenProductoId;
             return LastRegister;
         }
 

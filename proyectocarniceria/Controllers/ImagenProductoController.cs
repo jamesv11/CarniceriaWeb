@@ -37,7 +37,7 @@ namespace WebPulsaciones.Controllers
             }
             var img = ByteArrayToImage(response.ImagenProducto.Imagen); 
              
-            return Ok( new ImagenProductoViewModel(response.ImagenProducto.ImagenProductoID,img));
+            return Ok( new ImagenProductoViewModel(response.ImagenProducto.ImagenProductoId,img));
         }
         
 

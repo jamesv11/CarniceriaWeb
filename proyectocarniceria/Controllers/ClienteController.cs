@@ -65,9 +65,7 @@ namespace WebPulsaciones.Controllers
         {
             var cliente = new Cliente
             {
-                  Nombre = clienteInput.Nombre,
-                  Apellido = clienteInput.Apellido,
-                  Correo = clienteInput.Correo
+                  
 
             };
             return cliente;

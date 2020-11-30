@@ -4,12 +4,11 @@ namespace Entidad
 {
     public class Documento
     {
-        public int DocumentoID {get;set;}
-        public DateTime Fecha {get;set;}
-        public String Url {get;set;}
+        public int DocumentoId {get;set;}
+        public string Nombre { get; set; }
 
-        //para la relacion
-        public Domiciliario Domiciliario {get;set;}
-        public string Identificacion {get;set;} 
+        //Relacion con la entidad Domiciliario uno a muchos     
+        public string DomiciliarioId {get;set;}
+        public Domiciliario Domiciliario {get;set;} 
     }
 }

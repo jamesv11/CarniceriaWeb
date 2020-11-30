@@ -27,14 +27,6 @@ namespace proyectocarniceria.Models
         public ProductoViewModel  (){}
         public ProductoViewModel (Producto producto){
             
-            NombreProducto = producto.NombreProducto;
-            CantidadEnStock = producto.CantidadEnStock;
-            ValorUnitario = producto.ValorUnitario;
-            descripcion = producto.descripcion;
-            Categoria = producto.Categoria;
-            Tag = producto.Tag;
-            ImagenProductoID = producto.ImagenProductoID;
-            
         }
     }
 }

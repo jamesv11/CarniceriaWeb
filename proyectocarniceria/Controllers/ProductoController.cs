@@ -55,13 +55,7 @@ namespace WebPulsaciones.Controllers
         {
             var producto = new Producto
             {
-                NombreProducto = productoInputModel.NombreProducto,
-                CantidadEnStock = productoInputModel.CantidadEnStock,
-                ValorUnitario = productoInputModel.ValorUnitario,
-                descripcion = productoInputModel.descripcion,
-                Categoria = productoInputModel.Categoria,
-                Tag = productoInputModel.Tag,
-                ImagenProductoID = productoInputModel.ImagenProductoID
+                
             };
             
             

@@ -1,19 +1,21 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Entidad
 {
     public class DetalleFactura
     {
-        public int DetalleFacturaID {get; set;}
-        public Producto ProductoDetalle {get; set;}
+        public int DetalleFacturaId {get; set;}
+        [Column(TypeName = "decimal(12,2)")]
         public decimal CantidadRequerida {get; set;}
+        [Column(TypeName = "decimal(12,2)")]
         public decimal ValorUnitario {get; set;}
-        public decimal SubTotal {get; set;}
 
+        //Relacion con la clase Producto
+        public Producto ProductoDetalle {get; set;}
 
-        public int FacturaID {get; set;}
+        //Relacion con la clase Factura
+        public int FacturaId {get; set;}
         public Factura Factura {get; set;}
-
-        public int ProductoID {get; set;}
         
     }
 }

@@ -22,10 +22,7 @@ namespace proyectocarniceria.Models
 
         public ClienteViewModel (){}
         public ClienteViewModel(Cliente cliente){     
-            PersonaID = cliente.PersonaID;    
-            Nombre =  cliente.Nombre;
-            Apellido = cliente.Apellido;
-            Correo = cliente.Correo;          
+                  
         }
     }
 }

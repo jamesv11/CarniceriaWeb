@@ -53,11 +53,7 @@ namespace WebPulsaciones.Controllers
         {
             var domiciliario = new Domiciliario
             {
-                  Identificacion =  domiciliarioInput.Identificacion,
-                  Nombre = domiciliarioInput.Nombre,
-                  Apellido = domiciliarioInput.Apellido,
-                  Correo = domiciliarioInput.Correo,
-                  Telefono = domiciliarioInput.Telefono
+                  
             };
             return domiciliario;
         }

@@ -33,8 +33,6 @@ namespace proyectocarniceria.Models
         public DomiciliarioViewModel(Domiciliario domiciliario){
             
             Identificacion = domiciliario.Identificacion;
-            Nombre = domiciliario.Nombre;
-            Apellido = domiciliario.Apellido;
             Correo = domiciliario.Correo;
             Telefono = domiciliario.Telefono;           
         }

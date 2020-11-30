@@ -29,5 +29,7 @@ namespace proyectocarniceria.Models
             Imagen = imagen;
             
         }
+
+        
     }
 }
