@@ -7,7 +7,6 @@ namespace Entidad
     {
         public int PedidoId {get;set;}
         public DateTime Fecha {get;set;}
-        public string Direccion {get;set;}
         public Estado Estado {get;set;}
         public Pedido()
         { this.Estado = Estado.Pendiente;}

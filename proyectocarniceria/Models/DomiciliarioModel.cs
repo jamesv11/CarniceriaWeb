@@ -10,8 +10,7 @@ namespace proyectocarniceria.Models
     {
 
          public int DomiciliarioID {get;set;}
-        public string Identificacion {get;set;}
-         
+        public string Identificacion {get;set;}        
         public string Nombre { get; set; }
         public string Apellido {get;set;}
         public string Correo {get;set;}
@@ -32,9 +31,9 @@ namespace proyectocarniceria.Models
         public DomiciliarioViewModel (){}
         public DomiciliarioViewModel(Domiciliario domiciliario){
             
-            Identificacion = domiciliario.Identificacion;
-            Correo = domiciliario.Correo;
-            Telefono = domiciliario.Telefono;           
+            Identificacion = domiciliario.Persona.Identificacion;
+            Correo = domiciliario.Persona.Correo;
+            Telefono = domiciliario.Persona.Telefono;           
         }
     }
 }

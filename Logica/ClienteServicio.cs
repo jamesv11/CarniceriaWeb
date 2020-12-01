@@ -46,10 +46,10 @@ namespace Logica
             }
         }
 
-        public BuscarClienteResponse buscarCliente(int PersonaID){
+        public BuscarClienteResponse buscarCliente(int clienteIdentificacion){
             try
             {
-                var cliente = _context.Clientes.Find(PersonaID);
+                var cliente = _context.Clientes.Find(clienteIdentificacion);
                 return new BuscarClienteResponse(cliente);
             }
             catch (Exception e)

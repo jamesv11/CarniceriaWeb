@@ -36,6 +36,7 @@ import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuar
 import { ConsultarUsuariosComponent } from './Admin/consultar-usuarios/consultar-usuarios.component';
 import { VisualizarUsuarioComponent } from './Admin/visualizar-usuario/visualizar-usuario.component';
 import { PedidosUsuarioComponent } from './Admin/pedidos-usuario/pedidos-usuario.component';
+import { MenuComponent } from './Admin/menu/menu.component';
 
 
 
@@ -66,7 +67,8 @@ import { PedidosUsuarioComponent } from './Admin/pedidos-usuario/pedidos-usuario
     GestionUsuariosComponent,
     ConsultarUsuariosComponent,
     VisualizarUsuarioComponent,
-    PedidosUsuarioComponent
+    PedidosUsuarioComponent,
+    MenuComponent
   
 
 

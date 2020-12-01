@@ -5,11 +5,8 @@ namespace Entidad
     public class Domiciliario
     {
         public int DomiciliarioId {get;set;}
-        public string Identificacion {get;set;}
-        public string Correo {get;set;}
-        public string Telefono {get;set;}
 
-
+        
         //Relacion con la entidad Persona
 
         public Persona Persona { get; set; }

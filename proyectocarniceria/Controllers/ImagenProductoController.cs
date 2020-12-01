@@ -26,19 +26,7 @@ namespace WebPulsaciones.Controllers
         }
 
         
-        // GET: api/Producto/Imagen
-        [HttpGet("{IdImagen}")]
-        public ActionResult<ImagenProductoViewModel> getById(string IdImagen)
-        {
-            var response = _ImagenProductoServicio.BuscarImagenId(IdImagen); 
-            if(response.Error){
-           
-                return BadRequest(response.Mensaje);
-            }
-            var img = ByteArrayToImage(response.ImagenProducto.Imagen); 
-             
-            return Ok( new ImagenProductoViewModel(response.ImagenProducto.ImagenProductoId,img));
-        }
+     
         
 
         // Post: api/ImagenProducto
@@ -78,15 +66,6 @@ namespace WebPulsaciones.Controllers
           
         }
 
-        public Image ByteArrayToImage(byte[] byteArrayIn)
-        {
-            using(var ms = new MemoryStream(byteArrayIn))
-            {
-                var returnImage = Image.FromStream(ms);
-
-                return returnImage;
-            }
-        }
 
     }
 }

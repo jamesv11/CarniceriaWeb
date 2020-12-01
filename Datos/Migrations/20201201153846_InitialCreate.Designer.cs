@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(CarniceriaContext))]
-    [Migration("20201130024855_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20201201153846_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -107,15 +107,6 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Correo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Identificacion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefono")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("DomiciliarioId");
 
                     b.ToTable("Domiciliarios");
@@ -181,9 +172,6 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Direccion")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DomiciliarioId")
                         .HasColumnType("int");
 
@@ -219,6 +207,9 @@ namespace Datos.Migrations
                     b.Property<string>("Correo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Direccion")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("DomiciliarioId")
                         .HasColumnType("int");
 
@@ -232,6 +223,9 @@ namespace Datos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Rol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonaId");

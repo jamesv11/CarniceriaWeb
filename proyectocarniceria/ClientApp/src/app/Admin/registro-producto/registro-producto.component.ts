@@ -100,7 +100,7 @@ export class RegistroProductoComponent implements OnInit {
 
          this.producto = c;
        }
-     });
+      });
   }
 
 }

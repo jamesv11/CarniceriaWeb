@@ -63,11 +63,11 @@ namespace WebPulsaciones.Controllers
         }
         private Cliente MapearCliente(ClienteInputModel clienteInput)
         {
-            var cliente = new Cliente
-            {
-                  
-
-            };
+            var cliente = new Cliente();            
+            cliente.Persona.Nombre = clienteInput.Nombre;
+            cliente.Persona.Apellido = clienteInput.Apellido;
+            cliente.Persona.Correo =  clienteInput.Correo;
+            cliente.Persona.Password =  clienteInput.Password;          
             return cliente;
         }
     }
