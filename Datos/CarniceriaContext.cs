@@ -12,7 +12,6 @@ namespace Datos
 
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Administrador> Administradores { get; set; }
         public DbSet<Factura> Facturas { get; set; }
         public DbSet<DetalleFactura> DetalleFacturas { get; set; }
         public DbSet<Producto> Productos { get; set; }
@@ -24,6 +23,30 @@ namespace Datos
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Domiciliario>()
+            .HasOne(d => d.Persona)
+            .WithMany()
+            .HasForeignKey(b => b.CedulaPersona);
+
+            modelBuilder.Entity<Cliente>()
+            .HasOne(p => p.Persona)
+            .WithMany()
+            .HasForeignKey(b => b.Correo);
+
+            modelBuilder.Entity<Factura>()
+            .HasOne<Cliente>()
+            .WithMany()
+            .HasForeignKey(b => b.Correo);
+
+            modelBuilder.Entity<DetalleFactura>()
+            .HasOne<Producto>()
+            .WithMany()
+            .HasForeignKey(b => b.ProductoId);
+
+            modelBuilder.Entity<Cliente>().HasKey(c => c.Correo);
+            modelBuilder.Entity<Domiciliario>().HasKey(c => c.CedulaPersona);   
+            
             /*
             modelBuilder.Entity<Cliente>()
                 .HasOne(b => b.Carrito)

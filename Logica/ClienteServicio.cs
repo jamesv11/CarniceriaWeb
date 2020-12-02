@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Datos;
 using Entidad;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logica
 {
@@ -15,29 +16,29 @@ namespace Logica
             _context = context;
         }
 
-        public GuardarPersonaResponse Guardar(Cliente cliente)
+        public GuardarClienteResponse Guardar(Cliente cliente)
         {
             try
             {
-                var verificarCliente = _context.Clientes.Find(cliente.Persona.PersonaId);
+                var verificarCliente = _context.Clientes.Find(cliente.Correo);
                 if(verificarCliente != null)
                 {
-                    return new GuardarPersonaResponse("Error el cliente se encuentra registrado ");
-                }
+                    return new GuardarClienteResponse("Error el cliente se encuentra registrado ");
+                }                  
                     _context.Clientes.Add(cliente);
                     _context.SaveChanges();
-                    return new GuardarPersonaResponse(cliente);
+                    return new GuardarClienteResponse(cliente);
             }
             catch (Exception e)
             {
-                return new GuardarPersonaResponse($"Error de la Aplicacion: {e.Message}");
+                return new GuardarClienteResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
 
         public ConsultarClientesResponse Consultar(){
             try
             {
-                var clientes = _context.Clientes.ToList();
+                var clientes = _context.Clientes.Include(p => p.Persona).ToList();
                 return new ConsultarClientesResponse(clientes);
             }
             catch (Exception e)
@@ -60,14 +61,14 @@ namespace Logica
         }
     }
 
-    public class GuardarPersonaResponse
+    public class GuardarClienteResponse
     {
-        public GuardarPersonaResponse(Cliente cliente )
+        public GuardarClienteResponse(Cliente cliente )
         {
             Error = false;
             Cliente = Cliente;
         }
-        public GuardarPersonaResponse(string mensaje)
+        public GuardarClienteResponse(string mensaje)
         {
             Error = true;
             Mensaje = mensaje;

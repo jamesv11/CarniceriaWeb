@@ -8,21 +8,21 @@ namespace proyectocarniceria.Models
 {
       public class ClienteInputModel
     {
-
-        public int PersonaID {get;set;}
-        public string Nombre {get;set;}
-        public string Apellido {get;set;}
-        public string Correo {get;set;}
-        public string Password {get;set;}
-
-         
+        public Persona Persona { get; set; }    
     }
 
     public class ClienteViewModel : ClienteInputModel {
 
+        public decimal ValorDescuento { get; set; }
+
+        //Relacion con la entidad Persona
+      
         public ClienteViewModel (){}
         public ClienteViewModel(Cliente cliente){     
-                  
+           
+            ValorDescuento = cliente.ValorDescuento;
+            Persona = cliente.Persona;
+
         }
     }
 }

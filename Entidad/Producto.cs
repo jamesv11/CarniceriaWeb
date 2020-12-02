@@ -15,10 +15,6 @@ namespace Entidad
         public decimal ValorUnitario{get; set;}
         public string Categoria {get;set;}
         
-        //Relacion con la entidad Detalle
-        public int DetalleFacturaId {get; set;}
-        public DetalleFactura DetalleFactura {get; set;}
-
         //relacion con la clase ImagenProducto
         public int ImagenProductoId {get;set;}
         
