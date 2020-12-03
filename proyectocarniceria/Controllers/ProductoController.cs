@@ -47,7 +47,13 @@ namespace WebPulsaciones.Controllers
             var response = _productoServicio.Guardar(producto);
             if (response.Error)
             {
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Guardar producto", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             return Ok(response.producto);
         }

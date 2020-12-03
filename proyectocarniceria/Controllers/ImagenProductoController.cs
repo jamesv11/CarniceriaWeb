@@ -47,7 +47,13 @@ namespace WebPulsaciones.Controllers
                     var response = _ImagenProductoServicio.Guardar(imagenProducto);
                     if (response.Error)
                     {
-                        return BadRequest(response.Mensaje);
+                        ModelState.AddModelError("Guardar imagenes", response.Mensaje);
+                        var problemDetails = new ValidationProblemDetails(ModelState)
+                        {
+                            Status = StatusCodes.Status400BadRequest,
+                        };
+
+                        return BadRequest(problemDetails);
                     }
                     return Ok(response.ID);                   
 

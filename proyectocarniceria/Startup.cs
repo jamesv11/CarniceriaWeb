@@ -8,6 +8,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Datos;
 using Microsoft.EntityFrameworkCore;
+using proyectocarniceria.Config;
+using System.Text;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace proyectocarniceria
 {
@@ -28,6 +33,35 @@ namespace proyectocarniceria
             var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CarniceriaContext>(p=>p.UseSqlServer(connectionString));
             services.AddControllersWithViews();
+
+            #region    configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSetting");
+            services.Configure<AppSetting>(appSettingsSection);
+            #endregion
+            #region Configure jwt authentication inteprete el token 
+            var appSettings = appSettingsSection.Get<AppSetting>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = false
+                };
+            });
+            #endregion
+
+
 
             // In production, the Angular files will be served from this directory
             services.AddSwaggerGen();
@@ -72,7 +106,16 @@ namespace proyectocarniceria
 
             app.UseRouting();
 
-         
+            #region global cors policy activate Authentication/Authorization
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+            #endregion
+
 
             app.UseEndpoints(endpoints =>
             {

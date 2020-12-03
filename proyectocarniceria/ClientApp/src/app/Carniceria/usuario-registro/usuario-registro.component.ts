@@ -23,16 +23,16 @@ export class UsuarioRegistroComponent implements OnInit {
   ngOnInit(): void {
 
     this.cliente =  new Cliente();
-    this.cliente.nombre = null;
-    this.cliente.apellido = null;
-    this.cliente.correo = null;
-    this.cliente.password = null;
+    this.cliente.persona.nombre = null;
+    this.cliente.persona.apellido = null;
+    this.cliente.persona.correo = null;
+    this.cliente.persona.password = null;
 
     this.formRegistroCliente = this.formBuilder.group({
-      nombre: [this.cliente.nombre, Validators.required],
-      apellido: [this.cliente.apellido, Validators.required],
-      correo: [this.cliente.correo, Validators.required],
-      password: [this.cliente.password, Validators.required]
+      nombre: [this.cliente.persona.nombre, Validators.required],
+      apellido: [this.cliente.persona.apellido, Validators.required],
+      correo: [this.cliente.persona.correo, Validators.required],
+      password: [this.cliente.persona.password, Validators.required]
     });
 
   }
@@ -50,9 +50,10 @@ export class UsuarioRegistroComponent implements OnInit {
   }
 
   add() {
-    this.cliente = this.formRegistroCliente.value;
+    this.cliente.persona = this.formRegistroCliente.value;
+    console.log(this.cliente);
     this.clienteService.post(this.cliente).subscribe((c) => {
-      if(c == null)
+      if(c != null)
       {
         console.log(c);
         const messageBox = this.modalService.open(AlertModalComponent);

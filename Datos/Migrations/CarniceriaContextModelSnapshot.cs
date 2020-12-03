@@ -67,25 +67,20 @@ namespace Datos.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("DomiciliarioCedulaPersona")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<byte[]>("DomiciliarioDocumento")
                         .HasColumnType("varbinary(max)");
 
                     b.HasKey("DocumentoId");
-
-                    b.HasIndex("DomiciliarioCedulaPersona");
 
                     b.ToTable("Documentos");
                 });
 
             modelBuilder.Entity("Entidad.Domiciliario", b =>
                 {
-                    b.Property<string>("CedulaPersona")
+                    b.Property<string>("Correo")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("CedulaPersona");
+                    b.HasKey("Correo");
 
                     b.ToTable("Domiciliarios");
                 });
@@ -262,18 +257,11 @@ namespace Datos.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Entidad.Documento", b =>
-                {
-                    b.HasOne("Entidad.Domiciliario", null)
-                        .WithMany("Documentos")
-                        .HasForeignKey("DomiciliarioCedulaPersona");
-                });
-
             modelBuilder.Entity("Entidad.Domiciliario", b =>
                 {
                     b.HasOne("Entidad.Persona", "Persona")
                         .WithMany()
-                        .HasForeignKey("CedulaPersona")
+                        .HasForeignKey("Correo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -8,6 +8,19 @@ namespace Datos.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Documentos",
+                columns: table => new
+                {
+                    DocumentoId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DomiciliarioDocumento = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Documentos", x => x.DocumentoId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ImagenesProductos",
                 columns: table => new
                 {
@@ -80,14 +93,14 @@ namespace Datos.Migrations
                 name: "Domiciliarios",
                 columns: table => new
                 {
-                    CedulaPersona = table.Column<string>(nullable: false)
+                    Correo = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Domiciliarios", x => x.CedulaPersona);
+                    table.PrimaryKey("PK_Domiciliarios", x => x.Correo);
                     table.ForeignKey(
-                        name: "FK_Domiciliarios_Personas_CedulaPersona",
-                        column: x => x.CedulaPersona,
+                        name: "FK_Domiciliarios_Personas_Correo",
+                        column: x => x.Correo,
                         principalTable: "Personas",
                         principalColumn: "Correo",
                         onDelete: ReferentialAction.Cascade);
@@ -115,26 +128,6 @@ namespace Datos.Migrations
                         column: x => x.Correo,
                         principalTable: "Clientes",
                         principalColumn: "Correo",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Documentos",
-                columns: table => new
-                {
-                    DocumentoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DomiciliarioDocumento = table.Column<byte[]>(nullable: true),
-                    DomiciliarioCedulaPersona = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Documentos", x => x.DocumentoId);
-                    table.ForeignKey(
-                        name: "FK_Documentos_Domiciliarios_DomiciliarioCedulaPersona",
-                        column: x => x.DomiciliarioCedulaPersona,
-                        principalTable: "Domiciliarios",
-                        principalColumn: "CedulaPersona",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -198,11 +191,6 @@ namespace Datos.Migrations
                 column: "ProductoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Documentos_DomiciliarioCedulaPersona",
-                table: "Documentos",
-                column: "DomiciliarioCedulaPersona");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Facturas_Correo",
                 table: "Facturas",
                 column: "Correo");
@@ -222,6 +210,9 @@ namespace Datos.Migrations
                 name: "Documentos");
 
             migrationBuilder.DropTable(
+                name: "Domiciliarios");
+
+            migrationBuilder.DropTable(
                 name: "ImagenesProductos");
 
             migrationBuilder.DropTable(
@@ -229,9 +220,6 @@ namespace Datos.Migrations
 
             migrationBuilder.DropTable(
                 name: "Productos");
-
-            migrationBuilder.DropTable(
-                name: "Domiciliarios");
 
             migrationBuilder.DropTable(
                 name: "Facturas");

@@ -13,9 +13,9 @@ export class VisualizarUsuarioComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  idSeleccionado(id:number)
+  idSeleccionado(correo:string)
   {
-    console.log(id);
+    console.log(correo);
   }
 
 }

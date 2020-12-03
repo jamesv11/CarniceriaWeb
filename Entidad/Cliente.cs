@@ -7,6 +7,7 @@ namespace Entidad
     public class Cliente
     {
         public string Correo { get; set; }
+      
 
         [Column(TypeName = "decimal(12,2)")]
         public decimal ValorDescuento { get; set; }

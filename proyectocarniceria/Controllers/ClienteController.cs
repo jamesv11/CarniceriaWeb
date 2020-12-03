@@ -29,21 +29,32 @@ namespace WebPulsaciones.Controllers
         {
             var response = _clienteService.Consultar(); 
             if(response.Error){
-           
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Obtener cliente", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             var clientes = response.Clientes.Select(p => new ClienteViewModel(p));
             return Ok(clientes);
         }
         
-        // Get:  api/Cliente/personaId
-        [HttpGet("{personaID}")]
-        public ActionResult<IEnumerable<ClienteViewModel>> Gets(int personaID)
+        // Get:  api/Cliente/correo
+        [HttpGet("{correo}")]
+        public ActionResult<IEnumerable<ClienteViewModel>> Gets(string correo)
         {
-            var response = _clienteService.buscarCliente(personaID); 
+            var response = _clienteService.buscarCliente(correo); 
             if(response.Error){
            
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Buscar cliente", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             var cliente = new ClienteViewModel(response.Cliente);
             return Ok(cliente);
@@ -57,7 +68,13 @@ namespace WebPulsaciones.Controllers
             var response = _clienteService.Guardar(cliente);
             if (response.Error)
             {
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Guardar cliente", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             return Ok(response.Cliente);
         }
@@ -68,8 +85,7 @@ namespace WebPulsaciones.Controllers
                 ValorDescuento = 0, 
                 Persona = clienteInput.Persona           
             };
-              
-                  
+                            
             return cliente;
         }
         

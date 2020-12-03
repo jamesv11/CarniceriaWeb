@@ -1,10 +1,6 @@
-import { Factura } from "./factura";
+import { Persona } from "./persona";
 
 export class Cliente {
-    personaID:number;
-    nombre:string;
-    apellido:string;
-    correo:string;
-    password:string;
-    carrito : Factura;
+    valorDescuento: number;
+    persona : Persona = new Persona();
 }

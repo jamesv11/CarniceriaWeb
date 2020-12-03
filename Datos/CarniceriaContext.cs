@@ -27,7 +27,7 @@ namespace Datos
             modelBuilder.Entity<Domiciliario>()
             .HasOne(d => d.Persona)
             .WithMany()
-            .HasForeignKey(b => b.CedulaPersona);
+            .HasForeignKey(b => b.Correo);
 
             modelBuilder.Entity<Cliente>()
             .HasOne(p => p.Persona)
@@ -43,9 +43,10 @@ namespace Datos
             .HasOne<Producto>()
             .WithMany()
             .HasForeignKey(b => b.ProductoId);
+         
 
             modelBuilder.Entity<Cliente>().HasKey(c => c.Correo);
-            modelBuilder.Entity<Domiciliario>().HasKey(c => c.CedulaPersona);   
+            modelBuilder.Entity<Domiciliario>().HasKey(c => c.Correo);   
             
             /*
             modelBuilder.Entity<Cliente>()
@@ -72,10 +73,7 @@ namespace Datos
                 .HasOne(b => b.Domiciliario)
                 .WithOne(i => i.Pedido)
                 .HasForeignKey<Pedido>(b => b.DomiciliarioID);
-            modelBuilder.Entity<Documento>()
-                .HasOne<Domiciliario>(c => c.Domiciliario)
-                .WithMany(c => c.Documentos)
-                .HasForeignKey(c => c.DocumentoID);
+            
             */
         }
     }

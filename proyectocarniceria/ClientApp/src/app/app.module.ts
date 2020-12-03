@@ -37,6 +37,7 @@ import { ConsultarUsuariosComponent } from './Admin/consultar-usuarios/consultar
 import { VisualizarUsuarioComponent } from './Admin/visualizar-usuario/visualizar-usuario.component';
 import { PedidosUsuarioComponent } from './Admin/pedidos-usuario/pedidos-usuario.component';
 import { MenuComponent } from './Admin/menu/menu.component';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 
 
@@ -85,7 +86,7 @@ import { MenuComponent } from './Admin/menu/menu.component';
     NgbModule
   ],
   entryComponents:[AlertModalComponent],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

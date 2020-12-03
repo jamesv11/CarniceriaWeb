@@ -16,11 +16,15 @@ namespace Logica
             _context = context;
         }
 
+        public Cliente Validate(string correo, string password) 
+        {
+            return _context.Clientes.Include(p => p.Persona).Where(t => t.Persona.Correo == correo && t.Persona.Password == password).FirstOrDefault();
+        }
         public GuardarClienteResponse Guardar(Cliente cliente)
         {
             try
             {
-                var verificarCliente = _context.Clientes.Find(cliente.Correo);
+                var verificarCliente = _context.Clientes.Find(cliente.Persona.Correo);
                 if(verificarCliente != null)
                 {
                     return new GuardarClienteResponse("Error el cliente se encuentra registrado ");
@@ -47,10 +51,10 @@ namespace Logica
             }
         }
 
-        public BuscarClienteResponse buscarCliente(int clienteIdentificacion){
+        public BuscarClienteResponse buscarCliente(string correo){
             try
             {
-                var cliente = _context.Clientes.Find(clienteIdentificacion);
+                var cliente = _context.Clientes.Find(correo);
                 return new BuscarClienteResponse(cliente);
             }
             catch (Exception e)

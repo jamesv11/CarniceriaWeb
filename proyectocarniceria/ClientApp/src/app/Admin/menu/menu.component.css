@@ -56,7 +56,7 @@
 }
 
 .Items{
-    
+    left:4px;
     top:0px;
     bottom:0px;
     margin-top:80px;
@@ -73,9 +73,56 @@
     position: fixed;
 
 }
-.active{
-    display:visible;
-}
+
 .desactive{
     display:none;
 }
+
+.animacionAbrirMenu{
+    animation:3s slidein;
+}
+.animacionCerrarMenu{
+    animation:3s slideOutkleft;
+}
+
+.animacionAbrirMenu a{
+    animation-delay: 3s;
+    animation:3s EntrarA;
+}
+
+
+
+
+
+@keyframes slidein {
+    from {
+      width: 0px;
+    }
+  
+    to {
+      width: 200px;
+    }
+  }
+
+  @keyframes slideOutkleft {
+    from {
+        width: 200px;
+      }
+    
+      to {
+        width: 0px;
+      }
+  }
+
+  @keyframes EntrarA {
+    from {
+        font-display: none;
+    }
+  
+    to {
+        font-display:visible;
+    }
+  }
+
+
+

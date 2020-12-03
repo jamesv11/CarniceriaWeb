@@ -4,14 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace proyectocarniceria.Models
 {
       public class  ProductoInputModel
     {
-
+        [Required(ErrorMessage = "El nombre del producto no puede estar vacio")]
         public string NombreProducto {get; set;}
         public ImagenProducto ImagenProducto {get; set;}
+        [Range(0,900,ErrorMessage="Please enter correct value")]
+
         public decimal CantidadEnStock {get; set;}
         public decimal ValorUnitario{get; set;}
         public string descripcion {get;set;}

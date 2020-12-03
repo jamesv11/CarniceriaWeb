@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Datos;
 using Entidad;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logica
 {
@@ -16,17 +17,22 @@ namespace Logica
             _context = context;
         }
 
-        public GuardarDomiciliaroResponse Guardar(Domiciliario domiciliario)
+        public GuardarDomiciliarioResponse Guardar(Domiciliario domiciliario)
         {
             try
             {
+                var verificarDomiciliario = _context.Domiciliarios.Find(domiciliario.Correo);
+                if(verificarDomiciliario != null)
+                {
+                    return new GuardarDomiciliarioResponse("Error el cliente se encuentra registrado ");
+                }
                 _context.Domiciliarios.Add(domiciliario);
                 _context.SaveChanges();
-                return new GuardarDomiciliaroResponse(domiciliario);
+                return new GuardarDomiciliarioResponse(domiciliario);
             }
             catch (Exception e)
             {
-                return new GuardarDomiciliaroResponse($"Error de la Aplicacion: {e.Message}");
+                return new GuardarDomiciliarioResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
 
@@ -34,8 +40,7 @@ namespace Logica
         {
             try
             {
-                //var personas = _context.Personas.Include(a => a.Apoyo).ToList();
-                var domiciliarios = _context.Domiciliarios.ToList();
+                var domiciliarios = _context.Domiciliarios.Include(p => p.Persona).ToList();
                 return new ConsultarDomiciliarioResponse(domiciliarios);
 
             }
@@ -45,20 +50,16 @@ namespace Logica
             }
 
         }
-
-
-
-
     }
 
-    public class GuardarDomiciliaroResponse
+    public class GuardarDomiciliarioResponse
     {
-        public GuardarDomiciliaroResponse(Domiciliario domiciliario )
+        public GuardarDomiciliarioResponse(Domiciliario domiciliario )
         {
             Error = false;
             Domiciliario = domiciliario;
         }
-        public GuardarDomiciliaroResponse(string mensaje)
+        public GuardarDomiciliarioResponse(string mensaje)
         {
             Error = true;
             Mensaje = mensaje;

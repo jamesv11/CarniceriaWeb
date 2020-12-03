@@ -30,8 +30,13 @@ namespace WebPulsaciones.Controllers
         {
             var response = _domiciliarioService.ConsultarTodos(); 
             if(response.Error){
-           
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Obtener domiciliario", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             var domiciliarios = response.Domiciliarios.Select(d => new DomiciliarioViewModel(d));
             return Ok(domiciliarios);
@@ -45,7 +50,13 @@ namespace WebPulsaciones.Controllers
             var response = _domiciliarioService.Guardar(domiciliario);
             if (response.Error)
             {
-                return BadRequest(response.Mensaje);
+                ModelState.AddModelError("Guardar Domiciliario", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
             }
             return Ok(response.Domiciliario);
         }

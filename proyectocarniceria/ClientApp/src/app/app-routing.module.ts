@@ -16,6 +16,7 @@ import { ProductoCerdoComponent } from './Carniceria/Producto/producto-cerdo/pro
 import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
 import { RegistroProductoComponent } from './Admin/registro-producto/registro-producto.component';
 import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
@@ -28,7 +29,7 @@ const routes: Routes = [
 
   {
     path:'usuarioRegistro',
-    component: UsuarioRegistroComponent
+    component: UsuarioRegistroComponent, canActivate:[AuthGuard]
   },
   
   {

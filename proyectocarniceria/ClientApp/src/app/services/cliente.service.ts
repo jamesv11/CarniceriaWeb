@@ -26,8 +26,8 @@ export class ClienteService {
       );
     }
 
-    getCliente(personaID : number ): Observable<Cliente>{
-      return this.http.get<Cliente>(this.baseUrl + 'api/Cliente'+ personaID)
+    getCliente(correo : string ): Observable<Cliente>{
+      return this.http.get<Cliente>(this.baseUrl + 'api/Cliente'+ correo)
       .pipe(
         tap(_=> this.handleErrorService.handleError<Cliente>('Consulta Cliente',null)) ,
         catchError(this.handleErrorService.handleError<Cliente>('Consultar Cliente',null)) 

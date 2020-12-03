@@ -1,0 +1,14 @@
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Logica.deps.json
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Logica.dll
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Logica.pdb
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Datos.dll
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Entidad.dll
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Datos.pdb
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\bin\Release\netstandard2.1\Entidad.pdb
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.csprojAssemblyReference.cache
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.AssemblyInfoInputs.cache
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.AssemblyInfo.cs
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.csproj.CoreCompileInputs.cache
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.csproj.CopyComplete
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.dll
+C:\Users\JamesVanstrahlen\Desktop\5 semestre\5 semestre\ProgramacionWeb\CarniceriaWeb\Logica\obj\Release\netstandard2.1\Logica.pdb

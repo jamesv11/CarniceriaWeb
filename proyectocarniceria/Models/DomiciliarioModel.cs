@@ -3,20 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace proyectocarniceria.Models
 {
       public class  DomiciliarioInputModel
-    {
-
-         public int DomiciliarioID {get;set;}
-        public string Identificacion {get;set;}        
-        public string Nombre { get; set; }
-        public string Apellido {get;set;}
-        public string Correo {get;set;}
-        public string Telefono {get;set;}
-
-         
+    {   
+        [PersonaValidacion ]
+        public Persona Persona { get; set; }
+               
     }
      /*identificacion:string;     
     nombre:string;
@@ -29,7 +24,10 @@ namespace proyectocarniceria.Models
     public class DomiciliarioViewModel : DomiciliarioInputModel {
 
         public DomiciliarioViewModel (){}
-        public DomiciliarioViewModel(Domiciliario domiciliario){        
+        public DomiciliarioViewModel(Domiciliario domiciliario){    
+              Persona = domiciliario.Persona;           
         }
     }
+
+
 }

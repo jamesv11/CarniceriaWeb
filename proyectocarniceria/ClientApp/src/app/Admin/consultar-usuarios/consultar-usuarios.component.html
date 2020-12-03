@@ -12,7 +12,6 @@
                <thead>
                    <tr>
                        <th scope="col">#</th>
-                       <th scope="col">Cliente identificador</th>
                        <th scope="col">Nombre</th>
                        <th scope="col">Apellido</th>
                        <th scope="col">correo</th>
@@ -21,10 +20,9 @@
                <tbody>
                    <tr *ngFor="let cliente of clientes; index as i" (click)="selectedClient(cliente)">
                        <th scope="row">{{ i + 1 }}</th>
-                       <td>{{cliente.personaID}} </td>
-                       <td>{{cliente.nombre}} </td>
-                       <td>{{cliente.apellido }}</td>
-                       <td>{{cliente.correo }}</td>
+                       <td>{{cliente.persona.nombre}} </td>
+                       <td>{{cliente.persona.apellido }}</td>
+                       <td>{{cliente.persona.correo }}</td>
                    </tr>
                </tbody>
            </table>
