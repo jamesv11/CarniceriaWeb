@@ -120,21 +120,6 @@ namespace Datos.Migrations
                     b.ToTable("Facturas");
                 });
 
-            modelBuilder.Entity("Entidad.ImagenProducto", b =>
-                {
-                    b.Property<int>("ImagenProductoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<byte[]>("Imagen")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("ImagenProductoId");
-
-                    b.ToTable("ImagenesProductos");
-                });
-
             modelBuilder.Entity("Entidad.Pedido", b =>
                 {
                     b.Property<int>("PedidoId")
@@ -202,15 +187,15 @@ namespace Datos.Migrations
                     b.Property<string>("Categoria")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ImagenProductoId")
-                        .HasColumnType("int");
+                    b.Property<string>("ImagenProducto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreProducto")
                         .HasColumnType("nvarchar(max)");

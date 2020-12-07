@@ -1,6 +1,7 @@
 export class User{
-    Correo:string;
-    Nombre:string;
+    correo:string;
+    nombre:string;
     password: string;
     token: string;
+    rol : string;
 }

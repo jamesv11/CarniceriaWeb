@@ -1,5 +1,7 @@
-
-<div class="mx-auto">
+<div class="contenedormensaje" *ngIf="!dataCliente.cliente">
+    <h2>No hay cliente seleccionado</h2>
+</div>
+<div class="mx-auto" *ngIf="dataCliente.cliente">
     <div class="card">
         <div class="header" >
             <h2>Informacion del cliente</h2>
@@ -9,7 +11,10 @@
                 <li class="list-group-item">Nombre: {{dataCliente.cliente.persona.nombre}}</li>
                 <li class="list-group-item">Apellido: {{dataCliente.cliente.persona.apellido}}</li>
                 <li class="list-group-item">Correo: {{dataCliente.cliente.persona.correo}}</li>
-                <li class="list-group-item">Descuento: {{dataCliente.cliente.valorDescuento}}</li>
+                <li class="list-group-item">Direccion: {{dataCliente.cliente.persona.direccion}}</li>
+                <li class="list-group-item">Identificacion: {{dataCliente.cliente.persona.identificacion}}</li>
+                <li class="list-group-item">Descuento: {{dataCliente.cliente.valorDescuento}} <button type="button" class="btn btn-dark ml-8">Opciones</button></li>
+                <li class="list-group-item">Rol: {{dataCliente.cliente.persona.rol}} <button type="button" class="btn btn-dark ml-8">Opciones</button></li>
             </ul>
         </div>
     </div>

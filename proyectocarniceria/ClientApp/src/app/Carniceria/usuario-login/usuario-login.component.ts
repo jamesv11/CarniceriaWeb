@@ -49,6 +49,7 @@ export class UsuarioLoginComponent implements OnInit {
     this.loading = true;
     this.autenticacion.login(this.f.correo.value,this.f.password.value).pipe(first()).subscribe(data=>{
       this.router.navigate([this.returnUrl]);
+      
     },error=>{
       const modalRef = this.modalService.open(AlertModalComponent);
       modalRef.componentInstance.title = 'Acceso Denegado';

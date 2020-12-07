@@ -1,29 +1,38 @@
-<div class="Contenedor-form shadow-lg p-3 mb-5 rounded">
-    <h2>Carne de res</h2>
+<div class="Container-fluid shadow p-3 mb-5 bg-white rounded">
+    
+    <h2 *ngIf="hayProducto" class="d-flex justify-content-center">No hay producto registrados</h2>
+    <div class=" row">
+        <div class="col-md-4 p-4" *ngFor="let Producto of Productos | filtroProducto:categoria | slice: (page-1) * pageSize : page * pageSize  ">
+            
 
-    <table class="table " >
-        
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    <h5 class="card-title d-flex justify-content-center">{{Producto.nombreProducto}}</h5>
+                </div>
+                <img class="card-img-top" [src]="Producto.imagenProducto" alt="Card image cap" >
+                <div class="card-body">
+                  <div>
+                    <p class="card-text">Precio : {{Producto.valorUnitario}}</p>
+                    <p class="card-text">Descripcion: {{Producto.descripcion}}</p>
+                  </div>
+                  <div>
+                    <input type="number" min="1">
+                    <button   class="btn btn-primary d-flex justify-content-center" (click)="addCarrito(Producto)">Añadir al carrito</button >
+                    <button   class="btn btn-primary d-flex justify-content-center">Ver mas</button >
+                  </div>
 
-        <tbody>
-            <tr >
-                <td>
-                    <figure class="Producto">
-                    
-                        <img src="https://image.freepik.com/foto-gratis/carne-fresca_144627-19941.jpg">
-                        <hr class="">
-                        <div class="info">
-                            <label>carne</label>
-                            <hr class="lineaInfo">
-                            <label>precio</label>
-                        </div>
-                        <div class="botonesProducto">   
-                            <button class="btn" >Ver mas</button>
-                            <button class="btn" >Añadir al carrito</button>    
-                        </div>
-                                 
-                    </figure>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+                </div>
+              </div>
+
+            
+        </div>
+    </div>
+
+    <div>
+        <ngb-pagination class="d-flex justify-content-center"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="Productos.length"></ngb-pagination>
+    </div>
 </div>

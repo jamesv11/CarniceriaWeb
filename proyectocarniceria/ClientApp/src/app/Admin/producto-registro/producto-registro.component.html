@@ -1,0 +1,106 @@
+<div class="container mx-auto col-lg-10 border">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Registro de productos</h2>
+            <img src="assets/Imagenes/CortesRes.PNG" alt="" />
+            <form [formGroup]="registroProductoForm">
+            <div class="form-row">
+                <div class="col-8 col-sm-6">
+                    
+                        <div class="p-4">
+                        <div class="form-group">
+                            <label for="categoria">Categoria</label>
+                            <select class="form-control" name="categoria" id="categoria" [(ngModel)]="categoria"
+                                (change)="categoriaSeleccionada()" formControlName="categoria"
+                                [ngClass]="{ 'is-invalid': submitted && f.categoria.errors }">
+                                <option >Seleccione..</option>
+                                <option value="Res">Res</option>
+                                <option value="Pollo">Pollo</option>
+                                <option value="Cerdo">Cerdo</option>
+                            </select>
+                            <div *ngIf="submitted && f.categoria.errors" class="invalid-feedback">
+                                <div *ngIf="f.categoria.errors.required">
+                                    La categoria es requerida
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombreProducto">Nombre del producto</label>
+                            <input type="text" class="form-control" id="nombreProducto" formControlName="nombreProducto"
+                                [ngClass]="{
+                  'is-invalid': submitted && f.nombreProducto.errors
+                }" />
+                            <div *ngIf="submitted && f.nombreProducto.errors" class="invalid-feedback">
+                                <div *ngIf="f.nombreProducto.errors.required">
+                                    El nombre del producto es requerido
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" class="form-control" id="descripcion" placeholder=""
+                                formControlName="descripcion"
+                                [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+                            <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                                <div *ngIf="f.descripcion.errors.required">
+                                    La descripcion es requerida
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="precio">Precio de venta</label>
+                                <input type="number" class="form-control" id="precio" formControlName="valorUnitario"
+                                    [ngClass]="{'is-invalid': submitted && f.valorUnitario.errors}" />
+                                <div *ngIf="submitted && f.valorUnitario.errors" class="invalid-feedback">
+                                    <div *ngIf="f.valorUnitario.errors.required">
+                                        EL precio de venta es requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cantidad">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidad" placeholder=""
+                                    formControlName="cantidad"
+                                    [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }" />
+                                <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                                    <div *ngIf="f.cantidad.errors.required">
+                                        La cantidad es requerida
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="categoriaSeleccionada()">
+                            <label for="corteRes">Corte de res</label>
+                            <input type="text" name="corteRes" class="form-control" [(ngModel)]="model"
+                                [ngbTypeahead]="search" formControlName="corteRes">                          
+                        </div>
+                        <div>
+                            <button class="btn btn-dark botonRegistro" (click)="OnSubmit()">
+                                Registrar producto
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-8 col-sm-6 img-producto">
+                    <div class="card" style="width: 26rem">
+                        <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photoInput
+                        formControlName="imagenProducto"
+                        [ngClass]="{ 'is-invalid': submitted && f.imagenProducto.errors }">
+                        <img [src]="selectedFile || 'assets/Imagenes/no-imagen.png'" class="card-img-top img-fluid" alt="..." (click)="photoInput.click()"/>
+                        <div class="card-body">
+                            <h5 class="card-title">Imagen del producto</h5>
+                        </div>
+                        <div *ngIf="submitted && f.imagenProducto.errors" class="invalid-feedback">
+                            <div *ngIf="f.imagenProducto.errors.required">
+                                La imagen es requerida
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

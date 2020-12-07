@@ -14,9 +14,9 @@ import { InformacionComponent } from './Carniceria/Compra/informacion/informacio
 import { EnviosComponent } from './Carniceria/Compra/envios/envios.component';
 import { ProductoCerdoComponent } from './Carniceria/Producto/producto-cerdo/producto-cerdo.component';
 import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
-import { RegistroProductoComponent } from './Admin/registro-producto/registro-producto.component';
 import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
 import { AuthGuard } from './services/auth.guard';
+import { ProductoRegistroComponent } from './Admin/producto-registro/producto-registro.component';
 
 
 const routes: Routes = [
@@ -24,12 +24,13 @@ const routes: Routes = [
   //Admin
   {
     path:'registroDomiciliario',
-    component: RegistroDomiciliarioComponent
+    component: RegistroDomiciliarioComponent,canActivate:[AuthGuard]
   },
 
   {
     path:'usuarioRegistro',
-    component: UsuarioRegistroComponent, canActivate:[AuthGuard]
+    component: UsuarioRegistroComponent
+
   },
   
   {
@@ -44,22 +45,22 @@ const routes: Routes = [
 
   {
     path:'gestionFactura',
-    component: GestionFacturaComponent
+    component: GestionFacturaComponent,canActivate:[AuthGuard]
   },
 
   {
     path:'productoCarrito',
-    component: ProductoCarritoComponent
+    component: ProductoCarritoComponent,canActivate:[AuthGuard]
   },
 
   {
     path:'informacionCompra',
-    component: InformacionComponent
+    component: InformacionComponent,canActivate:[AuthGuard]
   },
 
   {
     path:'enviosCompra',
-    component: EnviosComponent
+    component: EnviosComponent,canActivate:[AuthGuard]
   },
 
   {
@@ -86,17 +87,12 @@ const routes: Routes = [
   },
   {
     path:'registro-producto',
-    component: RegistroProductoComponent
-  }
-  ,
-  {
-    path:'registro-producto',
-    component: RegistroProductoComponent
+    component: ProductoRegistroComponent,canActivate:[AuthGuard]
   }
   ,
   {
     path:'gestionUsuarios',
-    component: GestionUsuariosComponent
+    component: GestionUsuariosComponent,canActivate:[AuthGuard]
   }
 
 

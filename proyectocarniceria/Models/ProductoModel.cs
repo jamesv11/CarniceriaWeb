@@ -8,28 +8,37 @@ using System.ComponentModel.DataAnnotations;
 
 namespace proyectocarniceria.Models
 {
-      public class  ProductoInputModel
+      public class ProductoInputModel
     {
         [Required(ErrorMessage = "El nombre del producto no puede estar vacio")]
         public string NombreProducto {get; set;}
-        public ImagenProducto ImagenProducto {get; set;}
-        [Range(0,900,ErrorMessage="Please enter correct value")]
-
-        public decimal CantidadEnStock {get; set;}
-        public decimal ValorUnitario{get; set;}
-        public string descripcion {get;set;}
+        // [Range(0,900,ErrorMessage="Please enter correct value")]
+        public string Descripcion {get;set;}
+        public int Cantidad {get; set;}
+        public float ValorUnitario{get; set;}       
         public string Categoria {get;set;}
-        public string Tag {get;set;}
-        public int ImagenProductoID {get;set;}
+        public string ImagenProducto {get;set;}
 
          
     }
 
-    public class ProductoViewModel : ProductoInputModel {
-
+    public class ProductoViewModel  {
+            public int ProductoId { get; set; }
+            public string NombreProducto { get; set; }
+            public string Descripcion { get; set; }
+            public int Cantidad { get; set; }
+            public float ValorUnitario { get; set; }
+            public string Categoria { get; set; }
+            public string ImagenProducto { get; set; }
         public ProductoViewModel  (){}
-        public ProductoViewModel (Producto producto){
-            
+        public ProductoViewModel (Producto producto){         
+            NombreProducto = producto.NombreProducto;
+            Descripcion = producto.Descripcion;
+            Cantidad = producto.Cantidad;
+            ValorUnitario = producto.ValorUnitario;
+            Categoria = producto.Categoria;
+            ImagenProducto =  producto.ImagenProducto;
+            ProductoId = producto.ProductoId;
         }
     }
 }

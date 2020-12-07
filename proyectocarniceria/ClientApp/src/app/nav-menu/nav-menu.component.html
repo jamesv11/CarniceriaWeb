@@ -50,22 +50,22 @@
                 <path fill-rule="evenodd" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
               </svg>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
               <hr class="hr-menu1">
-              <a class="dropdown-item" [routerLink]="['/usuarioLogin']">Login</a>
+              <a class="dropdown-item" [routerLink]="['/usuarioLogin']" *ngIf="!currentUser">Login</a>
 
-              <div class="division-login" >
+              <div class="division-login" *ngIf="!currentUser">
                 <hr id="hr1">
                 <label id="lbO">o</label>
                 <hr id="hr2">
               </div>
               
-              <a class="dropdown-item" [routerLink]="['/usuarioRegistro']">Registro</a>
+              <a class="dropdown-item" [routerLink]="['/usuarioRegistro']" *ngIf="!currentUser">Registro</a>
               <hr class="">
-              <div>
+              <div *ngIf="currentUser">
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Registro de compras</a>
-                <a class="dropdown-item" href="#">Cerrar sesión</a>
+                <a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a>
                 <hr class="">
               </div>
 

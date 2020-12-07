@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/257b6f09-1140-480b-929c-945295bf56fc/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/CarniceriaWeb",
+    "appService.deploySubpath": "proyectocarniceria\\publish"
+}

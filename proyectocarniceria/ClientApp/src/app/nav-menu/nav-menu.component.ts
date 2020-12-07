@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarritoComponent } from '../Carniceria/Compra/carrito/carrito.component';
+import { User } from '../seguridad/User';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,6 +11,15 @@ import { CarritoComponent } from '../Carniceria/Compra/carrito/carrito.component
 })
 export class NavMenuComponent {
   isExpanded = false;
+  currentUser:User;
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+      ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+      }
+    
 
   collapse() {
     this.isExpanded = false;
@@ -26,4 +38,10 @@ export class NavMenuComponent {
     var btnAbrir = document.getElementById("overlay");
     btnAbrir.classList.remove("active");
   }
+
+    logout() {     
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+      }
+    
 }

@@ -19,7 +19,7 @@ namespace proyectocarniceria.Service
         {         
             // return null if user not found
             if (cliente == null) return null;
-            var userResponse = new LoginViewModel() { Nombre = cliente.Persona.Nombre ,Apellido = cliente.Persona.Apellido, Correo = cliente.Persona.Correo};
+            var userResponse = new LoginViewModel() { Nombre = cliente.Persona.Nombre ,Apellido = cliente.Persona.Apellido, Correo = cliente.Persona.Correo, Rol = cliente.Persona.Rol};
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

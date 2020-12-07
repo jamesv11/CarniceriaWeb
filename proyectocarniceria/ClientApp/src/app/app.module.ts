@@ -15,7 +15,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsuarioGestionPerfilComponent } from './Carniceria/usuario-gestion-perfil/usuario-gestion-perfil.component';
 import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
-import { RegistroProductoComponent } from './Admin/registro-producto/registro-producto.component';
 import { CarritoComponent } from './Carniceria/Compra/carrito/carrito.component';
 import { GestionFacturaComponent } from './Carniceria/Compra/gestion-factura/gestion-factura.component';
 import { ProductoCarneComponent } from './Carniceria/Producto/producto-carne/producto-carne.component';
@@ -38,6 +37,9 @@ import { VisualizarUsuarioComponent } from './Admin/visualizar-usuario/visualiza
 import { PedidosUsuarioComponent } from './Admin/pedidos-usuario/pedidos-usuario.component';
 import { MenuComponent } from './Admin/menu/menu.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
+import { ProductoRegistroComponent } from './Admin/producto-registro/producto-registro.component';
+import { FiltroProductoPipe } from './pipe/filtro-producto.pipe';
+import { ProductoRegistroResComponent } from './Admin/producto-registro-res/producto-registro-res.component';
 
 
 
@@ -53,7 +55,6 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     FooterComponent,
     UsuarioGestionPerfilComponent,
     RegistroDomiciliarioComponent,
-    RegistroProductoComponent,
     CarritoComponent,
     GestionFacturaComponent,
     ProductoCarneComponent,
@@ -69,7 +70,10 @@ import { JwtInterceptor } from './services/jwt.interceptor';
     ConsultarUsuariosComponent,
     VisualizarUsuarioComponent,
     PedidosUsuarioComponent,
-    MenuComponent
+    MenuComponent,
+    ProductoRegistroComponent,
+    FiltroProductoPipe,
+    ProductoRegistroResComponent
   
 
 

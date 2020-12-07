@@ -5,7 +5,7 @@
     <div class="mx-auto p-3 col-lg-6 ">
          <h3 *ngIf='!clientes'>No hay clientes registrados</h3>
     </div>
-    <div class="mx-auto shadow-lg p-3 m-6 col-lg-10 " >
+    <div class="mx-auto p-3 m-6 col-lg-10 " >
         <input *ngIf='clientes && clientes.length' [(ngModel)]="searchText" class="form-control " type="text" placeholder="Busqueda... ">  
            
            <table class="table table-hover" *ngIf='clientes && clientes.length'>

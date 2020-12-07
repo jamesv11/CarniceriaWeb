@@ -9,16 +9,12 @@ namespace Entidad
     {
         public int ProductoId {get; set;}
         public string NombreProducto { get; set; }
-        public string Description {get; set;}
+        public string Descripcion {get; set;}
         public int Cantidad {get; set;}
         [Column(TypeName = "decimal(12,2)")]
-        public decimal ValorUnitario{get; set;}
+        public float ValorUnitario{get; set;}
         public string Categoria {get;set;}
-        
-        //relacion con la clase ImagenProducto
-        public int ImagenProductoId {get;set;}
-        
-
+        public string ImagenProducto {get;set;}
         
     }
 }

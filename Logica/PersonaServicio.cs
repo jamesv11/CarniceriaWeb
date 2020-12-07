@@ -32,6 +32,11 @@ namespace Logica
                 return new GuardarPersonaResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
+
+        public string ObtenerRol(string Correo){
+            var persona = _context.Personas.Find(Correo);
+            return persona.Rol;
+        }
     }
     public class GuardarPersonaResponse
     {

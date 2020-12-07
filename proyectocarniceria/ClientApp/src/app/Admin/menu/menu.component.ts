@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/seguridad/User';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  admin:User;
 
-  constructor() { }
+  constructor(private router: Router,
+        private authenticationService: AuthenticationService
+    ) {     
+      
+      this.authenticationService.currentUser.subscribe((x)=> {
+        if(x.rol == "Rol.Admin") this.admin = x;
+        console.log(x);
+      });     
+    }
 
   ngOnInit(): void {
+    
   }
 
   botonMenu(){

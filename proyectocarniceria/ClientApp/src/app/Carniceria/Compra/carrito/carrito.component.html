@@ -5,13 +5,21 @@
         <hr class="lineaTitulo">
     </div>
     
-    <!-- Items -->
+
 
     <div id="contenido" class="contenido">
         <label id="lbListaVacia"> TU CARRITO ESTÁ VACÍO </label>
-        <table>
 
-        </table>
+        <div *ngFor="let DetalleFactura of DetalleFacturas " data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+            <div>
+                <img [src]="DetalleFactura.productoDetalle.imagenProducto" style="width: 10rem;">
+                <div>{{DetalleFactura.productoDetalle.nombreProducto}}</div>
+                <div>{{DetalleFactura.ValorUnitario}}</div>
+                <div>{{DetalleFactura.CantidadRequerida}}</div>
+                <div>{{DetalleFactura.SubTotal}}</div>
+            </div>
+        </div>
+
         
     </div>
     <div>

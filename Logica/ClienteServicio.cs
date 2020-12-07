@@ -28,10 +28,11 @@ namespace Logica
                 if(verificarCliente != null)
                 {
                     return new GuardarClienteResponse("Error el cliente se encuentra registrado ");
-                }                  
-                    _context.Clientes.Add(cliente);
-                    _context.SaveChanges();
-                    return new GuardarClienteResponse(cliente);
+                }
+                 cliente.Persona.Rol = "Rol.Cliente";
+                _context.Clientes.Add(cliente);
+                _context.SaveChanges();
+                return new GuardarClienteResponse(cliente);
             }
             catch (Exception e)
             {
@@ -54,7 +55,7 @@ namespace Logica
         public BuscarClienteResponse buscarCliente(string correo){
             try
             {
-                var cliente = _context.Clientes.Find(correo);
+                var cliente = _context.Clientes.Include(p => p.Persona).Where(p => p.Persona.Correo ==  correo).FirstOrDefault();
                 return new BuscarClienteResponse(cliente);
             }
             catch (Exception e)

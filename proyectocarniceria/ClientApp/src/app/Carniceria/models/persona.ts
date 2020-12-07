@@ -3,4 +3,7 @@ export class Persona {
     apellido:string;
     correo:string;
     password:string;
+    rol :string;
+    direccion : string;
+    identificacion :string;
 }

@@ -11,6 +11,7 @@
 }
 .contenido{
     height: 450px;
+    overflow:auto;
 }
 
 .lineaTitulo{

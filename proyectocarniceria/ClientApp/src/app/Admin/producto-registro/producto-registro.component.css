@@ -1,0 +1,29 @@
+h2{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
+}
+.btn
+{
+    display: flex;
+    justify-content: center; 
+}
+.card-title
+{
+    text-align: center;
+}
+.botonRegistro
+{
+    margin-top: 10px;
+    width:100%;
+}
+img{
+    height: 313px;
+}
+.img-producto
+{
+   
+    padding-top: 20px;
+    
+}
+
