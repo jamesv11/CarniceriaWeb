@@ -53,6 +53,7 @@ import { ConsultarDomiciliarioComponent } from './Admin/Domiciliario/registro-do
 import { CargaPaginaComponent } from './carga-pagina/carga-pagina.component';
 import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
 import { BusquedaProductoComponent } from './busqueda-producto/busqueda-producto.component';
+import { FiltroBusquedaProductoPipe } from './pipe/filtro-busqueda-producto.pipe';
 
 
 
@@ -101,6 +102,7 @@ const material =[
     CargaPaginaComponent,
     GestionFacturasComponent,
     BusquedaProductoComponent,
+    FiltroBusquedaProductoPipe,
    
   
 

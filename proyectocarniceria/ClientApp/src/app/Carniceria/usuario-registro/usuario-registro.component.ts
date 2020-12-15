@@ -54,7 +54,7 @@ export class UsuarioRegistroComponent implements OnInit {
     this.cliente.persona = this.formRegistroCliente.value;
     console.log(this.cliente);
     this.clienteService.post(this.cliente).subscribe((c) => {
-      if(c != null)
+      if(c == null)
       {
         console.log(c);
         const messageBox = this.modalService.open(AlertModalComponent);
@@ -64,6 +64,8 @@ export class UsuarioRegistroComponent implements OnInit {
         console.log(c);
       }        
     });
+
+    this.onReset();
 
   }
 

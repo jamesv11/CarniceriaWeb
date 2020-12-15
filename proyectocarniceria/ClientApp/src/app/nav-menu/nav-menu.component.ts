@@ -14,6 +14,7 @@ export class NavMenuComponent {
   isExpanded = false;
   currentUser:User;
   cantidadProducto:number=0;
+  stringBusqueda:string;
 
     constructor(
         private router: Router,
