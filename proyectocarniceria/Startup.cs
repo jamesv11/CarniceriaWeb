@@ -10,6 +10,7 @@ using Datos;
 using Microsoft.EntityFrameworkCore;
 using proyectocarniceria.Config;
 using System.Text;
+using proyectocarniceria.Hubs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -33,6 +34,7 @@ namespace proyectocarniceria
             var connectionString=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<CarniceriaContext>(p=>p.UseSqlServer(connectionString));
             services.AddControllersWithViews();
+            services.AddSignalR();
 
             #region    configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSetting");
@@ -119,9 +121,11 @@ namespace proyectocarniceria
 
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<SignalHub>("/Signalhub");
             });
 
             app.UseSpa(spa =>

@@ -1,11 +1,11 @@
-<div class="Menu-admin-verti " *ngIf="admin">
+<div class="Menu-admin-verti " *ngIf="admin.rol=='Rol.Admin'">
     <div class="caja-items desactive" id="caja-items">
 
      <div id="Items" class="Items desactive">
-        <a id="a" class="dropdown-item" [routerLink]="['/registroDomiciliario']">Domiciliario</a>
-        <a id="a" class="dropdown-item" [routerLink]="['/registro-producto'] ">Registrar producto</a>
-        <a id="a" class="dropdown-item" [routerLink]="['/gestionUsuarios'] ">Gestion de usuarios</a>              
-        <a id="a" class="dropdown-item" href="#">Registor de pedidos</a>
+        <a id="a" class="dropdown-item" [routerLink]="['/consultaDomiciliario']" (click)="botonMenu()">Gestion domiciliarios</a>
+        <a id="a" class="dropdown-item" [routerLink]="['/registro-producto'] " (click)="botonMenu()">Registrar producto</a>
+        <a id="a" class="dropdown-item" [routerLink]="['/gestionUsuarios'] " (click)="botonMenu()">Gestion de usuarios</a>              
+        <a id="a" class="dropdown-item" [routerLink]="['/gestionPedidos'] " (click)="botonMenu()">Gestion de pedidos</a>
       </div>
 
     </div>

@@ -1,12 +1,5 @@
-import { Documento } from "./documento";
+import { Persona } from "./persona";
 
 export class Domiciliario {
-
-    identificacion:string;     
-    nombre:string;
-    apellido:string;
-    correo:string;
-    telefono:string; 
-    documentos:Documento[]; 
-
+    persona : Persona = new Persona();
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
 using Datos;
 using Entidad;
@@ -28,6 +29,17 @@ namespace Logica
                 return new GuardarProductoResponse($"Error de la Aplicacion: {e.Message}");
             }
         }
+
+        public Producto BuscarProductoId(int id){
+            return _context.Productos.Find(id);
+        }
+
+        public Boolean VerificaExistencia(int id, int cantidad){
+            var producto = BuscarProductoId(id);
+            if(producto.Cantidad >= cantidad) return true;
+            return false;
+        }
+
         public ConsultarProductoResponsive ConsultarTodos()
         {
             try
@@ -59,6 +71,26 @@ namespace Logica
                 return new ConsultarCarneResponsive($"error de aplicacion: {e.Message}");
             }
 
+        }
+
+        public Boolean Modificar(Producto productoNuevo){
+            try{
+                var productoViejo = _context.Productos.Where(p => p.ProductoId == productoNuevo.ProductoId ).FirstOrDefault();
+                if(productoViejo != null)
+                {
+                    productoViejo.Cantidad = productoNuevo.Cantidad;
+                    _context.Productos.Update(productoNuevo);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            catch (Exception )
+            {
+                return false;
+            }
         }
         
         public GuardarProductoCarneResponse GuardarCarne(ProductoCarne productoCarne)

@@ -13,16 +13,13 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router,
         private authenticationService: AuthenticationService
-    ) {     
-      
-      this.authenticationService.currentUser.subscribe((x)=> {
-        if(x.rol == "Rol.Admin") this.admin = x;
-        console.log(x);
-      });     
-    }
+    ) {   }
 
   ngOnInit(): void {
-    
+    this.authenticationService.currentUser.subscribe((x)=> {
+      if(x.rol == "Rol.Admin") this.admin = x;
+      console.log(x);
+    });
   }
 
   botonMenu(){
@@ -36,7 +33,7 @@ export class MenuComponent implements OnInit {
     }else{
       setTimeout(function() { 
         document.getElementById("caja-items").classList.add("desactive");
-       }, 2980); 
+       }, 980); 
     }
     
     
@@ -62,7 +59,7 @@ export class MenuComponent implements OnInit {
         
         document.getElementById("Items").classList.add("animacionAbrirMenu");
         document.getElementById("Items").classList.remove("desactive"); 
-       }, 2000); 
+       }, 1000); 
 
     }else{
       document.getElementById("caja-items").classList.remove("animacionAbrirMenu");

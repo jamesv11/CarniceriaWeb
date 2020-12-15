@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CarritoComponent } from '../Carniceria/Compra/carrito/carrito.component';
 import { User } from '../seguridad/User';
 import { AuthenticationService } from '../services/authentication.service';
+import { ProductoService } from '../services/producto.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -12,12 +13,17 @@ import { AuthenticationService } from '../services/authentication.service';
 export class NavMenuComponent {
   isExpanded = false;
   currentUser:User;
+  cantidadProducto:number=0;
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private productoService:ProductoService
       ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+        this.productoService.ListaProductos.subscribe(x =>{
+          if(x!=null)this.cantidadProducto = x.length;
+        } );
       }
     
 

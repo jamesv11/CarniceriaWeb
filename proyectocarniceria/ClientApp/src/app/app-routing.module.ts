@@ -13,10 +13,13 @@ import { ProductoCarritoComponent } from './Carniceria/Compra/producto-carrito/p
 import { InformacionComponent } from './Carniceria/Compra/informacion/informacion.component';
 import { EnviosComponent } from './Carniceria/Compra/envios/envios.component';
 import { ProductoCerdoComponent } from './Carniceria/Producto/producto-cerdo/producto-cerdo.component';
-import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
+import { RegistroDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/registro-domiciliario.component';
 import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
 import { AuthGuard } from './services/auth.guard';
 import { ProductoRegistroComponent } from './Admin/producto-registro/producto-registro.component';
+import { VisualizarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/visualizar-domiciliario/visualizar-domiciliario.component';
+import { ConsultarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/consultar-domiciliario/consultar-domiciliario.component';
+import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
 
 
 const routes: Routes = [
@@ -93,6 +96,21 @@ const routes: Routes = [
   {
     path:'gestionUsuarios',
     component: GestionUsuariosComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'visualizarDomiciliario',
+    component: VisualizarDomiciliarioComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'consultaDomiciliario',
+    component: ConsultarDomiciliarioComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'gestionPedidos',
+    component : GestionFacturasComponent,canActivate:[AuthGuard]
   }
 
 

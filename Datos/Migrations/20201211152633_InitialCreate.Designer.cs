@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Datos.Migrations
 {
     [DbContext(typeof(CarniceriaContext))]
-    [Migration("20201205162841_Migration-5-12-20")]
-    partial class Migration51220
+    [Migration("20201211152633_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,6 +49,9 @@ namespace Datos.Migrations
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("int");
+
+                    b.Property<double>("ValorNeto")
+                        .HasColumnType("float");
 
                     b.Property<decimal>("ValorUnitario")
                         .HasColumnType("decimal(12,2)");

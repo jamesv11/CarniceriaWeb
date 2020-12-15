@@ -17,14 +17,6 @@
     visibility: hidden;
 }
 
-.Producto img{
-    margin-top: 15px;
-    margin-left: 23px;
-    width: 200px;
-    border-radius: 3px;
-    
-    
-}
 
 
 .info{
@@ -58,3 +50,8 @@ h2{
     text-align: center;
     border-bottom: 1px black solid  ;
 }
+
+ngb-pagination{
+    position:relative;
+    z-index:1;
+} 

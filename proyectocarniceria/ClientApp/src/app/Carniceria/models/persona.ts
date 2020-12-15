@@ -6,4 +6,5 @@ export class Persona {
     rol :string;
     direccion : string;
     identificacion :string;
+    telefono:string;
 }

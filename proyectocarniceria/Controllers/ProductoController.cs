@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using proyectocarniceria.Models;
+using proyectocarniceria.Hubs;
+using Microsoft.AspNetCore.SignalR;
 using System.IO;
 
 namespace WebPulsaciones.Controllers
@@ -18,10 +20,12 @@ namespace WebPulsaciones.Controllers
     public class ProductoController : ControllerBase
     {
         private readonly ProductoServicio _productoServicio;
+        private readonly IHubContext<SignalHub> _signalService;
         
-        public ProductoController( CarniceriaContext _context)
+        public ProductoController( CarniceriaContext _context, IHubContext<SignalHub> signalService)
         {
             _productoServicio = new ProductoServicio(_context);
+            _signalService=signalService;
         }
 
         /*
@@ -40,7 +44,7 @@ namespace WebPulsaciones.Controllers
         */
         // Post: api/Producto
         [HttpPost]
-        public ActionResult<ProductoViewModel> Post(ProductoInputModel productoInputModel)
+        public async Task<ActionResult<ProductoViewModel>> Post(ProductoInputModel productoInputModel)
         {
             Producto producto = MapearProducto(productoInputModel);
             var response = _productoServicio.Guardar(producto);
@@ -53,7 +57,9 @@ namespace WebPulsaciones.Controllers
                 };
                 return BadRequest(problemDetails);
             }
-            return Ok(response.producto);
+            var productoNuevo = new ProductoViewModel(response.producto);
+            await _signalService.Clients.All.SendAsync("ProductoRegistrado",productoNuevo);
+            return Ok(productoNuevo);
         }
         
         // Post: api/Producto

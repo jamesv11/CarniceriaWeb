@@ -21,19 +21,6 @@ namespace Datos.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImagenesProductos",
-                columns: table => new
-                {
-                    ImagenProductoId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Imagen = table.Column<byte[]>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ImagenesProductos", x => x.ImagenProductoId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Personas",
                 columns: table => new
                 {
@@ -58,11 +45,11 @@ namespace Datos.Migrations
                     ProductoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreProducto = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
                     Cantidad = table.Column<int>(nullable: false),
                     ValorUnitario = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
                     Categoria = table.Column<string>(nullable: true),
-                    ImagenProductoId = table.Column<int>(nullable: false),
+                    ImagenProducto = table.Column<string>(nullable: true),
                     Discriminator = table.Column<string>(nullable: false),
                     CorteRes = table.Column<string>(nullable: true)
                 },
@@ -139,6 +126,7 @@ namespace Datos.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CantidadRequerida = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
                     ValorUnitario = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
+                    ValorNeto = table.Column<double>(nullable: false),
                     ProductoId = table.Column<int>(nullable: false),
                     FacturaId = table.Column<int>(nullable: true)
                 },
@@ -211,9 +199,6 @@ namespace Datos.Migrations
 
             migrationBuilder.DropTable(
                 name: "Domiciliarios");
-
-            migrationBuilder.DropTable(
-                name: "ImagenesProductos");
 
             migrationBuilder.DropTable(
                 name: "Pedidos");

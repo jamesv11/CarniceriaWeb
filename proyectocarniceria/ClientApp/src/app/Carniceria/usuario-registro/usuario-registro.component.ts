@@ -16,6 +16,7 @@ export class UsuarioRegistroComponent implements OnInit {
   formRegistroCliente: FormGroup;
   cliente: Cliente;
   submitted = false;
+  
 
   constructor( private clienteService: ClienteService, private formBuilder: FormBuilder,
     private modalService: NgbModal) { }

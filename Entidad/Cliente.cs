@@ -10,7 +10,7 @@ namespace Entidad
       
 
         [Column(TypeName = "decimal(12,2)")]
-        public decimal ValorDescuento { get; set; }
+        public double ValorDescuento { get; set; }
 
         //Relacion con la entidad Persona      
         public virtual Persona Persona { get; set; }

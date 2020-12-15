@@ -27,7 +27,7 @@ export class ClienteService {
     }
 
     getCliente(correo : string ): Observable<Cliente>{
-      return this.http.get<Cliente>(this.baseUrl + 'api/Cliente'+ correo)
+      return this.http.get<Cliente>(this.baseUrl + 'api/Cliente/'+ correo)
       .pipe(
         tap(_=> this.handleErrorService.handleError<Cliente>('Consulta Cliente',null)) ,
         catchError(this.handleErrorService.handleError<Cliente>('Consultar Cliente',null)) 
@@ -38,6 +38,13 @@ export class ClienteService {
       return this.http.post<Cliente>(this.baseUrl + 'api/Cliente',cliente).pipe(
         tap(_ => this.handleErrorService.log('datos enviados')),
         catchError(this.handleErrorService.handleError<Cliente>('Registrar Cliente',null))
+        );
+    }
+
+    put(cliente: Cliente): Observable<Cliente>{
+      return this.http.put<Cliente>(this.baseUrl + 'api/Cliente',cliente).pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Cliente>('Modificar Cliente',null))
         );
     }
  

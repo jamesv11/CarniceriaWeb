@@ -13,3 +13,63 @@ h2{
     text-align: center;
     border-bottom: 1px black solid  ;
 }
+.mat-form-field {
+    margin-top: 16px;
+  }
+.Contenido{
+    height: 500px;
+    overflow:auto;
+}
+.Info-Item{
+    margin-right:50px;
+    float:left;
+    width: 200px;
+    justify-items : center;
+}
+.Cantidad-Item{
+    margin-right:50px;
+    float:left;
+}
+.Precio-Item{
+    
+    float:left;
+}
+.item{
+    float:top;
+    width: auto;
+    height: 100px;
+    margin:10px;
+}
+table {
+    width: 100%;
+
+  }
+  .Nom-producto{
+    float:top;
+    margin-top:10px;
+    margin-bottom: 10px;
+  }
+  .card-img-top{
+    margin-top:10px;
+  }
+  ng-template popoverTitle{
+      color: black;
+  }
+
+  .nombreApellido .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  label{
+      color:white;
+  }
+
+
+  .material-icons{
+    color:white;
+    width:3.5rem;
+    height: 3.5rem;
+  }
+
+  .ultimo{
+    height: 390px;
+  }

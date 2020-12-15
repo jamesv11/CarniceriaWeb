@@ -29,33 +29,31 @@ export class RegistroDomiciliarioComponent implements OnInit {
 
   }
 
-  /*identificacion:string;     
-    nombre:string;
-    apellido:string;
-    correo:string;
-    telefono:string; 
-    documentos:Documento[]; 
-  */
 
   ngOnInit(): void {
 
     this.domiciliario = new Domiciliario();
-    this.domiciliario.correo = "";
-    this.domiciliario.identificacion = "";
-    this.domiciliario.nombre = "";
-    this.domiciliario.apellido = ""; 
-    this.domiciliario.telefono = "";
+    this.domiciliario.persona.correo = "";
+    this.domiciliario.persona.identificacion = "";
+    this.domiciliario.persona.nombre = "";
+    this.domiciliario.persona.apellido = ""; 
+    this.domiciliario.persona.telefono = "";
+    this.domiciliario.persona.password = "";
+    this.domiciliario.persona.direccion = "";
+
     this.registerDomiciliaryForm = this.formBuilder.group(
       {
-        inputEmail : [this.domiciliario.correo,Validators.required],
-        inputIdentificacion : [this.domiciliario.identificacion,Validators.required],
-        inputNombre : [this.domiciliario.nombre,Validators.required],
-        inputApellido : [this.domiciliario.apellido,Validators.required],
-        inputTelefono : [this.domiciliario.telefono,Validators.required]
+        correo : [this.domiciliario.persona.correo,Validators.required],
+        identificacion : [this.domiciliario.persona.identificacion,Validators.required],
+        nombre : [this.domiciliario.persona.nombre,Validators.required],
+        apellido : [this.domiciliario.persona.apellido,Validators.required],
+        telefono : [this.domiciliario.persona.telefono,Validators.required],
+        password : [this.domiciliario.persona.password,Validators.required],
+        direccion : [this.domiciliario.persona.direccion,Validators.required]
       });
 
 
-    this.domiciliarioService.get().subscribe(result =>{this.domiciliarios = result});
+   // this.domiciliarioService.get().subscribe(result =>{this.domiciliarios = result});
   }
 
   get f() { return this.registerDomiciliaryForm.controls; }
@@ -71,6 +69,8 @@ export class RegistroDomiciliarioComponent implements OnInit {
    }
 
     add(){
+      this.domiciliario.persona = this.registerDomiciliaryForm.value;
+      console.log(this.domiciliario);
       this.domiciliarioService.post(this.domiciliario).subscribe(c => {
         if (c != null) {
           const messageBox = this.modalService.open(AlertModalComponent);
@@ -79,6 +79,8 @@ export class RegistroDomiciliarioComponent implements OnInit {
           this.domiciliario = c;
         }       
       });
+
+      
 
       this.onReset();
    }

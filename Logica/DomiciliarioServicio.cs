@@ -21,11 +21,12 @@ namespace Logica
         {
             try
             {
-                var verificarDomiciliario = _context.Domiciliarios.Find(domiciliario.Correo);
+                var verificarDomiciliario = _context.Domiciliarios.Find(domiciliario.Persona.Correo);
                 if(verificarDomiciliario != null)
                 {
                     return new GuardarDomiciliarioResponse("Error el cliente se encuentra registrado ");
                 }
+                domiciliario.Persona.Rol = "Rol.Domiciliario";
                 _context.Domiciliarios.Add(domiciliario);
                 _context.SaveChanges();
                 return new GuardarDomiciliarioResponse(domiciliario);
@@ -49,6 +50,18 @@ namespace Logica
                 return new ConsultarDomiciliarioResponse($"error de aplicacion: {e.Message}");
             }
 
+        }
+        public BuscarDomiciliarioResponse buscarCliente(string correo){
+            try
+            {
+                var domiciliario = _context.Domiciliarios.Include(p => p.Persona).Where(p => p.Persona.Correo ==  correo).FirstOrDefault();
+                return new BuscarDomiciliarioResponse(domiciliario);
+            }
+            catch (Exception e)
+            {
+                
+                return new BuscarDomiciliarioResponse($"Error de aplicacion: {e.Message}");
+            }
         }
     }
 

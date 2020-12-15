@@ -1,0 +1,27 @@
+
+h2{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
+    
+}
+.posicionboton{
+    margin-top: 40px;
+    margin-left: 42%;
+}
+h3{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
+    font-weight: bold;
+}
+.background{
+    background-image: url("https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80");
+    background-size: cover;
+    background-position: center center;
+    min-height: 50vh;
+    margin: 0;
+}
+
+
+

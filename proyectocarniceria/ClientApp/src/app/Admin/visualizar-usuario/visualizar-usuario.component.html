@@ -8,13 +8,37 @@
         </div>      
         <div class="card-body">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Nombre: {{dataCliente.cliente.persona.nombre}}</li>
-                <li class="list-group-item">Apellido: {{dataCliente.cliente.persona.apellido}}</li>
-                <li class="list-group-item">Correo: {{dataCliente.cliente.persona.correo}}</li>
-                <li class="list-group-item">Direccion: {{dataCliente.cliente.persona.direccion}}</li>
-                <li class="list-group-item">Identificacion: {{dataCliente.cliente.persona.identificacion}}</li>
-                <li class="list-group-item">Descuento: {{dataCliente.cliente.valorDescuento}} <button type="button" class="btn btn-dark ml-8">Opciones</button></li>
-                <li class="list-group-item">Rol: {{dataCliente.cliente.persona.rol}} <button type="button" class="btn btn-dark ml-8">Opciones</button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Nombre: {{dataCliente.cliente.persona.nombre}}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Apellido: {{dataCliente.cliente.persona.apellido}}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Correo: {{dataCliente.cliente.persona.correo}}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Direccion: {{dataCliente.cliente.persona.direccion}}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Identificacion: {{dataCliente.cliente.persona.identificacion}}</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Descuento: {{dataCliente.cliente.valorDescuento}}
+                    <ng-template #popContent> Nuevo descuento: <input type="number" [(ngModel)]="descuento" min="1"> <button type="button" class="btn btn-outline-dark" (click)="ModificarDescuento()">Asignar</button>
+                </ng-template>
+                    <button
+                      type="button" class="btn btn-outline-dark" popoverTitle="Modificar descuento"
+                      [autoClose]="'outside'" [ngbPopover]="popContent"
+                    >
+                      Opciones
+                    </button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Rol: {{dataCliente.cliente.persona.rol}}
+                    <ng-template #popContent1>Nuevo rol:
+                        <div>
+                            <select  [(ngModel)]="rolcliente" >
+                                <option value="Rol.Cliente">Rol cliente</option>
+                                <option value="Rol.Admin">Rol administrador</option>
+                                </select> 
+                            <button type="button" class="btn btn-outline-dark" (click)="ModificarRol()">Asignar</button>
+                        </div>
+                        
+                    </ng-template>
+                    <button
+                      type="button" class="btn btn-outline-dark" [ngbPopover]="popContent1" popoverTitle="Modificar rol"
+                      [autoClose]="'outside'" 
+                    >                  
+                      Opciones
+                    </button> </li>
             </ul>
         </div>
     </div>

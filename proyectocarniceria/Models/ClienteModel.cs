@@ -10,14 +10,15 @@ namespace proyectocarniceria.Models
     public class ClienteInputModel
     {
       //  [PersonaValidacion ]
-        public Persona Persona { get; set; }
+
+        public double ValorDescuento { get; set; }
+        public Persona Persona {get; set;}
 
     }
 
     public class ClienteViewModel : ClienteInputModel
     {
         
-        public decimal ValorDescuento { get; set; }
 
         //Relacion con la entidad Persona
 

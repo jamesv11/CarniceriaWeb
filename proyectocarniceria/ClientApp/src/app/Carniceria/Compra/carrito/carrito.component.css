@@ -21,11 +21,37 @@
 
 .carrito .btn {
     color: white;
+    width: 360px;
     margin: 5px;
 }
 
 .carrito .btn:hover{
     background-color: #400112;
+}
+
+.Nombre-img{
+    float:left;
+    width:40%;
+}
+.Informacion-valor{
+    float:left;
+    width:60%;
+}
+.Informacion-valor input{
+    width: 50px;
+    border-radius: 5px;
+    
+}
+
+
+.Producto-carrito{
+    background-color:#400112;
+    height: 140px;
+    width: 380px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    border-radius: 3px;
 }
 
 

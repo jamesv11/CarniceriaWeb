@@ -1,11 +1,11 @@
-import { Cliente } from "./cliente";
 import { DetalleFactura } from "./DetalleFactura";
 
 export class Factura {
 
-    cliente:Cliente;
-    fecha:Date;
-    detallesFactura:DetalleFactura ;
-    total:number;
+    correo:string;
+    fechaExpedicion:Date;
+    detallesFacturas:DetalleFactura[];
+    valorTotal:number;
+    estadoFactura:string;
 
 }

@@ -79,15 +79,15 @@
 }
 
 .animacionAbrirMenu{
-    animation:3s slidein;
+    animation:1s slidein;
 }
 .animacionCerrarMenu{
-    animation:3s slideOutkleft;
+    animation:1s slideOutkleft;
 }
 
 .animacionAbrirMenu a{
-    animation-delay: 3s;
-    animation:3s EntrarA;
+    animation-delay: 1s;
+    animation:1s EntrarA;
 }
 
 

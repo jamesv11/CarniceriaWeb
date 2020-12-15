@@ -64,6 +64,33 @@ namespace Logica
                 return new BuscarClienteResponse($"Error de aplicacion: {e.Message}");
             }
         }
+
+        public ModificarClienteResponse Modificar(Cliente clienteNuevo){
+            try{
+                var clienteViejo = _context.Clientes.Include(p => p.Persona).Where(p => p.Persona.Correo ==  clienteNuevo.Persona.Correo).FirstOrDefault();
+                if(clienteViejo != null)
+                {
+                    clienteViejo.Persona.Correo = clienteNuevo.Persona.Correo;
+                    clienteViejo.Persona.Nombre = clienteNuevo.Persona.Nombre;
+                    clienteViejo.Persona.Apellido = clienteNuevo.Persona.Apellido;
+                    clienteViejo.Persona.Password = clienteNuevo.Persona.Password;
+                    clienteViejo.Persona.Direccion = clienteNuevo.Persona.Direccion;
+                    clienteViejo.Persona.Telefono = clienteNuevo.Persona.Telefono;
+                    clienteViejo.Persona.Rol = clienteNuevo.Persona.Rol;
+                    clienteViejo.ValorDescuento = clienteNuevo.ValorDescuento;
+                    _context.Clientes.Update(clienteViejo);
+                    _context.SaveChanges();
+                    return new ModificarClienteResponse(clienteViejo);
+                }
+                else{
+                    return new ModificarClienteResponse($"Lo sentimos no se encuentra registrada la persona : {clienteViejo.Correo}");
+                }
+            }
+            catch (Exception e)
+            {
+                return new ModificarClienteResponse($"Error de aplicacion: {e.Message}");
+            }
+        }
     }
 
     public class GuardarClienteResponse
@@ -74,6 +101,23 @@ namespace Logica
             Cliente = Cliente;
         }
         public GuardarClienteResponse(string mensaje)
+        {
+            Error = true;
+            Mensaje = mensaje;
+        }
+        public bool Error { get; set; }
+        public string Mensaje { get; set; }
+        public Cliente Cliente { get; set; }
+    }
+
+    public class ModificarClienteResponse
+    {
+        public ModificarClienteResponse(Cliente cliente )
+        {
+            Error = false;
+            Cliente = Cliente;
+        }
+        public ModificarClienteResponse(string mensaje)
         {
             Error = true;
             Mensaje = mensaje;

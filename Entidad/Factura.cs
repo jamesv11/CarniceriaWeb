@@ -31,23 +31,37 @@ namespace Entidad
         //Relacion con la entidad Detalle
         public List<DetalleFactura> DetallesFacturas {get; set;}
 
-        public void CalcularSubtotal()
+        
+        public void CalcularDetalles()
         {
-            this.SubTotal = DetallesFacturas.Sum(d => d.ValorUnitario);
+            foreach (var item in DetallesFacturas)
+            {
+                item.CalcularSubtotal();
+            }
         }
 
+        public void CalcularSubtotal()
+        {
+            this.SubTotal = DetallesFacturas.Sum(d => d.ValorNeto);
+        }
+
+        
         public void CalcularValorDescuento()
         {
-            this.Descuento = this.SubTotal * this.PorcentajeDescuento;       
+            this.Descuento = this.SubTotal * (this.PorcentajeDescuento / 100);       
         }
+        
         public void CalcularValorTotal()
         {
             if(this.PorcentajeDescuento > 0){
                 this.CalcularValorDescuento();
-                this.ValorTotal = this.SubTotal + this.Descuento;
+                this.ValorTotal = this.SubTotal - this.Descuento;
+            }
+            else{
+                this.ValorTotal = this.SubTotal;
             }
 
-            this.ValorTotal = this.SubTotal;
+            
         }  
     
     }

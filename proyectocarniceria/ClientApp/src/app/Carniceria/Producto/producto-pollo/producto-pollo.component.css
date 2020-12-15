@@ -17,22 +17,8 @@
     visibility: hidden;
 }
 
-.Producto img{
-    margin-top: 15px;
-    margin-left: 23px;
-    width: 200px;
-    border-radius: 3px;
-    
-    
-}
 
 
-.info{
-    visibility: visible;
-    text-align: center;
-    height: 10px;
-    top:0;
-}
 
 .botonesProducto{
     visibility: hidden;
@@ -58,3 +44,10 @@ h2{
     text-align: center;
     border-bottom: 1px black solid  ;
 }
+
+ngb-pagination{
+    position:relative;
+    z-index:1;
+} 
+
+

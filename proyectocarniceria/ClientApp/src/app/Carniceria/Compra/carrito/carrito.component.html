@@ -10,13 +10,22 @@
     <div id="contenido" class="contenido">
         <label id="lbListaVacia"> TU CARRITO ESTÁ VACÍO </label>
 
-        <div *ngFor="let DetalleFactura of DetalleFacturas " data-spy="scroll" data-target="#navbar-example3" data-offset="0">
-            <div>
-                <img [src]="DetalleFactura.productoDetalle.imagenProducto" style="width: 10rem;">
-                <div>{{DetalleFactura.productoDetalle.nombreProducto}}</div>
-                <div>{{DetalleFactura.ValorUnitario}}</div>
-                <div>{{DetalleFactura.CantidadRequerida}}</div>
-                <div>{{DetalleFactura.SubTotal}}</div>
+        <div *ngFor="let DetalleFactura of DetalleFacturas; let i = index" data-spy="scroll" data-target="#navbar-example3" data-offset="0" >
+            <div class="Producto-carrito">
+                <div class="Nombre-img">
+                    <img [src]="DetalleFactura.productoDetalle.imagenProducto" style="width: 8rem; height: 5rem;">
+                    <label >Producto: {{DetalleFactura.productoDetalle.nombreProducto}}</label>
+                </div>
+                <div class="Informacion-valor">
+                    <label>Valor Unitario: {{DetalleFactura.ValorUnitario}}</label>
+                    <div>
+                        <label>Cantidad:</label>
+                        <input type="number" min="1" [(ngModel)]="DetalleFactura.CantidadRequerida" (ngModelChange)="ModificarCantidad(i)" >
+                    </div>
+                    
+                    <label >SubTotal: {{NuevoSubtotal[i]}}</label>
+                </div>
+
             </div>
         </div>
 
@@ -24,8 +33,7 @@
     </div>
     <div>
         <hr class="lineaTitulo">
-        <button class="btn">Editar</button>
-        <button class="btn" [routerLink]="['/productoCarrito']">Realizar Pedido</button>
+        <button class="btn d-flex justify-content-center"[routerLink]="['/productoCarrito']">Realizar Pedido</button>
     </div>
 
 

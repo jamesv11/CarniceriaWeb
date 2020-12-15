@@ -1,0 +1,40 @@
+<div class="Contenedor-form m-4 rounded">
+    <div class="contenedormensaje" *ngIf="!dataDomiciliario.domiciliario">
+        <h2>No hay domiciliario seleccionado</h2>
+    </div>
+    <div *ngIf="dataDomiciliario.domiciliario">
+        <div class="card">
+            <div class="header" >
+                <h2>Informacion del domiciliario</h2>
+            </div>      
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Nombre: {{dataDomiciliario.domiciliario.persona.nombre}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Apellido: {{dataDomiciliario.domiciliario.persona.apellido}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Correo: {{dataDomiciliario.domiciliario.persona.correo}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Direccion: {{dataDomiciliario.domiciliario.persona.direccion}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Identificacion: {{dataDomiciliario.domiciliario.persona.identificacion}}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">Rol: {{dataDomiciliario.domiciliario.persona.rol}}
+                        <ng-template #popContent1>Nuevo rol:
+                            <div>
+                                <select  [(ngModel)]="rolcliente" >
+                                    <option value="Rol.Cliente">Rol cliente</option>
+                                    <option value="Rol.Admin">Rol administrador</option>
+                                    <option value="Rol.Domiciliario">Rol Domiciliario</option>
+                                    </select> 
+                                <button type="button" class="btn btn-outline-dark" (click)="ModificarRol()">Asignar</button>
+                            </div>
+                            
+                        </ng-template>
+                        <button
+                          type="button" class="btn btn-outline-dark" [ngbPopover]="popContent1" popoverTitle="Modificar rol"
+                          [autoClose]="'outside'" 
+                        >                  
+                          Opciones
+                        </button> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

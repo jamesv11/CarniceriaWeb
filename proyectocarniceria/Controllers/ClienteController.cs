@@ -78,11 +78,29 @@ namespace WebPulsaciones.Controllers
             }
             return Ok(response.Cliente);
         }
+        // Put: api/Cliente
+        [HttpPut]
+        public ActionResult<ClienteViewModel> Put(ClienteInputModel clienteInput)
+        {
+            Cliente cliente = MapearCliente(clienteInput);
+            var response = _clienteService.Modificar(cliente);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Modificar Cliente", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
+            }
+            return Ok(response.Cliente);
+        }
         private Cliente MapearCliente(ClienteInputModel clienteInput)
         {
             var cliente = new Cliente
             {
-                ValorDescuento = 0, 
+                ValorDescuento = clienteInput.ValorDescuento, 
                 Persona = clienteInput.Persona           
             };
                             

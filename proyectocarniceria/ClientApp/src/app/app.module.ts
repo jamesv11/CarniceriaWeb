@@ -4,6 +4,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatBadgeModule} from '@angular/material/badge';
+
+
 
 
 import { AppComponent } from './app.component';
@@ -14,7 +22,7 @@ import { UsuarioLoginComponent } from './Carniceria/usuario-login/usuario-login.
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsuarioGestionPerfilComponent } from './Carniceria/usuario-gestion-perfil/usuario-gestion-perfil.component';
-import { RegistroDomiciliarioComponent } from './Admin/registro-domiciliario/registro-domiciliario.component';
+import { RegistroDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/registro-domiciliario.component';
 import { CarritoComponent } from './Carniceria/Compra/carrito/carrito.component';
 import { GestionFacturaComponent } from './Carniceria/Compra/gestion-factura/gestion-factura.component';
 import { ProductoCarneComponent } from './Carniceria/Producto/producto-carne/producto-carne.component';
@@ -39,8 +47,23 @@ import { MenuComponent } from './Admin/menu/menu.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ProductoRegistroComponent } from './Admin/producto-registro/producto-registro.component';
 import { FiltroProductoPipe } from './pipe/filtro-producto.pipe';
-import { ProductoRegistroResComponent } from './Admin/producto-registro-res/producto-registro-res.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VisualizarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/visualizar-domiciliario/visualizar-domiciliario.component';
+import { ConsultarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/consultar-domiciliario/consultar-domiciliario.component';
+import { CargaPaginaComponent } from './carga-pagina/carga-pagina.component';
+import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
+import { BusquedaProductoComponent } from './busqueda-producto/busqueda-producto.component';
 
+
+
+const material =[
+  MatStepperModule,
+  MatButtonModule,
+  MatTableModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatBadgeModule
+];
 
 
 
@@ -73,7 +96,12 @@ import { ProductoRegistroResComponent } from './Admin/producto-registro-res/prod
     MenuComponent,
     ProductoRegistroComponent,
     FiltroProductoPipe,
-    ProductoRegistroResComponent
+    VisualizarDomiciliarioComponent,
+    ConsultarDomiciliarioComponent,
+    CargaPaginaComponent,
+    GestionFacturasComponent,
+    BusquedaProductoComponent,
+   
   
 
 
@@ -87,7 +115,9 @@ import { ProductoRegistroResComponent } from './Admin/producto-registro-res/prod
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ]),
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    material,
+    BrowserAnimationsModule
   ],
   entryComponents:[AlertModalComponent],
   providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor, multi:true}],

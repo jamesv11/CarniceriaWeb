@@ -15,6 +15,12 @@ namespace Entidad
         public float ValorUnitario{get; set;}
         public string Categoria {get;set;}
         public string ImagenProducto {get;set;}
+
+        public void restarCantidad(int cantidadRequerida){
+            Cantidad = Cantidad - cantidadRequerida;
+        }
         
     }
+
+
 }

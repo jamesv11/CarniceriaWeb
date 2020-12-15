@@ -77,10 +77,29 @@ export class ProductoService {
     CrearDetalle(Producto:Producto,Cantidad:number):DetalleFactura{
       var nuevaFactura = new DetalleFactura;
       nuevaFactura.productoDetalle = Producto;
+      nuevaFactura.ProductoId = Producto.productoId;
       nuevaFactura.CantidadRequerida = Cantidad;
       nuevaFactura.ValorUnitario = Producto.valorUnitario;
       nuevaFactura.SubTotal = Producto.valorUnitario * Cantidad;
       return nuevaFactura;
+    }
+    removeDetalle(DetalleFactura){
+      var varlistaProducto = this.ProductosValues;
+      var nuevaLista = varlistaProducto.filter( function( e ) {
+        return e !== DetalleFactura;
+      } );
+      localStorage.setItem("ListaProducto", JSON.stringify(nuevaLista));
+      this.ListaProductossubject.next(nuevaLista);
+    }
+
+    ActualizaLista(nuevaLista){
+      localStorage.setItem("ListaProducto", JSON.stringify(nuevaLista));
+      this.ListaProductossubject.next(nuevaLista);
+    }
+    LimpiarLista(){
+      var nuevaLista = [];
+      localStorage.setItem("ListaProducto", JSON.stringify(nuevaLista));
+      this.ListaProductossubject.next(nuevaLista);
     }
 }
     

@@ -32,16 +32,18 @@ export class AuthenticationService {
   }
 
   login(correo: string, password: string) {
-    window.location.reload();
+    
     return this.http
-      .post<any>(`${this.baseUrl}api/login`, { correo, password })
+      .post<any>(`${this.baseUrl}api/login`, { correo, password })     
       .pipe(
         map((user) => {
           // store user and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem("currentUser", JSON.stringify(user));
           this.currentUsersubject.next(user);  
+          window.location.reload();
           return user;
         })
+        
       );
   }
   logout() {

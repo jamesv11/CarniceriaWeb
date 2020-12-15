@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using proyectocarniceria.Models;
+using proyectocarniceria.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace WebPulsaciones.Controllers
 {
@@ -17,10 +19,12 @@ namespace WebPulsaciones.Controllers
     public class DomiciliarioController: ControllerBase
     {
         private readonly DomiciliarioServicio _domiciliarioService;
+        private readonly IHubContext<SignalHub> _signalService;
         
-        public DomiciliarioController( CarniceriaContext _context)
+        public DomiciliarioController( CarniceriaContext _context,IHubContext<SignalHub> signalService)
         {
             _domiciliarioService = new DomiciliarioServicio(_context);
+            _signalService=signalService;
         }
 
         
@@ -44,7 +48,7 @@ namespace WebPulsaciones.Controllers
         
         // Post: api/Persona
         [HttpPost]
-        public ActionResult<DomiciliarioViewModel> Post(DomiciliarioInputModel domiciliarioInput)
+        public async Task<ActionResult<DomiciliarioViewModel>> Post(DomiciliarioInputModel domiciliarioInput)
         {
             Domiciliario domiciliario = MapearDomiciliario(domiciliarioInput);
             var response = _domiciliarioService.Guardar(domiciliario);
@@ -58,13 +62,15 @@ namespace WebPulsaciones.Controllers
 
                 return BadRequest(problemDetails);
             }
-            return Ok(response.Domiciliario);
+            var domiciliarioNuevo = new DomiciliarioViewModel(response.Domiciliario);
+            await _signalService.Clients.All.SendAsync("DomiciliarioRegistrado",domiciliarioNuevo);
+            return Ok(domiciliarioNuevo);
         }
         private Domiciliario MapearDomiciliario(DomiciliarioInputModel domiciliarioInput)
         {
             var domiciliario = new Domiciliario
             {
-                  
+                Persona = domiciliarioInput.Persona
             };
             return domiciliario;
         }

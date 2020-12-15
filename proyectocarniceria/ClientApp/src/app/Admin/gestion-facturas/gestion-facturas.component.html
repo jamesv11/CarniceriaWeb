@@ -1,0 +1,40 @@
+<div >
+    <div>
+        <div>
+            <h2>Gestion de pedidos</h2>
+        </div>
+        <div class="mx-auto p-3 col-lg-6 ">
+             <h3 *ngIf='!facturas'>No hay pedidos</h3>
+        </div>
+        <div class="mx-auto p-3 m-6 col-lg-10 " >
+            <input [(ngModel)]="searchText" *ngIf='facturas && facturas.length' class="form-control form-control-lg" type="text" placeholder="Busqueda... ">             
+            <table class="table" *ngIf='facturas && facturas.length'>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cliente correo</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let factura of facturas ; index as i">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{factura.correo }} </td>
+                        <td>{{factura.fechaExpedicion }}</td>
+                        <td>{{factura.valorTotal }}</td>
+                        <td>{{factura.estadoFactura }}</td>
+                        <td><div class="input-group-append">
+                            <button class="btn btn-outline-dark" type="button">Asignar Domiciliario</button>
+                            <button class="btn btn-outline-dark" type="button">Ver infomarcion</button>
+                          </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

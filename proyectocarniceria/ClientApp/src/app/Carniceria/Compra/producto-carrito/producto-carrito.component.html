@@ -1,82 +1,211 @@
 <div>
-    <div class="paginacion">
-        <app-gestion-factura></app-gestion-factura>
-        <div>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step label="Productos en factura" completed="true">
+      <div class="Contenido">
+        <table mat-table [dataSource]="ListaProductos" class="mat-elevation-z8">
+          <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
 
-            <div class="center">
-    
-                <h2>Carrito de compras</h2>
-            </div>
-    
-            <div>
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let i = index">{{ i }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Productos">
+            <th mat-header-cell *matHeaderCellDef>Productos</th>
+            <td mat-cell *matCellDef="let element">
+              <img
+                class="card-img-top"
+                [src]="element.productoDetalle.imagenProducto"
+                alt="Card image cap"
+                style="width: 10rem; float: top"
+              />
+              <div class="Nom-producto">
+                Producto: {{ element.productoDetalle.nombreProducto }}
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Cantidad">
+            <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <ng-template #popContent1>
+                Nueva Cantidad:
                 <div>
-                    <h4>Productos</h4>
-                </div>
-                <div class="cont-comprar">
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="card" style="width: 19rem;">
-                                        <img src="https://magazine.medlineplus.gov/images/uploads/main_images/red-meat.png"
-                                            class="card-img-top" alt="...">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="width: 19rem; ">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Carne </h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Calidad: 1A</h6>
-                                            <p class="card-text">Precio por item: 5000</p>
-                                            <p class="card-text">Cantidad: <input type="number"></p>
-                                            <p class="card-text">TotaL: 50000</p>
-                                            <button type="button" class="btn btn-outline-secondary">Eliminar</button>
-                                        </div>
-                                    </div>
-                                </td>
-    
-                            </tr>
-                            <tr>
-    
-                                <td>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="https://rebajarime.com/wp-content/uploads/2020/04/pollo.jpg"
-                                            class="card-img-top" alt="...">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="card" style="width: 19rem; ">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Pollo </h5>
-                                            <h6 class="card-subtitle mb-2 text-muted">Calidad: 1A</h6>
-                                            <p class="card-text">Precio por item: 6000</p>
-                                            <p class="card-text">Cantidad: <input type="number"></p>
-                                            <p class="card-text">TotaL: 60000</p>
-                                            <button type="button" class="btn btn-outline-secondary">Eliminar</button>
-                                        </div>
-                                    </div>
-                                </td>
-    
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">SUBTOTAL </h5>
-                            <h6 class="card-subtitle mb-2 text-muted">11000</h6>
-                            <p class="card-text">Impuestos incluidos</p>
-                            <button type="button" class="btn btn-outline-secondary">Comprar</button>
-                            <div>
-                                <button type="button" [routerLink]="['/informacionCompra']" class="btn btn-outline-secondary">Seguir
-                                    comprando--></button>
-                            </div>
-    
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                  <input type="number" min="1" [(ngModel)]="NuevaCantidad[i]" />
 
-    
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark"
+                    (click)="ModificarCantidad(i)"
+                  >
+                    Asignar
+                  </button>
+                </div>
+              </ng-template>
+              <button
+                type="button"
+                class="btn btn-outline-light"
+                [ngbPopover]="popContent1"
+                [autoClose]="'outside'"
+                (click)="igualarCantidad(i)"
+              >
+                {{ element.CantidadRequerida }}
+              </button>
+            </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="Precio Producto">
+            <th mat-header-cell *matHeaderCellDef>Precio Producto</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.ValorUnitario }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Subtotal">
+            <th mat-header-cell *matHeaderCellDef>Precio Producto</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.SubTotal }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Eliminar producto">
+            <th mat-header-cell *matHeaderCellDef>Eliminar producto</th>
+            <td mat-cell *matCellDef="let i = index">
+              <button
+                mat-button
+                style="color: white"
+                (click)="EliminarProducto(i)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button mat-button matStepperNext style="color: white">
+          Siguiente
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" label="Informacion de envio">
+      <div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label  for="nombre">Nombre: </label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.persona.nombre"
+              id="nombre"
+              disabled
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label  for="nombre">Apellido: </label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="cliente.persona.apellido"
+              id="apellido"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label  for="nombre">Correo: </label>
+          <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="cliente.persona.correo"
+          id="correo"
+          disabled
+        />
+
+        </div>
+        <form [formGroup]="secondFormGroup">
+          <div class="form-group">
+            <label >Identificacion: </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="106XXXXXXXX"
+              formControlName="identificacion"
+              required
+              [ngClass]="{
+                'is-invalid': f.identificacion.errors
+              }"
+            />
+            <div *ngIf="f.identificacion.errors" class="invalid-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label >Direccion: </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Calle X # x -xxx"
+              formControlName="direccion"
+              required
+              [ngClass]="{
+                'is-invalid': f.direccion.errors
+              }"
+            />
+            <div *ngIf="f.direccion.errors" class="invalid-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label  for="nombre">Telefono: </label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="304XXXXXX"
+              formControlName="telefono"
+              required
+              [ngClass]="{
+                'is-invalid': f.telefono.errors
+              }"
+            />
+            <div *ngIf="f.telefono.errors" class="invalid-feedback"></div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button mat-button matStepperPrevious style="color: white">Atras</button>
+            <button mat-button matStepperNext style="color: white" (click)="Guardarfactura()">Siguiente</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step label="Registro exitoso">
+      <div class="d-flex justify-content-center ultimo" >
+        <div class="display-4 d-flex justify-content-center" *ngIf="EstadoRegistro==1">
+          <label > <svg xmlns="http://www.w3.org/2000/svg" width="3.5rem" height="3.5rem" fill="currentColor" class="bi bi-cart-check" viewBox="0 0 16 16" style="color:white;">
+            <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            <path fill-rule="evenodd" d="M11.354 5.646a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+          </svg> Se registro su pedido con exito</label>
+        </div>
+        <app-carga-pagina *ngIf="EstadoRegistro==0" style="color: white"></app-carga-pagina>
+        <div class="display-4 d-flex justify-content-center" *ngIf="EstadoRegistro==2">
+          <label > <svg xmlns="http://www.w3.org/2000/svg" width="3.5rem" height="3.5rem" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16" style="color:white;">
+            <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            <path fill-rule="evenodd" d="M6.646 5.646a.5.5 0 0 1 .708 0L8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 0 1 0-.708z"/>
+          </svg> No se pudo registrar la comprar intente de neuvo</label>
+        </div> 
+      </div>
+      <div class="d-flex justify-content-center">
+        <button [routerLink]="['/']" *ngIf="EstadoRegistro==2 || EstadoRegistro==1" mat-button matStepperPrevious style="color: white">
+          Finalizar
+        </button>
+        
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>
+
+

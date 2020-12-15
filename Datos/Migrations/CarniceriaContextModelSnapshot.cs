@@ -48,6 +48,9 @@ namespace Datos.Migrations
                     b.Property<int>("ProductoId")
                         .HasColumnType("int");
 
+                    b.Property<double>("ValorNeto")
+                        .HasColumnType("float");
+
                     b.Property<decimal>("ValorUnitario")
                         .HasColumnType("decimal(12,2)");
 

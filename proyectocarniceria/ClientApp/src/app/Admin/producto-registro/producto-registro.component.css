@@ -19,6 +19,7 @@ h2{
 }
 img{
     height: 313px;
+    border-bottom: 1px black solid  ;
 }
 .img-producto
 {
