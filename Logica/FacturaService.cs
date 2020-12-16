@@ -49,7 +49,7 @@ namespace Logica
                     ArmarFactura(factura);
                     _context.Facturas.Add(factura); 
                     GeneraPedido(factura);
-                     RestaProducto(factura.DetallesFacturas);
+                     RestaProducto(factura.DetallesFacturas);                   
                     _context.SaveChanges(); 
                     scope.Complete();
                  }

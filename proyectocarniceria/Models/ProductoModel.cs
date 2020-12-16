@@ -30,6 +30,8 @@ namespace proyectocarniceria.Models
             public float ValorUnitario { get; set; }
             public string Categoria { get; set; }
             public string ImagenProducto { get; set; }
+
+            
         public ProductoViewModel  (){}
         public ProductoViewModel (Producto producto){         
             NombreProducto = producto.NombreProducto;
@@ -39,6 +41,7 @@ namespace proyectocarniceria.Models
             Categoria = producto.Categoria;
             ImagenProducto =  producto.ImagenProducto;
             ProductoId = producto.ProductoId;
+            
         }
     }
 }

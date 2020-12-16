@@ -8,7 +8,7 @@
 
 
     <div id="contenido" class="contenido">
-        <label id="lbListaVacia"> TU CARRITO ESTÁ VACÍO </label>
+        <label id="lbListaVacia" *ngIf="!DetalleFacturas"> TU CARRITO ESTÁ VACÍO </label>
 
         <div *ngFor="let DetalleFactura of DetalleFacturas; let i = index" data-spy="scroll" data-target="#navbar-example3" data-offset="0" >
             <div class="Producto-carrito">
@@ -17,10 +17,10 @@
                     <label >Producto: {{DetalleFactura.productoDetalle.nombreProducto}}</label>
                 </div>
                 <div class="Informacion-valor">
-                    <label>Valor Unitario: {{DetalleFactura.ValorUnitario}}</label>
+                    <label>Valor Unitario: {{DetalleFactura.valorUnitario}}</label>
                     <div>
                         <label>Cantidad:</label>
-                        <input type="number" min="1" [(ngModel)]="DetalleFactura.CantidadRequerida" (ngModelChange)="ModificarCantidad(i)" >
+                        <input type="number" min="1" [(ngModel)]="DetalleFactura.cantidadRequerida" (ngModelChange)="ModificarCantidad(i)" >
                     </div>
                     
                     <label >SubTotal: {{NuevoSubtotal[i]}}</label>
@@ -33,7 +33,7 @@
     </div>
     <div>
         <hr class="lineaTitulo">
-        <button class="btn d-flex justify-content-center"[routerLink]="['/productoCarrito']">Realizar Pedido</button>
+        <button class="btn d-flex justify-content-center" [routerLink]="['/productoCarrito']" >Realizar Pedido</button>
     </div>
 
 

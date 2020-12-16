@@ -2,9 +2,9 @@ import { Producto } from "./producto";
 
 export class DetalleFactura {
 
-    ProductoId:number;
+    productoId:number;
     productoDetalle:Producto;
-    CantidadRequerida:number;
-    ValorUnitario:number;
-    SubTotal:number;
+    cantidadRequerida:number;
+    valorUnitario:number;
+    valorNeto:number;
 }

@@ -25,7 +25,7 @@ export class ProductoCarritoComponent implements OnInit {
   EstadoRegistro = 0;
   NuevaCantidad:number[]=[];
   ListaProductos:DetalleFactura[];
-  displayedColumns: string[] = ['position', 'Productos', 'Cantidad', 'Precio Producto','Subtotal','Eliminar producto'];
+  displayedColumns: string[] = ['position', 'Productos', 'Cantidad', 'Precio Producto','ValorNeto','Eliminar producto'];
   constructor(private _formBuilder: FormBuilder,
               private productoService:ProductoService,
               private clienteService:ClienteService,
@@ -63,14 +63,14 @@ export class ProductoCarritoComponent implements OnInit {
   get f() { return this.secondFormGroup.controls; }
 
   ModificarCantidad(i){
-    if(this.NuevaCantidad[i]!=this.ListaProductos[i].CantidadRequerida) {
-      this.ListaProductos[i].CantidadRequerida=this.NuevaCantidad[i];
+    if(this.NuevaCantidad[i]!=this.ListaProductos[i].cantidadRequerida) {
+      this.ListaProductos[i].cantidadRequerida=this.NuevaCantidad[i];
       this.productoService.ActualizaLista(this.ListaProductos);
     }
 
   }
   igualarCantidad(i){
-    this.NuevaCantidad[i]=this.ListaProductos[i].CantidadRequerida;
+    this.NuevaCantidad[i]=this.ListaProductos[i].cantidadRequerida;
     
   }
   EliminarProducto(i){

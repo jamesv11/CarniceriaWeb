@@ -23,12 +23,12 @@
                     <tr *ngFor="let factura of facturas ; index as i">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{factura.correo }} </td>
-                        <td>{{factura.fechaExpedicion }}</td>
+                        <td>{{factura.fechaExpedicion |date:'shortDate'}}</td>
                         <td>{{factura.valorTotal |currency:"COP":"symbol"}}</td>
-                        <td>{{factura.estadoFactura |date:'shortDate'}}</td>
+                        <td>{{factura.estadoFactura}}</td>
                         <td><div class="input-group-append">
                             <button class="btn btn-outline-dark" type="button">Asignar Domiciliario</button>
-                            <button class="btn btn-outline-dark" type="button">Ver infomarcion</button>
+                            <button class="btn btn-outline-dark" (click)="AbrirRegistro(factura)" type="button">Ver informacion</button>
                           </div>
                         </td>
                     </tr>

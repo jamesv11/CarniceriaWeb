@@ -1,1 +1,73 @@
-
+<div class="Container-fluid shadow p-3 mb-5 bg-white rounded">
+    <div *ngIf="cargando">
+      <app-carga-pagina class="d-flex justify-content-center"></app-carga-pagina>
+    </div>
+  
+    <div *ngIf="cargando==false">
+      <h2 *ngIf="hayProducto" class="d-flex justify-content-center">
+        No hay producto registrados
+      </h2>
+      <div class="row">
+        <div
+          class="col-md-4 p-4"
+          *ngFor="
+            let Producto of Productos
+              | filtroProducto: categoria
+              | slice: (page - 1) * pageSize:page * pageSize;
+            let i = index
+          "
+        >
+          <div class="card" style="width: 18rem">
+            <div class="card-header">
+              <h5 class="card-title d-flex justify-content-center">
+                {{ Producto.corteRes}}
+              </h5>
+            </div>
+            <img
+              class="card-img-top"
+              [src]="Producto.imagenProducto"
+              alt="Card image cap"
+              style=" height: 10rem;"
+            />
+            <div class="card-body">
+              <div>
+                <p class="card-text">Precio : {{ Producto.valorUnitario }}</p>
+                <p class="card-text">Descripcion: {{ Producto.descripcion }}</p>
+              </div>
+              <div>
+                <div>
+                  <input
+                    [id]="i"
+                    type="number"
+                    min="1"
+                    placeholder="1"
+                    [value]="1"
+                    [(ngModel)]="Cantidad[i]"
+                  />
+                  <button
+                    class="btn btn-primary d-flex justify-content-center"
+                    (click)="addCarrito(Producto, i)"
+                  >
+                    Añadir al carrito
+                  </button>
+                </div>
+                <button class="btn btn-primary d-flex justify-content-center">
+                  Ver mas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div>
+        <ngb-pagination
+          class="pagina d-flex justify-content-center"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="Productos.length"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+  

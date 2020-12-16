@@ -20,6 +20,8 @@ import { ProductoRegistroComponent } from './Admin/producto-registro/producto-re
 import { VisualizarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/visualizar-domiciliario/visualizar-domiciliario.component';
 import { ConsultarDomiciliarioComponent } from './Admin/Domiciliario/registro-domiciliario/consultar-domiciliario/consultar-domiciliario.component';
 import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
+import { VisualizarFacturaComponent } from './Admin/visualizar-factura/visualizar-factura.component';
+import { ConsultarFacturaComponent } from './Admin/consultar-factura/consultar-factura.component';
 
 
 const routes: Routes = [
@@ -111,6 +113,16 @@ const routes: Routes = [
   {
     path:'gestionPedidos',
     component : GestionFacturasComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'visualizarFactura',
+    component : VisualizarFacturaComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'ConsultarFactura',
+    component : ConsultarFacturaComponent,canActivate:[AuthGuard]
   }
 
 

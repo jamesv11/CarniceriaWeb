@@ -18,9 +18,10 @@ namespace proyectocarniceria.Models
 
     public class FacturaViewModel : FacturaInputModel
     {
-        
+        public int FacturaId { get; set; }
         public DateTime FechaExpedicion {get; set;}  
         public string EstadoFactura { get; set; }
+        public double Descuento { get; set; }
         public double SubTotal {get; set;} 
         public double ValorTotal { get; set; }
 
@@ -29,8 +30,10 @@ namespace proyectocarniceria.Models
         public FacturaViewModel() { }
         public FacturaViewModel(Factura factura)
         {
+            FacturaId = factura.FacturaId;
             DetallesFacturas = factura.DetallesFacturas;
             Correo = factura.Correo;
+            Descuento = factura.Descuento;
             FechaExpedicion = factura.FechaExpedicion;
             EstadoFactura= factura.EstadoFactura;
             SubTotal = factura.SubTotal;

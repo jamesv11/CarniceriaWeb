@@ -100,7 +100,7 @@ namespace WebPulsaciones.Controllers
 
         // GET: api/Producto
         [HttpGet("Res")]
-        public ActionResult<IEnumerable<ProductoResViewModel>> GeetsCarnes()
+        public ActionResult<IEnumerable<ProductoResViewModel>> GetsCarnes()
         {
             var response = _productoServicio.ConsultarTodasRes(); 
             if(response.Error){

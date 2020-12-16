@@ -54,6 +54,8 @@ import { CargaPaginaComponent } from './carga-pagina/carga-pagina.component';
 import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
 import { BusquedaProductoComponent } from './busqueda-producto/busqueda-producto.component';
 import { FiltroBusquedaProductoPipe } from './pipe/filtro-busqueda-producto.pipe';
+import { VisualizarFacturaComponent } from './Admin/visualizar-factura/visualizar-factura.component';
+import { ConsultarFacturaComponent } from './Admin/consultar-factura/consultar-factura.component';
 
 
 
@@ -103,6 +105,8 @@ const material =[
     GestionFacturasComponent,
     BusquedaProductoComponent,
     FiltroBusquedaProductoPipe,
+    VisualizarFacturaComponent,
+    ConsultarFacturaComponent,
    
   
 
@@ -121,7 +125,7 @@ const material =[
     material,
     BrowserAnimationsModule
   ],
-  entryComponents:[AlertModalComponent],
+  entryComponents:[BusquedaProductoComponent,AlertModalComponent],
   providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })

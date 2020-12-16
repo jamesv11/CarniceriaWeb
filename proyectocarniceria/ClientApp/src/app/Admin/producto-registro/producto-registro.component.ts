@@ -94,7 +94,7 @@ export class ProductoRegistroComponent implements OnInit {
     this.productoService.post(this.producto).subscribe((p) => {
       if (p != null) {
         console.log(p);
-        const messageBox = this.modalService.open(AlertModalComponent)
+        const messageBox = this.modalService.open(AlertModalComponent )
         messageBox.componentInstance.title = "Proceso terminado";
         messageBox.componentInstance.message = "Exitoso";     
         this.producto = p;

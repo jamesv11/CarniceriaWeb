@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AlertModalComponent } from '../@base/alert-modal/alert-modal.component';
+import { BusquedaProductoComponent } from '../busqueda-producto/busqueda-producto.component';
 import { CarritoComponent } from '../Carniceria/Compra/carrito/carrito.component';
 import { User } from '../seguridad/User';
 import { AuthenticationService } from '../services/authentication.service';
@@ -15,11 +18,15 @@ export class NavMenuComponent {
   currentUser:User;
   cantidadProducto:number=0;
   stringBusqueda:string;
+  isOpen = false;
+
+
 
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService,
-        private productoService:ProductoService
+        private productoService:ProductoService,
+        private modalService: NgbModal
       ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         this.productoService.ListaProductos.subscribe(x =>{
@@ -50,5 +57,8 @@ export class NavMenuComponent {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
       }
-    
+
+    BuscarProducto(){
+      this.isOpen=!this.isOpen;
+    }
 }

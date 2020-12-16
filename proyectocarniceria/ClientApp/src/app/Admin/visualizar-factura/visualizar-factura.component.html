@@ -1,0 +1,23 @@
+<div>
+    <h3>Detalles de factura</h3>
+</div>
+<table class="table table-striped" *ngIf='dataFacturaService.factura.detallesFacturas.length'>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">productoId</th>
+            <th scope="col">CantidadRequerida </th>
+            <th scope="col">Valor unitario</th>
+            <th scope="col">Valor neto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let detalle of dataFacturaService.factura.detallesFacturas ; index as i" >
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ detalle.productoId }} </td>
+            <td>{{ detalle.cantidadRequerida }}</td>
+            <td>{{ detalle.valorUnitario }}</td>
+            <td>{{ detalle.valorNeto}}</td>
+        </tr>
+    </tbody>
+</table>

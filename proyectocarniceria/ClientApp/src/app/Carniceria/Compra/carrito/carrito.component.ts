@@ -35,8 +35,8 @@ export class CarritoComponent implements OnInit {
   igualarCantidad(){
     let i=0;
     this.DetalleFacturas.forEach(element => {
-      this.NuevaCantidad[i]=this.DetalleFacturas[i].CantidadRequerida;
-      this.NuevoSubtotal[i]=this.DetalleFacturas[i].SubTotal;
+      this.NuevaCantidad[i]=this.DetalleFacturas[i].cantidadRequerida;
+      this.NuevoSubtotal[i]=this.DetalleFacturas[i].valorNeto;
       i+=1;
     });
     

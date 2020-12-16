@@ -1,89 +1,93 @@
-<div class="modal-header">
-      
-  <h4 class="modal-title">{{ title }}</h4>
-      <button
-    type="button"
-    class="close"
-    aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')"
-  >
-          <span aria-hidden="true">&times;</span>     
-  </button>
-    
-</div>
-  
-<div class="modal-body">
-      
-  <div class="row">
-    <div
-      class="col-md-4 p-4"
-      *ngFor="
-        let Producto of Productos
-          | filtroBusquedaProducto:  StringbusquedaProducto
-          | slice: (page - 1) * pageSize:page * pageSize;
-        let i = index
-      "
+<button class="btn " >Buscar</button>
+
+<div *ngIf="isOpen">
+  <div class="modal-header">
+        
+    <h4 class="modal-title">{{ title }}</h4>
+        <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
     >
-      <div class="card" style="width: 18rem">
-        <div class="card-header">
-          <h5 class="card-title d-flex justify-content-center">
-            {{ Producto.nombreProducto }}
-          </h5>
-        </div>
-        <img
-          class="card-img-top"
-          [src]="Producto.imagenProducto"
-          alt="Card image cap"
-          style="height: 10rem"
-        />
-        <div class="card-body">
-          <div>
-            <p class="card-text">Precio : {{ Producto.valorUnitario }}</p>
-            <p class="card-text">Descripcion: {{ Producto.descripcion }}</p>
+            <span aria-hidden="true">&times;</span>     
+    </button>
+      
+  </div>
+    
+  <div class="modal-body">
+        
+    <div class="row">
+      <div
+        class="col-md-4 p-4"
+        *ngFor="
+          let Producto of Productos
+            | filtroBusquedaProducto:  title
+            | slice: (page - 1) * pageSize:page * pageSize;
+          let i = index
+        "
+      >
+        <div class="card" style="width: 18rem">
+          <div class="card-header">
+            <h5 class="card-title d-flex justify-content-center">
+              {{ Producto.nombreProducto }}
+            </h5>
           </div>
-          <div>
+          <img
+            class="card-img-top"
+            [src]="Producto.imagenProducto"
+            alt="Card image cap"
+            style="height: 10rem"
+          />
+          <div class="card-body">
             <div>
-              <input
-                [id]="i"
-                type="number"
-                min="1"
-                placeholder="1"
-                [value]="1"
-                [(ngModel)]="Cantidad[i]"
-              />
-              <button
-                class="btn btn-primary d-flex justify-content-center"
-                (click)="addCarrito(Producto, i)"
-              >
-                Añadir al carrito
+              <p class="card-text">Precio : {{ Producto.valorUnitario }}</p>
+              <p class="card-text">Descripcion: {{ Producto.descripcion }}</p>
+            </div>
+            <div>
+              <div>
+                <input
+                  [id]="i"
+                  type="number"
+                  min="1"
+                  placeholder="1"
+                  [value]="1"
+                  [(ngModel)]="Cantidad[i]"
+                />
+                <button
+                  class="btn btn-primary d-flex justify-content-center"
+                  (click)="addCarrito(Producto, i)"
+                >
+                  Añadir al carrito
+                </button>
+              </div>
+              <button class="btn btn-primary d-flex justify-content-center">
+                Ver mas
               </button>
             </div>
-            <button class="btn btn-primary d-flex justify-content-center">
-              Ver mas
-            </button>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="pagina d-flex justify-content-center">
-    <ngb-pagination
-      [(page)]="page"
-      [pageSize]="pageSize"
-      [collectionSize]="Productos.length"
-    ></ngb-pagination>
+    <div class="pagina d-flex justify-content-center">
+      <ngb-pagination
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [collectionSize]="Productos.length"
+      ></ngb-pagination>
+    </div>
+      
   </div>
     
-</div>
-  
-<div class="modal-footer">
-      <button
-    type="button"
-    class="btn btn-outline-dark"
-    (click)="activeModal.close('Close click')"
-  >
-    Cerrar
-  </button>
-    
+  <div class="modal-footer">
+        <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="activeModal.close('Close click')"
+    >
+      Cerrar
+    </button>
+      
+  </div>
 </div>

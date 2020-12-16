@@ -21,11 +21,17 @@ namespace proyectocarniceria.Models
          
     }
 
-    public class ProductoResViewModel : ProductoInputModel {
+    public class ProductoResViewModel : ProductoResInputModel {
 
         public ProductoResViewModel  (){}
         public ProductoResViewModel (ProductoCarne producto){
-            
+            NombreProducto = producto.NombreProducto;
+            Cantidad = producto.Cantidad;
+            ValorUnitario = producto.ValorUnitario;
+            Descripcion = producto.Descripcion;
+            Categoria = producto.Categoria;
+            ImagenProducto = producto.ImagenProducto;
+            CorteRes = producto.CorteRes;
         }
     }
 }

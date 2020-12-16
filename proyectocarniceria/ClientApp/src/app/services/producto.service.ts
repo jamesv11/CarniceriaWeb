@@ -74,13 +74,13 @@ export class ProductoService {
         this.ListaProductossubject.next(nuevaLista);
       }
     }
-    CrearDetalle(Producto:Producto,Cantidad:number):DetalleFactura{
+    CrearDetalle(Producto:Producto,cantidad:number):DetalleFactura{
       var nuevaFactura = new DetalleFactura;
       nuevaFactura.productoDetalle = Producto;
-      nuevaFactura.ProductoId = Producto.productoId;
-      nuevaFactura.CantidadRequerida = Cantidad;
-      nuevaFactura.ValorUnitario = Producto.valorUnitario;
-      nuevaFactura.SubTotal = Producto.valorUnitario * Cantidad;
+      nuevaFactura.productoId = Producto.productoId;
+      nuevaFactura.cantidadRequerida = cantidad;
+      nuevaFactura.valorUnitario = Producto.valorUnitario;
+      nuevaFactura.valorNeto = Producto.valorUnitario * cantidad;
       return nuevaFactura;
     }
     removeDetalle(DetalleFactura){

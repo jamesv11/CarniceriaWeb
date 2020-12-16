@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Producto } from '../Carniceria/models/producto';
 import { ProductoService } from '../services/producto.service';
@@ -16,10 +16,15 @@ export class BusquedaProductoComponent implements OnInit {
   Cantidad:number[]=[];
   pageSize=20;
   page =1;
+  isOpen = false;
 
   constructor(public activeModal: NgbActiveModal,private productoService:ProductoService) { }
   @Input() title;
-  @Input() StringbusquedaProducto;
+  @HostListener('click')
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
+
   ngOnInit(): void {
     this.productoService.get().subscribe(p=>{
       this.Productos = p;
@@ -29,5 +34,8 @@ export class BusquedaProductoComponent implements OnInit {
     console.log(this.Cantidad[id]);
     this.productoService.AñadirCarrito(addProducto,this.Cantidad[id]);
   }
+  
+
+
 
 }
