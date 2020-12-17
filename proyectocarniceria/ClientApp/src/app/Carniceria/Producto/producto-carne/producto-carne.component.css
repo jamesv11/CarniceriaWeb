@@ -58,3 +58,8 @@ h2{
     text-align: center;
     border-bottom: 1px black solid  ;
 }
+
+ngb-pagination{
+    position:relative;
+    z-index:1;
+} 

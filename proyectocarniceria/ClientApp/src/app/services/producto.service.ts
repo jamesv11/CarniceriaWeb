@@ -101,5 +101,11 @@ export class ProductoService {
       localStorage.setItem("ListaProducto", JSON.stringify(nuevaLista));
       this.ListaProductossubject.next(nuevaLista);
     }
+    put(Productos:Producto[]): Observable<Producto[]>{
+      return this.http.put<Producto []>(this.baseUrl + 'api/Producto',Productos).pipe(
+        tap(_ => this.handleErrorService.log('datos enviados')),
+        catchError(this.handleErrorService.handleError<Producto []>('Modificar productos',null))
+        );
+    }
 }
     

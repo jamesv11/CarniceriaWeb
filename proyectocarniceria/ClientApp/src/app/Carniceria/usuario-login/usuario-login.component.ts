@@ -24,6 +24,7 @@ export class UsuarioLoginComponent implements OnInit {
     private router: Router,
     private autenticacion: AuthenticationService,
     private modalService: NgbModal,
+    
   ) {
     if(this.autenticacion.currentUserValue){
       this.router.navigate(['/']);
@@ -49,8 +50,10 @@ export class UsuarioLoginComponent implements OnInit {
     this.loading = true;
     this.autenticacion.login(this.f.correo.value,this.f.password.value).pipe(first()).subscribe(data=>{
       this.router.navigate([this.returnUrl]);
+      window.location.reload();
       
     },error=>{
+      // console.log(error.error);
       const modalRef = this.modalService.open(AlertModalComponent);
       modalRef.componentInstance.title = 'Acceso Denegado';
       modalRef.componentInstance.message = error.error;

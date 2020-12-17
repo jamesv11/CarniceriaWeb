@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { DataFacturaService } from 'src/app/services/data-factura.service';
 
 @Component({
   selector: 'app-pedidos-usuario',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidosUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataFacturaService : DataFacturaService,public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }

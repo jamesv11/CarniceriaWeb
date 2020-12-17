@@ -17,13 +17,13 @@
                     <label >Producto: {{DetalleFactura.productoDetalle.nombreProducto}}</label>
                 </div>
                 <div class="Informacion-valor">
-                    <label>Valor Unitario: {{DetalleFactura.valorUnitario}}</label>
+                    <label>Valor Unitario: {{DetalleFactura.valorUnitario | currency: "COP  ":"symbol" }}</label>
                     <div>
                         <label>Cantidad:</label>
-                        <input type="number" min="1" [(ngModel)]="DetalleFactura.cantidadRequerida" (ngModelChange)="ModificarCantidad(i)" >
+                        <input type="number" min="1" [(ngModel)]="NuevaCantidad[i] " (ngModelChange)="ModificarCantidad(i)" >
                     </div>
                     
-                    <label >SubTotal: {{NuevoSubtotal[i]}}</label>
+                    <label >SubTotal: {{NuevoSubtotal[i] | currency: "COP  ":"symbol" }}</label>
                 </div>
 
             </div>

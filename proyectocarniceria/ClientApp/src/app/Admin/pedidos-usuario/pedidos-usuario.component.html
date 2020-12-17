@@ -1,1 +1,9 @@
-<p>pedidos-usuario works!</p>
+<div class="modal-header">
+    <h2 class="modal-title">Factura de venta numero {{dataFacturaService.pedido.factura.facturaId}}</h2>
+  </div>
+  <div class="modal-body">
+    <app-tabla-domiciliario></app-tabla-domiciliario>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+  </div>

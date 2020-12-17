@@ -4,11 +4,11 @@
             <h2>Gestion de pedidos</h2>
         </div>
         <div class="mx-auto p-3 col-lg-6 ">
-             <h3 *ngIf='!facturas'>No hay pedidos</h3>
+             <h3 *ngIf='!pedidos'>No hay pedidos</h3>
         </div>
         <div class="mx-auto p-3 m-6 col-lg-10 " >
-            <input [(ngModel)]="searchText" *ngIf='facturas && facturas.length' class="form-control form-control-lg" type="text" placeholder="Busqueda... ">             
-            <table class="table" *ngIf='facturas && facturas.length'>
+            <input [(ngModel)]="searchText" *ngIf='pedidos && pedidos.length' class="form-control form-control-lg" type="text" placeholder="Busqueda... ">             
+            <table class="table" *ngIf='pedidos && pedidos.length'>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -20,16 +20,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let factura of facturas ; index as i">
+                    <tr *ngFor="let pedido of pedidos ; index as i">
                         <th scope="row">{{ i + 1 }}</th>
-                        <td>{{factura.correo }} </td>
-                        <td>{{factura.fechaExpedicion |date:'shortDate'}}</td>
-                        <td>{{factura.valorTotal |currency:"COP":"symbol"}}</td>
-                        <td>{{factura.estadoFactura}}</td>
+                        <td>{{pedido.factura.correo }} </td>
+                        <td>{{pedido.factura.fechaExpedicion |date:'shortDate'}}</td>
+                        <td>{{pedido.factura.valorTotal |currency:"COP":"symbol"}}</td>
+                        <td>{{pedido.factura.estadoFactura}}</td>
                         <td><div class="input-group-append">
-                            <button class="btn btn-outline-dark" type="button">Asignar Domiciliario</button>
-                            <button class="btn btn-outline-dark" (click)="AbrirRegistro(factura)" type="button">Ver informacion</button>
+                            <button class="btn btn-outline-dark" (click)="AbrirTablaDomiciliario()"type="button">Asignar Domiciliario</button>
+                            <button class="btn btn-outline-dark" (click)="AbrirRegistro(pedido)" type="button">Ver informacion</button>
                           </div>
+                          
                         </td>
                     </tr>
                 </tbody>

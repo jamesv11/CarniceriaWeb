@@ -1,0 +1,100 @@
+<div class="Container-fluid shadow p-3 mb-5 bg-white rounded">
+  <app-carga-pagina
+    *ngIf="cargando"
+    class="d-flex justify-content-center"
+  ></app-carga-pagina>
+  <div>
+    <h2 *ngIf="productos && !cargando">Consulta de productos</h2>
+  </div>
+  <input
+    *ngIf="productos && !cargando"
+    [(ngModel)]="searchText"
+    class="form-control"
+    type="text"
+    placeholder="Busqueda... "
+  />
+  <div class="Contenido" *ngIf="!cargando">
+    <table class="table table-hover" *ngIf="productos && productos.length">
+      <thead>
+        <tr>
+          <th scope="col">Id Producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Nombre producto</th>
+          <th scope="col">Precio unitario</th>
+          <th scope="col">Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let element of productos | filtroBusquedaProducto: searchText;
+            index as i
+          "
+          (click)="selectedClient(cliente)"
+        >
+          <th>{{ element.productoId }}</th>
+          <td>
+            <ng-template #popContent1>
+              Nueva Cantidad:
+              <div>
+                <input type="number" min="1" [(ngModel)]="NuevaCantidad[i]" />
+
+                <button
+                  type="button"
+                  class="btn btn-outline-dark"
+                  (click)="ModificarCantidad(i)"
+                >
+                  Asignar
+                </button>
+              </div>
+            </ng-template>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              [ngbPopover]="popContent1"
+              [autoClose]="'outside'"
+              (click)="igualarCantidad(i)"
+            >
+              {{ element.cantidad }}
+            </button>
+          </td>
+          <td>
+            {{ element.nombreProducto }}
+          </td>
+          <td>
+            <ng-template #popContent2>
+              Nueva Valor unitario:
+              <div>
+                <input type="number" min="1" [(ngModel)]="NuevaValor[i]" />
+
+                <button
+                  type="button"
+                  class="btn btn-outline-dark"
+                  (click)="ModificarValorUnitario(i)"
+                >
+                  Asignar
+                </button>
+              </div>
+            </ng-template>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              [ngbPopover]="popContent2"
+              [autoClose]="'outside'"
+              (click)="igualarValorUnitario(i)"
+            >
+              {{ element.valorUnitario | currency: "COP  ":"symbol" }}
+            </button>
+          </td>
+          <td>
+            {{ element.categoria }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class=" d-flex justify-content-center" *ngIf="productos && !cargando">
+    <button type="button" class="botones btn btn-outline-dark" (click)="ActualiczarProductos()">Guardar cambios</button>
+    <button type="button" class="botones btn btn-outline-dark" [routerLink]="['/']">Cancelar</button>
+  </div>
+</div>

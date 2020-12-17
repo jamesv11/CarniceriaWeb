@@ -30,7 +30,7 @@
             />
             <div class="card-body">
               <div>
-                <p class="card-text">Precio : {{ Producto.valorUnitario }}</p>
+                <p class="card-text">Precio : {{ Producto.valorUnitario | currency: "COP  ":"symbol"  }}</p>
                 <p class="card-text">Descripcion: {{ Producto.descripcion }}</p>
               </div>
               <div>

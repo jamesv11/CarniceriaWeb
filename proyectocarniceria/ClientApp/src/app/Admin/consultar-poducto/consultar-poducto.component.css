@@ -1,0 +1,17 @@
+.Contenido{
+    height: 500px;
+    overflow:auto;
+}
+table {
+    width: 100%;
+    
+    color:black;
+}
+h2{
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px black solid  ;
+}
+.botones{
+    margin: 10px;
+}

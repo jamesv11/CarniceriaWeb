@@ -114,11 +114,56 @@ namespace WebPulsaciones.Controllers
             var Carnes = response.Productos.Select(p => new ProductoResViewModel(p));
             return Ok(Carnes);
         }
+
+        [HttpPut]
+        public ActionResult<IEnumerable<ProductoViewModel>> GuardarRes(List<ProductoViewModel> productoInputModels)
+        {
+            List<Producto> productos = MapearListaProducto(productoInputModels);
+            var response = _productoServicio.UpdateLista(productos);
+            if (response.Error)
+            {
+                ModelState.AddModelError("Guardar productoCarne", response.Mensaje);
+                var problemDetails = new ValidationProblemDetails(ModelState)
+                {
+                    Status = StatusCodes.Status400BadRequest,
+                };
+
+                return BadRequest(problemDetails);
+            }
+            var _productos = response.productos.Select(p => new ProductoViewModel(p));
+            return Ok(_productos);
+        }
         
         private Producto MapearProducto(ProductoInputModel productoInputModel)
         {
            
             var producto = new Producto{
+                NombreProducto = productoInputModel.NombreProducto,
+                Cantidad = productoInputModel.Cantidad,
+                ValorUnitario = productoInputModel.ValorUnitario,
+                Descripcion = productoInputModel.Descripcion,
+                Categoria = productoInputModel.Categoria,
+                ImagenProducto = productoInputModel.ImagenProducto
+            };         
+            return producto;
+        }
+
+        private List<Producto> MapearListaProducto(List<ProductoViewModel> productoInputModel)
+        {
+           var lista = new List<Producto>();
+           foreach (var item in productoInputModel)
+           {
+               lista.Add(MapearProductoView(item));
+           }
+            
+            return lista;
+        }
+
+        private Producto MapearProductoView(ProductoViewModel productoInputModel)
+        {
+           
+            var producto = new Producto{
+                ProductoId = productoInputModel.ProductoId,
                 NombreProducto = productoInputModel.NombreProducto,
                 Cantidad = productoInputModel.Cantidad,
                 ValorUnitario = productoInputModel.ValorUnitario,

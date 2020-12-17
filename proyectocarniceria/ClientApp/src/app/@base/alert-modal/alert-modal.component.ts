@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModalConfig} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -9,7 +9,10 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class AlertModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(config: NgbModalConfig, public activeModal: NgbActiveModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+   }
   @Input() title;
   @Input() message;
   ngOnInit(): void {

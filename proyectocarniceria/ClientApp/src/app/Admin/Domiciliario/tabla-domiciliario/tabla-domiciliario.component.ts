@@ -5,31 +5,32 @@ import { DomiciliarioService } from 'src/app/services/domiciliario.service';
 import { SignalRService } from 'src/app/services/SignalRService.service';
 
 @Component({
-  selector: 'app-consultar-domiciliario',
-  templateUrl: './consultar-domiciliario.component.html',
-  styleUrls: ['./consultar-domiciliario.component.css']
+  selector: 'app-tabla-domiciliario',
+  templateUrl: './tabla-domiciliario.component.html',
+  styleUrls: ['./tabla-domiciliario.component.css']
 })
-export class ConsultarDomiciliarioComponent implements OnInit {
-
+export class TablaDomiciliarioComponent implements OnInit {
   searchText: string;
   domiciliarios: Domiciliario[];
-
   constructor(private domiciliarioService: DomiciliarioService,private dataDomiciliario : DataDomiciliarioService,
-              private SignalRService:SignalRService) { 
+    private signalR: SignalRService
+   ) {
+
     this.domiciliarioService.get().subscribe(result => 
       {
         this.domiciliarios = result;
       });
-    this.SignalRService.signalDomiciliarioReceived.subscribe((signal:Domiciliario)=>{
-        this.domiciliarios.push(signal);
-    })
-      
-  }
+
+    this.signalR.signalDomiciliarioReceived.subscribe((data:Domiciliario)=>{
+      this.domiciliarios.push(data);
+    })  
+    }
 
   ngOnInit(): void {
-   
-
-   
   }
-  
+  selectedClient(domicilario : Domiciliario)
+  {
+    this.dataDomiciliario.domiciliario =  domicilario;
+  }
+
 }

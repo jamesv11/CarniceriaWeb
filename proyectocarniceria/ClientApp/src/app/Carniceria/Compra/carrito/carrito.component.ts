@@ -29,7 +29,13 @@ export class CarritoComponent implements OnInit {
 
   
   ModificarCantidad(i){
-    this.productoService.ActualizaLista(this.DetalleFacturas);
+    if(this.NuevaCantidad[i] != this.DetalleFacturas[i].cantidadRequerida){
+      this.DetalleFacturas[i].cantidadRequerida = this.NuevaCantidad[i];
+      this.NuevoSubtotal[i] = this.DetalleFacturas[i].cantidadRequerida * this.DetalleFacturas[i].valorUnitario;
+      this.DetalleFacturas[i].valorNeto = this.NuevoSubtotal[i];
+      this.productoService.ActualizaLista(this.DetalleFacturas);
+    }
+    
   }
 
   igualarCantidad(){

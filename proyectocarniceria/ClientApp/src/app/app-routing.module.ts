@@ -22,6 +22,8 @@ import { ConsultarDomiciliarioComponent } from './Admin/Domiciliario/registro-do
 import { GestionFacturasComponent } from './Admin/gestion-facturas/gestion-facturas.component';
 import { VisualizarFacturaComponent } from './Admin/visualizar-factura/visualizar-factura.component';
 import { ConsultarFacturaComponent } from './Admin/consultar-factura/consultar-factura.component';
+import { ConsultarPoductoComponent } from './Admin/consultar-poducto/consultar-poducto.component';
+import { TablaDomiciliarioComponent } from './Admin/Domiciliario/tabla-domiciliario/tabla-domiciliario.component';
 
 
 const routes: Routes = [
@@ -41,6 +43,10 @@ const routes: Routes = [
   {
     path:'carrito',
     component: CarritoComponent
+  },
+  {
+    path:'consultarProducto',
+    component:ConsultarPoductoComponent,canActivate:[AuthGuard]
   },
 
   {
@@ -123,6 +129,11 @@ const routes: Routes = [
   {
     path:'ConsultarFactura',
     component : ConsultarFacturaComponent,canActivate:[AuthGuard]
+  }
+  ,
+  {
+    path:'tablaDomiciliario',
+    component : TablaDomiciliarioComponent,canActivate:[AuthGuard]
   }
 
 

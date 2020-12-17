@@ -36,7 +36,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 
 
 //bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertModalComponent } from './@base/alert-modal/alert-modal.component';
 import { FiltroPersonaPipe } from './pipe/filtro-persona.pipe';
 import { GestionUsuariosComponent } from './Admin/gestion-usuarios/gestion-usuarios.component';
@@ -56,6 +56,9 @@ import { BusquedaProductoComponent } from './busqueda-producto/busqueda-producto
 import { FiltroBusquedaProductoPipe } from './pipe/filtro-busqueda-producto.pipe';
 import { VisualizarFacturaComponent } from './Admin/visualizar-factura/visualizar-factura.component';
 import { ConsultarFacturaComponent } from './Admin/consultar-factura/consultar-factura.component';
+import { ConsultarPoductoComponent } from './Admin/consultar-poducto/consultar-poducto.component';
+import { TablaDomiciliarioComponent } from './Admin/Domiciliario/tabla-domiciliario/tabla-domiciliario.component';
+import { AsignarUsuarioComponent } from './Admin/asignar-usuario/asignar-usuario.component';
 
 
 
@@ -107,6 +110,9 @@ const material =[
     FiltroBusquedaProductoPipe,
     VisualizarFacturaComponent,
     ConsultarFacturaComponent,
+    ConsultarPoductoComponent,
+    TablaDomiciliarioComponent,
+    AsignarUsuarioComponent,
    
   
 
@@ -126,7 +132,7 @@ const material =[
     BrowserAnimationsModule
   ],
   entryComponents:[BusquedaProductoComponent,AlertModalComponent],
-  providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor, multi:true}],
+  providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor, multi:true},NgbModalConfig, NgbModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

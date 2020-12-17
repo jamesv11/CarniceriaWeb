@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <h2>Gestion de domiciliarios</h2>
+    </div>
+    <div class="mx-auto p-3 col-lg-6 ">
+         <h3 *ngIf='!domiciliarios'>No hay domiciliarios registrados</h3>
+    </div>
+    <div class="mx-auto p-3 m-6 col-lg-10 " >
+        <input [(ngModel)]="searchText" *ngIf='domiciliarios && domiciliarios.length' class="form-control form-control-lg" type="text" placeholder="Busqueda... ">             
+        <table class="table" *ngIf='domiciliarios && domiciliarios.length'>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Telefono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let domiciliario of domiciliarios|filtroPersona:searchText ; index as i" (click)="selectedClient(domiciliario)">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ domiciliario.persona.correo}} </td>
+                    <td>{{ domiciliario.persona.identificacion}}</td>
+                    <td>{{ domiciliario.persona.nombre}}</td>
+                    <td>{{ domiciliario.persona.apellido}}</td>
+                    <td>{{ domiciliario.persona.telefono}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
